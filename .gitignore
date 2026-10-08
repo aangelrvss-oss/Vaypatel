@@ -4,3 +4,4 @@ admin/datos/clave.php
 admin/datos/intentos.php
 admin/datos/copias/*.json
 *.tmp-*
+admin/datos/correo.php

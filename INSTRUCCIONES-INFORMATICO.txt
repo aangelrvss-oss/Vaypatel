@@ -40,20 +40,44 @@ PANEL /admin/
   - Si se olvida la contraseña: borrar admin/datos/clave.php y crear uno nuevo con
       php -r 'echo "<?php exit; ?>\n".json_encode(["hash"=>password_hash("NUEVA",PASSWORD_DEFAULT),"cambiar"=>true]);' > admin/datos/clave.php
 
-FORMULARIO (enviar.php)
-  - Envía cada consulta a la dirección de email de contacto del panel (si no es
-    válida, a a.arribas@vaypatel.com).
-  - REMITENTE (primeras líneas) debe ser una cuenta del dominio, p. ej.
-    web@vaypatel.com. Crear esa cuenta o alias; si no, el correo puede acabar en
-    spam o ser rechazado. Recomendado SPF y DKIM en el dominio.
-  - Si el hosting no permite mail(), sustituir por SMTP con PHPMailer; la
-    validación del archivo sirve igual.
-  - Validación, aceptación de privacidad obligatoria, campo trampa antispam y
-    límite de un envío cada 30 s por sesión.
-  - Sin JavaScript el formulario también funciona: enviar.php redirige a
-    /?envio=ok|datos|error#contacto y la página muestra el resultado.
-  - Trampa de tiempo antispam: los envíos en menos de 3 s se descartan en silencio.
-  - Si mail() falla, se anota en el log de errores de PHP.
+FORMULARIO (enviar.php) Y ENVÍO DE CORREO
+  - Cada consulta se envía al email de contacto del panel (a.arribas@vaypatel.com).
+  - Validación, aceptación de privacidad obligatoria, campo trampa antispam, trampa
+    de tiempo (menos de 3 s se descarta) y límite de un envío cada 30 s por sesión.
+    Sin JavaScript redirige a /?envio=ok|datos|error#contacto. Los errores de envío
+    quedan en el log de errores de PHP con el motivo.
+  - Cómo se envía: incluir/correo.php, según admin/datos/correo.php (no está en el
+    repositorio). Sin ese archivo usa mail() de PHP.
+
+  RECOMENDADO con Microsoft 365 (no hay que tocar los DNS):
+  el formulario envía a través de Microsoft 365 con la API Microsoft Graph (OAuth).
+  El correo sale de Microsoft 365, así que pasa SPF, DKIM y DMARC del dominio.
+  (La autenticación SMTP básica con usuario y contraseña la desactiva Microsoft por
+  defecto a finales de 2026, por eso no se usa.)
+    1. Microsoft 365: crear un buzón compartido web@vaypatel.com (no necesita
+       licencia) o elegir el buzón desde el que se enviará.
+    2. Entra ID > Registros de aplicaciones > Nuevo registro ("Web Vaypatel").
+       Permisos de API > Microsoft Graph > Permisos de aplicación > Mail.Send >
+       Conceder consentimiento de administrador.
+       Certificados y secretos > Nuevo secreto de cliente. Anotar la fecha de
+       caducidad: hay que renovarlo antes (si caduca, el formulario deja de enviar).
+    3. Recomendado: limitar la aplicación a ese único buzón (Exchange Online:
+       RBAC for Applications, o New-ApplicationAccessPolicy -AccessRight
+       RestrictAccess -PolicyScopeGroupId web@vaypatel.com).
+    4. Crear admin/datos/correo.php en el servidor con este contenido (dos líneas):
+         <?php exit; ?>
+         {"modo":"graph","tenant":"ID_DEL_INQUILINO","cliente":"ID_DE_LA_APLICACION","secreto":"SECRETO","buzon":"web@vaypatel.com"}
+       admin/datos/ no es accesible desde la web (.htaccess) y el archivo empieza
+       cortando PHP, así que no muestra nada aunque se abra.
+    5. Probar: php incluir/probar-correo.php a.arribas@vaypatel.com (desde SSH),
+       o enviar una consulta real desde el formulario de la web.
+
+  ALTERNATIVA sin Microsoft Graph: mail() del servidor con remitente
+  web@vaypatel.com. Requiere añadir la IP del servidor al registro SPF de
+  vaypatel.com (es un registro TXT; no cambia quién gestiona los DNS) y que el
+  servidor pueda enviar por el puerto 25 (en AWS suele estar bloqueado). Sin eso,
+  Microsoft 365 marcará los avisos como suplantación o spam.
+
   - PROBAR tras publicar: enviar una consulta y comprobar que llega.
 
 SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
@@ -66,23 +90,16 @@ SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
   location = /LEEME.txt { deny all; }
   + redirección 301 a https://www.vaypatel.com
 
-DOMINIO, SUBDOMINIOS Y CORREO (se configuran en el panel DNS del dominio)
-  La web solo necesita dos nombres:
-    vaypatel.com       registro A (IP del hosting)
-    www.vaypatel.com   registro CNAME a vaypatel.com (o A a la misma IP)
-  La dirección oficial es https://www.vaypatel.com. El certificado SSL debe
-  cubrir los dos nombres; después, activar en .htaccess el bloque "Dirección
-  única", que redirige http y vaypatel.com (sin www) a https://www.vaypatel.com.
-  No hacen falta más subdominios: el panel está en /admin/ dentro de la web.
-  Correo (vaypatel.com ya lo usa: a.arribas@vaypatel.com):
-    - Al cambiar DNS, mantener intactos los registros MX y los del proveedor
-      de correo (autodiscover, etc.).
-    - SPF (registro TXT en vaypatel.com): debe incluir el servidor del hosting,
-      porque el formulario envía desde web@vaypatel.com. Ej.: añadir
-      "include:<el del hosting>" o "a" al SPF existente; no crear un segundo SPF.
-    - DKIM: activarlo en el hosting o el proveedor de correo (registro que indiquen).
-    - DMARC recomendado: TXT en _dmarc.vaypatel.com con
-      "v=DMARC1; p=none; rua=mailto:a.arribas@vaypatel.com" para empezar.
+DOMINIO, SUBDOMINIOS Y CORREO
+  Los DNS ya están configurados y no hay que cambiarlos: vaypatel.com,
+  www.vaypatel.com, vaypatel.es y www.vaypatel.es apuntan al hosting, y el
+  correo está en Microsoft 365 (no tocar MX ni registros de Microsoft).
+  No hacen falta subdominios: el panel está en /admin/ dentro de la web.
+  La dirección oficial es https://www.vaypatel.com (es la que indica la etiqueta
+  canonical a Google). Opcional pero recomendado: activar en .htaccess el bloque
+  "Dirección única" para que las otras tres redirijan a esa.
+  Formulario: con Microsoft Graph (ver FORMULARIO) no hace falta ningún cambio
+  de DNS. Solo si se usara mail() habría que añadir la IP del servidor al SPF.
   Página 404: 404.html (diseño de la web). En Apache ya está en .htaccess;
   en Nginx: error_page 404 /404.html;
 

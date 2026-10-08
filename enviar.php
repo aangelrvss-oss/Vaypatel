@@ -3,11 +3,14 @@
  * Formulario de contacto de www.vaypatel.com
  * Recibe los datos del formulario y los envía por email.
  *
- * CONFIGURACIÓN: revisar las dos líneas de abajo.
+ * CONFIGURACIÓN
  *  - DESTINO:   lo toma del email de contacto del panel (con este valor por defecto).
- *  - REMITENTE: debe ser una cuenta del propio dominio (p. ej. web@vaypatel.com),
- *               si no, muchos servidores de correo marcan el mensaje como spam.
+ *  - Cómo se envía: incluir/correo.php. Con Microsoft 365 (vaypatel.com) se usa la API
+ *    Microsoft Graph configurada en admin/datos/correo.php; sin esa configuración, mail().
+ *  - REMITENTE: solo para mail(); con Graph el remitente es el buzón configurado.
  */
+require __DIR__ . '/incluir/correo.php';
+
 // Buzón por defecto. Si en el panel hay un email de contacto válido, se usa ese.
 $DESTINO = 'a.arribas@vaypatel.com';
 $contenido = json_decode((string)@file_get_contents(__DIR__ . '/contenido.json'), true);
@@ -96,19 +99,10 @@ $cuerpo = "Nueva consulta desde www.vaypatel.com\n"
         . "--------------------------------------\n"
         . "Enviado el " . date('d/m/Y H:i') . " · Privacidad aceptada\n";
 
-$cabeceras = implode("\r\n", [
-    'From: Web Vaypatel <' . REMITENTE . '>',
-    'Reply-To: ' . $email,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding: 8bit',
-    'X-Mailer: Web Vaypatel',
-]);
-
-$ok = mail($DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, $cabeceras, '-f' . REMITENTE);
+[$ok, $detalle] = enviar_correo($DESTINO, $asunto, $cuerpo, $email, $nombre, REMITENTE);
 
 if (!$ok) {
-    error_log('enviar.php: mail() ha fallado al enviar a ' . $DESTINO);
+    error_log('enviar.php: no se ha podido enviar a ' . $DESTINO . ' · ' . $detalle);
     responder(500, 'No se ha podido enviar. Escríbenos a ' . $DESTINO . ' o llámanos al 607 23 09 57.');
 }
 
