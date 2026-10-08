@@ -69,6 +69,11 @@ SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
 DOMINIO Y CORREO
   Si vaypatel.com ya tiene correo, al cambiar DNS mantener intactos los MX.
 
+HORARIO
+  El texto del horario se edita en el panel (Contacto). El horario que lee
+  Google está en index.php (openingHoursSpecification: lunes a viernes,
+  08:00-20:00); si cambian días u horas, actualizarlo también ahí.
+
 SEO YA INCLUIDO
   title y description, canonical, Open Graph (img/compartir.jpg), datos
   estructurados LocalBusiness, robots.txt (excluye /admin/), sitemap.xml, 404.

@@ -62,7 +62,8 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
     'logo' => 'https://www.vaypatel.com/img/logo.svg', 'image' => 'https://www.vaypatel.com/img/compartir.jpg',
     'description' => 'Instalación de telecomunicaciones, electricidad y seguridad: cableado estructurado, fibra óptica, centros de datos y control de accesos.',
     'telephone' => '+34 ' . $tel, 'email' => $email, 'taxID' => 'B88306642',
-    'address' => ['@type' => 'PostalAddress', 'streetAddress' => 'Calle Fundición 4 BIS, nave 54', 'postalCode' => '28522', 'addressRegion' => 'Madrid', 'addressCountry' => 'ES'],
+    'address' => ['@type' => 'PostalAddress', 'streetAddress' => 'Calle Fundición 4 BIS, nave 54', 'postalCode' => '28522', 'addressLocality' => 'Rivas-Vaciamadrid', 'addressRegion' => 'Madrid', 'addressCountry' => 'ES'],
+    'openingHoursSpecification' => ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens' => '08:00', 'closes' => '20:00'],
     'areaServed' => ['@type' => 'Country', 'name' => 'España'],
     'knowsAbout' => ['Cableado estructurado', 'Fibra óptica', 'Instalaciones eléctricas', 'Centros de datos', 'Control de accesos', 'BMS'],
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
@@ -99,6 +100,7 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
 <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.3"/><path d="M18 10.5s4-3.4 4-6.1a4 4 0 0 0-8 0c0 2.7 4 6.1 4 6.1Z"/><circle cx="18" cy="4.6" r=".9"/><path d="M8.3 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h2.5"/></symbol>
 <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3Z"/><path d="m3 21 6.5-6.5M5 3l4 4-2 2-4-4 2-2Z"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path stroke="none" fill="currentColor" d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.36-1.4a9.8 9.8 0 0 0 4.68 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.92h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.13 8.13 0 0 1-1.25-4.34c0-4.51 3.68-8.18 8.2-8.18a8.15 8.15 0 0 1 8.18 8.19c0 4.51-3.67 8.17-8.19 8.17Zm4.5-6.12c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.18 1.13.16 1.55.1.47-.07 1.46-.6 1.66-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></symbol>
 <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m3 12 4-4 4 2 3-3 7 6-3 3"/><path d="m7 12 3 3a1.5 1.5 0 0 0 2-2M10 15l2 2a1.5 1.5 0 0 0 2-2l-1-1M14 16l1 1a1.5 1.5 0 0 0 2-2"/></symbol>
 </defs></svg>
 
@@ -369,7 +371,7 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
         <svg class="van" viewBox="0 0 640 340" role="img" aria-label="Ilustración de una furgoneta de la flota">
           <g class="dim" aria-hidden="true">
             <path d="M70 46v18M580 46v18M70 55h510"/><path d="m78 51-8 4 8 4M572 51l8 4-8 4"/>
-            <text x="325" y="40" text-anchor="middle">Flota propia · Base en Madrid</text>
+            <text x="325" y="40" text-anchor="middle">Flota propia · Base en Rivas-Vaciamadrid</text>
           </g>
           <path class="ground" d="M20 283h600"/>
           <path class="body" d="M70 250V104q0-14 14-14h386q14 0 22 12l48 66 28 8q12 4 12 16v46q0 12-12 12h-48a38 38 0 0 0-76 0H222a38 38 0 0 0-76 0Z"/>
@@ -383,7 +385,7 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
           <g class="wheel"><circle cx="482" cy="252" r="30"/><circle cx="482" cy="252" r="11"/></g>
         </svg>
         <?php endif; ?>
-        <div class="fl-tags mono"><span><svg class="i"><use href="#i-pin"/></svg> Nave propia en Madrid</span><span><svg class="i"><use href="#i-route"/></svg> Toda España</span></div>
+        <div class="fl-tags mono"><span><svg class="i"><use href="#i-pin"/></svg> Nave propia en Rivas-Vaciamadrid</span><span><svg class="i"><use href="#i-route"/></svg> Toda España</span></div>
       </div>
       <ul class="fl-points">
         <?php foreach ($flPuntos as $k => $f): ?>
@@ -406,7 +408,8 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
         <a href="tel:<?= e($telLink) ?>"><svg class="i"><use href="#i-phone"/></svg><span><small>Teléfono</small><?= e($tel) ?></span></a>
         <a href="<?= e($mailLink) ?>"><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small><?= e($email) ?></span></a>
         <a class="ci-wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg><span><small>WhatsApp · respuesta rápida</small>Escríbenos por WhatsApp</span><b class="go" aria-hidden="true">→</b></a>
-        <a href="https://maps.google.com/?q=<?= rawurlencode('Calle Fundición 4 BIS nave 54 28522 Madrid') ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Nave</small><?= e($dir) ?></span></a>
+        <a href="https://maps.google.com/?q=<?= rawurlencode('Calle Fundición 4 BIS nave 54, 28522 Rivas-Vaciamadrid') ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Nave</small><?= e($dir) ?></span></a>
+        <?php if ($horario = v($d, 'contacto.horario')): ?><div><svg class="i"><use href="#i-clock"/></svg><span><small>Horario de atención</small><?= e($horario) ?></span></div><?php endif; ?>
       </div>
       <form class="quote reveal" id="form" action="enviar.php" method="POST" novalidate>
         <p class="hp" aria-hidden="true"><label>No rellenar <input name="web_url" tabindex="-1" autocomplete="off"></label></p>
@@ -442,7 +445,7 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
         <a href="#servicios">Servicios</a><a href="#certificaciones">Acreditaciones</a><a href="#obras">Obras</a>
         <a href="#instalaciones">Instalaciones</a><a href="#empresa">Empresa</a><a href="#flota">Flota</a><a href="#contacto">Contacto</a>
       </div>
-      <div><p><a href="tel:<?= e($telLink) ?>"><?= e($tel) ?></a><br><a href="<?= e($mailLink) ?>"><?= e($email) ?></a><br><a href="<?= e($waLink) ?>" target="_blank" rel="noopener">WhatsApp</a><br><?= e($dir) ?></p></div>
+      <div><p><a href="tel:<?= e($telLink) ?>"><?= e($tel) ?></a><br><a href="<?= e($mailLink) ?>"><?= e($email) ?></a><br><a href="<?= e($waLink) ?>" target="_blank" rel="noopener">WhatsApp</a><br><?= e($dir) ?><?php if (v($d, 'contacto.horario')): ?><br><?= e(v($d, 'contacto.horario')) ?><?php endif; ?></p></div>
     </div>
     <div class="legal">
       <span>© <?= date('Y') ?> Vaypatel Proyectos S.L. · CIF B88306642</span>

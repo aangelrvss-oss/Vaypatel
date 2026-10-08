@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $d['flota']['intro']       = txt($_POST['f_intro'] ?? '', 600);
         $d['flota']['puntos']      = filas('flota', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt'], 8);
         if (!empty($_POST['f_quitar_foto'])) $d['flota']['foto'] = '';
-        foreach (['telefono' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
+        foreach (['telefono' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'horario' => 120, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
             $d['contacto'][$k] = txt($_POST['k_' . $k] ?? '', $max);
         }
         if ($d['contacto']['email'] !== '' && !filter_var($d['contacto']['email'], FILTER_VALIDATE_EMAIL)) {
@@ -316,6 +316,7 @@ $d = cargar_contenido();
       <?= campo('Email', 'k_email', v($d, 'contacto.email'), 'email', 'Se muestra en la web y es el buzón donde llegan las consultas del formulario.') ?>
       <?= campo('Web', 'k_web', v($d, 'contacto.web')) ?>
       <?= campo('Dirección', 'k_direccion', v($d, 'contacto.direccion')) ?>
+      <?= campo('Horario de atención', 'k_horario', v($d, 'contacto.horario'), 'text', 'Se muestra en Contacto y en el pie. Si cambian los días u horas, avisa al informático para actualizar también el dato que lee Google (index.php).') ?>
       <?= campo('WhatsApp (con prefijo, sin espacios)', 'k_whatsapp', v($d, 'contacto.whatsapp'), 'text', 'Ejemplo: 34607230957') ?>
       <?= campo('Mensaje predefinido de WhatsApp', 'k_whatsapp_mensaje', v($d, 'contacto.whatsapp_mensaje'), 'area') ?>
     </section>

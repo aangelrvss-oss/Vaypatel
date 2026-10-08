@@ -144,6 +144,12 @@
     "intro": "Una selección de despliegues entregados en los últimos dos años, para cliente final y como subcontrata de grandes integradoras y constructoras.",
     "lista": [
       {
+        "icono": "i-climate",
+        "titulo": "Hospital Memorial Publio Cordón",
+        "etiqueta": "BMS · Pozuelo de Alarcón",
+        "texto": "Cableado BMS para la gestión centralizada de la climatización del hospital."
+      },
+      {
         "icono": "i-server",
         "titulo": "Banco Sabadell · CPD MAD3",
         "etiqueta": "Centro de datos · Interxion, Madrid",
@@ -471,27 +477,27 @@
   },
   "flota": {
     "titulo": "Flota de vehículos propia",
-    "intro": "Nos movemos con medios propios. Nuestros vehículos salen de la nave cargados con el material, la herramienta y los equipos de medida de cada obra, sin depender de agencias ni de alquileres.",
+    "intro": "Nos desplazamos donde haga falta con nuestros propios vehículos, rotulados con la imagen de Vaypatel. Equipo, herramienta y equipos de medida viajan juntos a cada obra, en Madrid o en cualquier punto de España.",
     "puntos": [
       {
         "icono": "i-van",
-        "titulo": "Furgonetas taller",
-        "texto": "Vehículos de empresa equipados con estanterías, herramienta y el material de uso diario para empezar a trabajar en cuanto llegamos."
+        "titulo": "Vehículos propios rotulados",
+        "texto": "Nuestras furgonetas llevan la imagen de Vaypatel: en obra se sabe quién está trabajando y quién responde de la instalación."
+      },
+      {
+        "icono": "i-route",
+        "titulo": "Donde haga falta",
+        "texto": "Nos desplazamos a cualquier punto de España con nuestros vehículos, sin depender de terceros ni de alquileres."
       },
       {
         "icono": "i-box",
         "titulo": "Material a pie de obra",
-        "texto": "Bobinas, racks, bandejas y cuadros viajan con nuestro equipo, en los plazos que marca la obra y no los de un transportista."
+        "texto": "Bobinas, racks, bandejas y cuadros llegan con el equipo, en los plazos que marca la obra."
       },
       {
         "icono": "i-wave",
         "titulo": "Medición a bordo",
         "texto": "Los certificadores Fluke y la herramienta de fibra van con los técnicos, para medir y documentar cada enlace en el momento."
-      },
-      {
-        "icono": "i-route",
-        "titulo": "Madrid y toda España",
-        "texto": "Respuesta rápida en la Comunidad de Madrid y desplazamiento de equipos completos a cualquier punto del país."
       }
     ],
     "foto": ""
@@ -500,7 +506,8 @@
     "telefono": "607 23 09 57",
     "email": "a.arribas@vaypatel.com",
     "web": "www.vaypatel.com",
-    "direccion": "c/ Fundición 4 BIS, nave 54 · 28522 Madrid",
+    "direccion": "c/ Fundición 4 BIS, nave 54 · 28522 Rivas-Vaciamadrid (Madrid)",
+    "horario": "Lunes a viernes, de 8:00 a 20:00 sin interrupción",
     "whatsapp": "34607230957",
     "whatsapp_mensaje": "Hola, escribo desde la web de Vaypatel y quería consultar sobre una instalación."
   },
