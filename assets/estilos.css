@@ -28,7 +28,7 @@
   --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
   --ease:cubic-bezier(.2,.6,.2,1);
-  --nav-h:92px;          /* alto de la cabecera con el logo grande (al abrir la página) */
+  --nav-h:108px;         /* alto de la cabecera con el logo grande (al abrir la página) */
   color-scheme:dark;
 }
 
@@ -73,7 +73,7 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke
 .navbar{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:block;line-height:0;flex:none}
 /* el logo se ve grande al abrir la página y se reduce al tamaño habitual al hacer scroll */
-.brand img{height:68px;width:auto;transition:height .35s var(--ease)}
+.brand img{height:84px;width:auto;transition:height .35s var(--ease)}
 .nav.stuck .brand img{height:46px}
 .navlinks{display:none;gap:30px;align-items:center}
 .navlinks a{position:relative;font-size:.95rem;font-weight:500;color:#C9D7E1;padding:6px 0;transition:color .2s}
@@ -92,7 +92,8 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 @media(min-width:560px){.navcall .t{display:inline}}
-@media(min-width:1000px){:root{--nav-h:112px}.navlinks,.navcta{display:flex}.burger{display:none}.brand img{height:88px}}
+@media(min-width:1000px){:root{--nav-h:132px}.navlinks,.navcta{display:flex}.burger{display:none}.brand img{height:108px}}
+@media(min-width:1200px){:root{--nav-h:144px}.brand img{height:120px}}
 
 /* menú móvil */
 .menu{position:fixed;inset:0;z-index:49;background:rgba(4,7,11,.98);display:flex;flex-direction:column;gap:22px;
@@ -196,7 +197,9 @@ h3{font-size:1.12rem;font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
 .chips li{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:#A9BCC9;border:1px solid var(--line-2);padding:3px 8px;border-radius:2px}
 .method{margin-top:16px;display:grid;gap:18px 32px;align-items:center;border:1px solid var(--line);border-left:2px solid var(--blue);background:var(--panel);padding:24px 26px}
-@media(min-width:860px){.method{grid-template-columns:180px minmax(0,1fr) auto}}
+@media(min-width:860px){.method{grid-template-columns:200px minmax(0,1fr) auto}}
+.method-ph{width:200px;max-width:100%;background:#fff;border:1px solid var(--line-2);overflow:hidden}
+.method-ph img{width:100%;height:auto}
 .method-fig{width:180px;height:auto;max-width:100%}
 .method-fig rect{fill:var(--ink);stroke:var(--line-2);stroke-width:1.5}
 .method-fig .m-grid{stroke:var(--steel);stroke-width:1.2}
@@ -279,7 +282,7 @@ h3{font-size:1.12rem;font-weight:600}
 @media(min-width:900px){.showcase{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);gap:18px}.sc-tx{grid-column:auto;padding:32px 30px}
   .sc-ph .ph{aspect-ratio:auto;height:min(72vh,600px)}}
 .gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;margin-top:28px}
-@media(min-width:900px){.gal{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:900px){.gal{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 /* ---------- empresa (banda clara) ---------- */
 .sheet{background:var(--sheet);color:var(--sheet-ink)}

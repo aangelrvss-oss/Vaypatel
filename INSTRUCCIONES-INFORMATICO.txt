@@ -66,8 +66,25 @@ SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
   location = /LEEME.txt { deny all; }
   + redirección 301 a https://www.vaypatel.com
 
-DOMINIO Y CORREO
-  Si vaypatel.com ya tiene correo, al cambiar DNS mantener intactos los MX.
+DOMINIO, SUBDOMINIOS Y CORREO (se configuran en el panel DNS del dominio)
+  La web solo necesita dos nombres:
+    vaypatel.com       registro A (IP del hosting)
+    www.vaypatel.com   registro CNAME a vaypatel.com (o A a la misma IP)
+  La dirección oficial es https://www.vaypatel.com. El certificado SSL debe
+  cubrir los dos nombres; después, activar en .htaccess el bloque "Dirección
+  única", que redirige http y vaypatel.com (sin www) a https://www.vaypatel.com.
+  No hacen falta más subdominios: el panel está en /admin/ dentro de la web.
+  Correo (vaypatel.com ya lo usa: a.arribas@vaypatel.com):
+    - Al cambiar DNS, mantener intactos los registros MX y los del proveedor
+      de correo (autodiscover, etc.).
+    - SPF (registro TXT en vaypatel.com): debe incluir el servidor del hosting,
+      porque el formulario envía desde web@vaypatel.com. Ej.: añadir
+      "include:<el del hosting>" o "a" al SPF existente; no crear un segundo SPF.
+    - DKIM: activarlo en el hosting o el proveedor de correo (registro que indiquen).
+    - DMARC recomendado: TXT en _dmarc.vaypatel.com con
+      "v=DMARC1; p=none; rua=mailto:a.arribas@vaypatel.com" para empezar.
+  Página 404: 404.html (diseño de la web). En Apache ya está en .htaccess;
+  en Nginx: error_page 404 /404.html;
 
 HORARIO
   El texto del horario se edita en el panel (Contacto). No se publica en los

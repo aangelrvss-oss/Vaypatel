@@ -379,19 +379,9 @@
       "categoria": "cableado"
     },
     {
-      "archivo": "img/galeria/foto-01.jpg",
-      "pie": "Rack de voz y datos con paneles de parcheo",
-      "categoria": "cableado"
-    },
-    {
       "archivo": "img/galeria/foto-15.jpg",
       "pie": "Mazos de cable peinados hacia los paneles de parcheo",
       "categoria": "cableado"
-    },
-    {
-      "archivo": "img/galeria/foto-10.jpg",
-      "pie": "Latiguillos de fibra óptica etiquetados en armario",
-      "categoria": "fibra"
     },
     {
       "archivo": "img/galeria/foto-22.jpg",
@@ -506,6 +496,7 @@
   },
   "contacto": {
     "telefono": "607 23 09 57",
+    "telefono_oficina": "910 340 151",
     "email": "a.arribas@vaypatel.com",
     "web": "www.vaypatel.com",
     "direccion": "c/ Fundición 4 BIS, nave 54 · 28522 Rivas-Vaciamadrid (Madrid)",

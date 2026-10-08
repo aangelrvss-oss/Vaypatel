@@ -14,6 +14,9 @@ $d = cargar_contenido();
 $tel      = v($d, 'contacto.telefono', '607 23 09 57');
 $telLink  = '+34' . preg_replace('/^34/', '', solo_digitos($tel));
 $telTxt   = str_replace(' ', "\u{00A0}", $tel); // el número no se parte en dos líneas
+$telOf     = v($d, 'contacto.telefono_oficina', '');
+$telOfLink = $telOf !== '' ? '+34' . preg_replace('/^34/', '', solo_digitos($telOf)) : '';
+$telOfTxt  = str_replace(' ', "\u{00A0}", $telOf);
 $email    = v($d, 'contacto.email', 'a.arribas@vaypatel.com');
 $dir      = v($d, 'contacto.direccion', '');
 $horario  = v($d, 'contacto.horario', '');
@@ -91,7 +94,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 <?php endif; ?>
 <style><?= $css ?></style>
 <script>document.documentElement.classList.add('js')</script>
-<script type="application/ld+json"><?= json_encode([
+<script type="application/ld+json"><?= json_encode(array_filter([
     '@context' => 'https://schema.org',
     '@type' => 'LocalBusiness',
     '@id' => $url . '#empresa',
@@ -102,6 +105,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     'image' => $url . 'img/compartir.jpg',
     'description' => 'Empresa instaladora de telecomunicaciones, electricidad y seguridad: cableado estructurado, fibra óptica, centros de datos, control de accesos y cableado BMS.',
     'telephone' => $telLink,
+    'contactPoint' => $telOfLink ? [['@type' => 'ContactPoint', 'telephone' => $telOfLink, 'contactType' => 'oficina', 'areaServed' => 'ES', 'availableLanguage' => 'es']] : null,
     'email' => $email,
     'taxID' => 'B88306642',
     'foundingDate' => '2019-01-31',
@@ -109,7 +113,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     'areaServed' => [['@type' => 'AdministrativeArea', 'name' => 'Comunidad de Madrid'], ['@type' => 'Country', 'name' => 'España']],
     'knowsAbout' => array_values(array_filter(array_map(fn($s) => $s['titulo'] ?? '', $servicios))),
     'hasOfferCatalog' => ['@type' => 'OfferCatalog', 'name' => 'Servicios de instalación', 'itemListElement' => array_map(fn($s) => ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => $s['titulo'] ?? '', 'description' => $s['texto'] ?? '']], $servicios)],
-], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
+], fn($x) => $x !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -143,6 +147,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
   <a class="btn btn-main" href="#contacto">Pedir presupuesto</a>
   <div class="mfoot">
     <a class="mcall" href="tel:<?= e($telLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><?= e($telTxt) ?></a>
+    <?php if ($telOf): ?><a class="mcall" href="tel:<?= e($telOfLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-building"/></svg><?= e($telOfTxt) ?></a><?php endif; ?>
     <a class="mcall" href="<?= e($mailLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
     <a class="mcall mwa" href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
   </div>
@@ -229,12 +234,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
       <?php endforeach; ?>
     </div>
     <div class="method reveal">
-      <svg class="method-fig" viewBox="0 0 220 120" aria-hidden="true" focusable="false">
-        <rect x="8" y="34" width="56" height="52" rx="3"/><rect x="156" y="34" width="56" height="52" rx="3"/>
-        <path class="m-link" d="M64 60h92"/><path class="m-tick" d="M98 50l8 8 16-16"/>
-        <path class="m-grid" d="M18 46h36M18 56h36M18 66h36M18 76h36M166 46h36M166 56h36M166 66h36M166 76h36"/>
-        <text x="110" y="104" text-anchor="middle">ISO · TIA</text>
-      </svg>
+      <figure class="method-ph"><?= foto('img/fluke.jpg', 'Equipo de certificación Fluke Networks DSX-5000 con sus accesorios') ?></figure>
       <div>
         <h3>Todo se entrega medido y documentado</h3>
         <p><?= e(v($d, 'servicios.certificacion')) ?></p>
@@ -421,7 +421,8 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     <p class="sub">Escríbenos con los datos de la instalación y te enviamos una propuesta y un plazo, sin compromiso.</p>
     <div class="contact">
       <ul class="cinfo">
-        <li><a href="tel:<?= e($telLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span><small>Teléfono</small><?= e($telTxt) ?></span></a></li>
+        <li><a href="tel:<?= e($telLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span><small>Móvil</small><?= e($telTxt) ?></span></a></li>
+        <?php if ($telOf): ?><li><a href="tel:<?= e($telOfLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-building"/></svg><span><small>Oficina</small><?= e($telOfTxt) ?></span></a></li><?php endif; ?>
         <li><a href="<?= e($mailLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span><small>Email</small><?= e($email) ?></span></a></li>
         <li><a class="ci-wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span><small>WhatsApp</small>Escríbenos por WhatsApp</span><svg class="i go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
         <li><a href="<?= e($mapLink) ?>" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span><small>Nave</small><?= e($dir) ?></span></a></li>
@@ -466,7 +467,8 @@ $heroMovil = v($d, 'portada.foto_movil', '');
         <a href="#instalaciones">Instalaciones</a><a href="#empresa">Empresa</a><a href="#flota">Medios</a><a href="#contacto">Contacto</a>
       </nav>
       <address>
-        <a href="tel:<?= e($telLink) ?>"><?= e($telTxt) ?></a><br>
+        <a href="tel:<?= e($telLink) ?>"><?= e($telTxt) ?></a> · móvil<br>
+        <?php if ($telOf): ?><a href="tel:<?= e($telOfLink) ?>"><?= e($telOfTxt) ?></a> · oficina<br><?php endif; ?>
         <a href="<?= e($mailLink) ?>"><?= e($email) ?></a><br>
         <a href="<?= e($waLink) ?>" target="_blank" rel="noopener">WhatsApp</a><br>
         <?= e($dir) ?><?php if ($horario): ?><br><?= e($horario) ?><?php endif; ?>

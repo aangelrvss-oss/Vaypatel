@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $d['flota']['puntos']      = filas('flota', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt'], 8);
         $d['flota']['fotos']       = array_values(array_filter(filas('flota_fotos', ['archivo' => 'foto', 'pie' => 'txt'], 4), fn($f) => $f['archivo'] !== ''));
         unset($d['flota']['foto']);
-        foreach (['telefono' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'horario' => 120, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
+        foreach (['telefono' => 30, 'telefono_oficina' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'horario' => 120, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
             $d['contacto'][$k] = txt($_POST['k_' . $k] ?? '', $max);
         }
         if ($d['contacto']['email'] !== '' && !filter_var($d['contacto']['email'], FILTER_VALIDATE_EMAIL)) {
@@ -331,7 +331,8 @@ $d = cargar_contenido();
 
     <section id="contacto" class="card">
       <h2>Contacto</h2>
-      <?= campo('Teléfono', 'k_telefono', v($d, 'contacto.telefono'), 'tel') ?>
+      <?= campo('Teléfono móvil', 'k_telefono', v($d, 'contacto.telefono'), 'tel') ?>
+      <?= campo('Teléfono de oficina', 'k_telefono_oficina', v($d, 'contacto.telefono_oficina'), 'tel', 'Déjalo vacío para no mostrarlo.') ?>
       <?= campo('Email', 'k_email', v($d, 'contacto.email'), 'email', 'Se muestra en la web y es el buzón donde llegan las consultas del formulario.') ?>
       <?= campo('Web', 'k_web', v($d, 'contacto.web')) ?>
       <?= campo('Dirección', 'k_direccion', v($d, 'contacto.direccion')) ?>
