@@ -407,6 +407,81 @@
       "archivo": "img/galeria/foto-17.jpg",
       "pie": "Rack con mazos de cable peinados por ambos laterales",
       "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-02.jpg",
+      "pie": "Cabina de almacenamiento con alimentación redundante",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-21.jpg",
+      "pie": "Sala técnica con cuadro eléctrico y armarios de comunicaciones",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-12.jpg",
+      "pie": "Paneles de parcheo con mazos de cable peinados",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-16.jpg",
+      "pie": "Cableado lateral peinado hacia paneles de parcheo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-13.jpg",
+      "pie": "Armario rack con acometida de cable por la base",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-08.jpg",
+      "pie": "Paneles de parcheo y electrónica de red",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-25.jpg",
+      "pie": "Montaje y cableado de cuadro eléctrico",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-05.jpg",
+      "pie": "Chasis de fibra con troncales conexionadas",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-20.jpg",
+      "pie": "Rack de planta con cableado peinado",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-11.jpg",
+      "pie": "Rack con guiado horizontal de latiguillos",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-24.jpg",
+      "pie": "Cuadro eléctrico de distribución",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-18.jpg",
+      "pie": "Mazo de cable en bandeja de rejilla bajo suelo técnico",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-03.jpg",
+      "pie": "Sala técnica con rack de comunicaciones completo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-26.jpg",
+      "pie": "Cuadros eléctricos en fase de montaje",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-19.jpg",
+      "pie": "Canalización y tomas de puesto de trabajo",
+      "categoria": "cableado"
     }
   ],
   "empresa": {

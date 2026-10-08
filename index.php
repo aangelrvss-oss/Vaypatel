@@ -338,14 +338,32 @@ $heroMovil = v($d, 'portada.foto_movil', '');
       <?php endforeach; ?>
     </div>
     <?php endif; ?>
+    <?php
+      /* Cuadrícula: todas las fotos menos las del bloque destacado. Se ven las primeras
+         y el resto con "Ver todas"; los filtros por tipo muestran todas las de ese tipo. */
+      $resto = array_filter($galeria, fn($g, $k) => !in_array($k, $destK, true) && !empty($g['archivo']), ARRAY_FILTER_USE_BOTH);
+      $VISIBLES = 6;
+      $cuenta = array_count_values(array_map(fn($g) => $g['categoria'] ?? '', $resto));
+    ?>
+    <?php if (count($resto) > $VISIBLES && count($cuenta) > 1): ?>
+    <div class="filters" role="group" aria-label="Filtrar fotos por tipo">
+      <button type="button" data-f="todas" aria-pressed="true">Todas <b><?= count($resto) ?></b></button>
+      <?php foreach (CATEGORIAS as $id => $nom): if (empty($cuenta[$id])) continue; ?>
+      <button type="button" data-f="<?= e($id) ?>" aria-pressed="false"><?= e($nom) ?> <b><?= (int)$cuenta[$id] ?></b></button>
+      <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
     <ul class="gal" id="gal">
-      <?php foreach ($galeria as $k => $g): if (in_array($k, $destK, true) || empty($g['archivo'])) continue; ?>
-      <li><figure>
+      <?php $i = 0; foreach ($resto as $k => $g): ?>
+      <li data-c="<?= e($g['categoria'] ?? '') ?>"<?= $i++ >= $VISIBLES ? ' data-extra hidden' : '' ?>><figure>
         <button type="button" class="ph" data-k="<?= $k ?>" aria-label="Ampliar foto: <?= e($g['pie'] ?? '') ?>"><?= foto($g['archivo'], $g['pie'] ?? '') ?></button>
         <figcaption><?= e($g['pie'] ?? '') ?></figcaption>
       </figure></li>
       <?php endforeach; ?>
     </ul>
+    <?php if (count($resto) > $VISIBLES): ?>
+    <div class="galmore"><button type="button" class="btn btn-ghost" id="galMore" aria-controls="gal" aria-expanded="false">Ver todas las fotos (<?= count($resto) ?>)</button></div>
+    <?php endif; ?>
   </div>
 </section>
 <?php endif; ?>

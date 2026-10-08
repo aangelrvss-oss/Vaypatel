@@ -288,7 +288,7 @@ $d = cargar_contenido();
 
     <section id="galeria" class="card">
       <h2>Fotos de la galería</h2>
-      <p class="hint">Fotos técnicas genéricas: no indiques cliente ni obra en el pie salvo que sea seguro. Las dos fotos elegidas en "Destacado" se muestran en grande; el resto, en la cuadrícula (mejor 8). Para añadir fotos usa el recuadro de abajo.</p>
+      <p class="hint">Fotos técnicas genéricas: no indiques cliente ni obra en el pie salvo que sea seguro. Las dos fotos elegidas en "Destacado" se muestran en grande; del resto, las 6 primeras se ven al entrar y las demás al pulsar "Ver todas las fotos" (también se pueden filtrar por categoría). Para añadir fotos usa el recuadro de abajo.</p>
       <?= editor('galeria', ['archivo' => ['Foto', 'foto'], 'pie' => ['Pie de foto', 'txt'], 'categoria' => ['Categoría', 'cat']], lista($d, 'galeria'), 'Foto') ?>
     </section>
 

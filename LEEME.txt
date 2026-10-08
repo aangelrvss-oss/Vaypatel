@@ -25,7 +25,8 @@ REGLAS DE CONTENIDO
 FOTOS
   - Para añadir: recuadro "Añadir fotos a la galería". Guarda antes los cambios.
   - Las nuevas aparecen las primeras; ordénalas con las flechas y guarda.
-  - Mejor pocas y buenas: 2 en el bloque destacado y unas 8 en la cuadrícula.
+  - 2 fotos en el bloque destacado; del resto, las 6 primeras se ven al entrar y
+    las demás con "Ver todas las fotos". Ordénalas para que las mejores vayan primero.
   - Quitar una foto de la galería no borra el archivo del servidor.
   - Fotos nítidas, bien iluminadas y sin personas reconocibles salvo que
     hayan dado permiso.

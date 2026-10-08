@@ -100,13 +100,45 @@
       .forEach(function (el) { el.classList.add('pre'); io.observe(el); });
   }
 
+  /* ---------- galería: filtros por tipo y "ver todas" ---------- */
+  var galeria = $('#gal'), figs = galeria ? $$('li', galeria) : [], mas = $('#galMore'), filtro = 'todas', abierta = false;
+  function aplicarFiltro() {
+    figs.forEach(function (li) {
+      li.hidden = filtro === 'todas' ? (!abierta && li.hasAttribute('data-extra')) : li.getAttribute('data-c') !== filtro;
+    });
+    if (mas) {
+      mas.parentNode.hidden = abierta || filtro !== 'todas';
+      mas.setAttribute('aria-expanded', abierta ? 'true' : 'false');
+    }
+  }
+  $$('.filters button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      filtro = b.getAttribute('data-f');
+      $$('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      aplicarFiltro();
+    });
+  });
+  if (mas) mas.addEventListener('click', function () {
+    var primeraOculta = figs.filter(function (li) { return li.hidden; })[0];
+    abierta = true; aplicarFiltro();
+    /* el foco pasa a la primera foto nueva, para seguir con el teclado */
+    if (primeraOculta) { var b = $('.ph', primeraOculta); if (b) b.focus({ preventScroll: true }); }
+  });
+
   /* ---------- visor de fotos ---------- */
   var lb = $('#lb'), lbCap = $('#lbCap'), lbK = 0, lastFocus = null;
   var lbImg = document.createElement('img');  /* la imagen se crea aquí para no dejar un <img> vacío en el HTML */
   lbImg.id = 'lbImg'; lbImg.alt = '';
   if (lbCap) lbCap.parentNode.insertBefore(lbImg, lbCap);
   var fotos = (window.VP && VP.galeria) || [];
-  function mostrar(k) { lbK = (k + fotos.length) % fotos.length; var f = fotos[lbK]; if (!f) return; lbImg.src = f.src; lbImg.alt = f.pie; lbCap.textContent = f.pie; }
+  function mostrar(k) { lbK = k; var f = fotos[k]; if (!f) return; lbImg.src = f.src; lbImg.alt = f.pie; lbCap.textContent = f.pie; }
+  /* anterior / siguiente: recorre las fotos que se ven en la página, en su orden */
+  function mover(dir) {
+    var v = $$('.ph[data-k]').filter(function (b) { return b.offsetParent !== null; }).map(function (b) { return +b.getAttribute('data-k'); });
+    if (!v.length) return;
+    var i = v.indexOf(lbK); if (i < 0) i = 0;
+    mostrar(v[(i + dir + v.length) % v.length]);
+  }
   function abrir(k) {
     lastFocus = document.activeElement; mostrar(k); lb.hidden = false; document.body.classList.add('locked');
     requestAnimationFrame(function () { lb.classList.add('open'); $('#lbClose').focus(); });
@@ -119,8 +151,8 @@
   if (lb && fotos.length) {
     document.addEventListener('click', function (e) { var b = e.target.closest('.ph[data-k]'); if (b) abrir(+b.getAttribute('data-k')); });
     $('#lbClose').addEventListener('click', cerrar);
-    $('#lbPrev').addEventListener('click', function () { mostrar(lbK - 1); });
-    $('#lbNext').addEventListener('click', function () { mostrar(lbK + 1); });
+    $('#lbPrev').addEventListener('click', function () { mover(-1); });
+    $('#lbNext').addEventListener('click', function () { mover(1); });
     lb.addEventListener('click', function (e) { if (e.target === lb || e.target.tagName === 'FIGURE') cerrar(); });
     lb.addEventListener('keydown', function (e) { atrapaFoco(e, lb); });
   }
@@ -128,8 +160,8 @@
   addEventListener('keydown', function (e) {
     if (lb && !lb.hidden) {
       if (e.key === 'Escape') cerrar();
-      else if (e.key === 'ArrowLeft') mostrar(lbK - 1);
-      else if (e.key === 'ArrowRight') mostrar(lbK + 1);
+      else if (e.key === 'ArrowLeft') mover(-1);
+      else if (e.key === 'ArrowRight') mover(1);
       return;
     }
     if (e.key === 'Escape' && menu && !menu.hidden) { setMenu(false); burger.focus(); }
