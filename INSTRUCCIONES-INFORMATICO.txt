@@ -1,0 +1,92 @@
+WEB VAYPATEL PROYECTOS — NOTAS PARA LA PUBLICACIÓN
+==================================================
+
+QUÉ ES
+  PHP sin base de datos ni frameworks. La página (index.php) se genera en el
+  servidor a partir de contenido.json, así que Google lee todo el texto.
+  El contenido se edita desde un panel propio en /admin/ (basado en la idea del
+  panel de la versión "comparativa v2", reescrito).
+  Requisitos: PHP 7.4 o superior (probado en 8.3) con las extensiones GD, json,
+  mbstring, session y fileinfo, y la función mail() activa.
+
+PUBLICAR
+  1. Subir TODO el contenido del ZIP a la raíz del dominio, manteniendo carpetas
+     y los archivos ocultos .htaccess (raíz, img/, img/galeria/, incluir/,
+     admin/datos/).
+  2. Permisos de escritura para el usuario de PHP en:
+       contenido.json · admin/datos/ (y admin/datos/copias/) · img/ · img/galeria/
+     El resto puede quedar en solo lectura.
+  3. Activar SSL. Después, descomentar en .htaccess el bloque "Forzar HTTPS y www".
+  4. Entrar en https://www.vaypatel.com/admin/ con la contraseña provisional
+     (se entrega aparte, no está en ningún archivo). El primer acceso obliga a
+     cambiarla.
+
+PANEL /admin/
+  - Edita portada, cifras, servicios, acreditaciones, obras, referencias, fotos de
+    la galería (pie, categoría, orden), empresa, clientes y contacto.
+  - Sube fotos: se comprueban como imagen real, se vuelven a codificar en JPG
+    (máx. 1600 px) con nombre generado. No se conserva el archivo original.
+  - Cada guardado deja copia de la versión anterior en admin/datos/copias/
+    (últimas 20) y se puede recuperar desde el panel.
+  - Seguridad: contraseña con bcrypt (password_hash), token CSRF en todos los
+    formularios, cookie de sesión HttpOnly/SameSite=Strict, caducidad a las 2 h
+    sin actividad, bloqueo de 15 min tras 5 intentos fallidos por IP.
+  - La contraseña y los intentos se guardan en admin/datos/*.php, que empiezan
+    por "<?php exit; ?>": aunque se abran desde la web no muestran nada.
+  - Si se olvida la contraseña: borrar admin/datos/clave.php y crear uno nuevo con
+      php -r 'echo "<?php exit; ?>\n".json_encode(["hash"=>password_hash("NUEVA",PASSWORD_DEFAULT),"cambiar"=>true]);' > admin/datos/clave.php
+
+FORMULARIO (enviar.php)
+  - Envía cada consulta a la dirección de email de contacto del panel (si no es
+    válida, a a.arribas@vaypatel.com).
+  - REMITENTE (primeras líneas) debe ser una cuenta del dominio, p. ej.
+    web@vaypatel.com. Crear esa cuenta o alias; si no, el correo puede acabar en
+    spam o ser rechazado. Recomendado SPF y DKIM en el dominio.
+  - Si el hosting no permite mail(), sustituir por SMTP con PHPMailer; la
+    validación del archivo sirve igual.
+  - Validación, aceptación de privacidad obligatoria, campo trampa antispam y
+    límite de un envío cada 30 s por sesión.
+  - PROBAR tras publicar: enviar una consulta y comprobar que llega.
+
+SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
+  index index.php index.html;
+  error_page 404 /404.html;
+  location ~ ^/(incluir|admin/datos)/ { deny all; }
+  location ~ ^/img/.*\.(php|phtml|phar)$ { deny all; }
+  location ~ \.tmp- { deny all; }
+  location = /INSTRUCCIONES-INFORMATICO.txt { deny all; }
+  location = /LEEME.txt { deny all; }
+  + redirección 301 a https://www.vaypatel.com
+
+DOMINIO Y CORREO
+  Si vaypatel.com ya tiene correo, al cambiar DNS mantener intactos los MX.
+
+SEO YA INCLUIDO
+  title y description, canonical, Open Graph (img/compartir.jpg), datos
+  estructurados LocalBusiness, robots.txt (excluye /admin/), sitemap.xml, 404.
+  Tras publicar: alta en Google Search Console, enviar /sitemap.xml, y crear o
+  vincular la ficha de Google Business Profile.
+
+TIPOGRAFÍAS
+  Se cargan de Google Fonts (Chakra Petch, Barlow, IBM Plex Mono) y así consta
+  en la privacidad. Para alojarlas en el servidor: descargar los .woff2, subirlos
+  a /assets/fuentes, cambiar los <link> por @font-face en assets/estilos.css y
+  quitar la mención a Google en privacidad.html (apartado 5).
+
+PENDIENTE DE DATOS
+  - aviso-legal.html: [TOMO], [FOLIO] y [HOJA] del Registro Mercantil.
+  - privacidad.html: [PROVEEDOR DE ALOJAMIENTO].
+  Sustituir los corchetes y borrar los recuadros "Pendiente de completar"
+  (<div class="pend">…</div>).
+
+ARCHIVOS
+  index.php               Página principal (plantilla)
+  contenido.json          Todo el contenido editable
+  enviar.php              Envío del formulario
+  assets/                 estilos.css y web.js
+  incluir/comun.php       Funciones compartidas (no accesible desde la web)
+  admin/                  Panel; admin/datos/ guarda contraseña, intentos y copias
+  aviso-legal.html, privacidad.html, 404.html, legal.css
+  .htaccess, robots.txt, sitemap.xml
+  img/                    Logo (SVG vectorial), favicon, foto de portada, empresa
+  img/galeria/            Fotos de la galería

@@ -1,0 +1,30 @@
+VAYPATEL — WEB (guía rápida)
+============================
+
+Para publicar la web: ver INSTRUCCIONES-INFORMATICO.txt
+
+CAMBIAR CONTENIDOS (desde el móvil o el ordenador)
+  1. Entra en www.vaypatel.com/admin/
+  2. Cambia lo que necesites y pulsa "Guardar cambios" (abajo).
+  3. Los cambios se ven en la web al momento.
+
+QUÉ SE PUEDE CAMBIAR
+  Portada (titular, texto, sellos, palabras de la banda), cifras, servicios,
+  acreditaciones, obras y referencias, fotos de la galería (pie, categoría,
+  orden, añadir o quitar), foto de portada, foto de empresa, textos de empresa,
+  lista de clientes y datos de contacto, incluido WhatsApp.
+
+FOTOS
+  - Para añadir: recuadro "Añadir fotos a la galería". Guarda antes los cambios.
+  - Las nuevas aparecen las primeras; ordénalas con las flechas y guarda.
+  - Quitar una foto de la galería no borra el archivo del servidor.
+  - Recomendado: fotos nítidas, bien iluminadas, sin personas reconocibles
+    salvo que hayan dado permiso.
+
+SI ALGO SALE MAL
+  Panel > "Copias de seguridad" > Recuperar. Se guarda una copia cada vez
+  que pulsas Guardar (las 20 últimas).
+
+CONTRASEÑA
+  Panel > "Contraseña". Si se olvida, el informático puede crear una nueva
+  (ver INSTRUCCIONES-INFORMATICO.txt).

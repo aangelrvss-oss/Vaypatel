@@ -1,0 +1,470 @@
+{
+  "portada": {
+    "aviso": "Empresa instaladora nº 16317 · Tipo B",
+    "titular": "Instalación de telecomunicaciones,",
+    "destacado": "electricidad y seguridad",
+    "subtitulo": "Cableado estructurado, fibra óptica, centros de datos y control de accesos para edificios donde una parada no es una opción. Lo montamos, lo medimos y lo entregamos certificado. Desde Madrid, en toda España.",
+    "sellos": [
+      "Leviton Authorized Network Integrator",
+      "barpa Certified Installer",
+      "Certificación Fluke DSX-5000"
+    ],
+    "foto": "img/hero.jpg",
+    "foto_movil": "img/hero-movil.jpg"
+  },
+  "disciplinas": [
+    "Telecomunicaciones",
+    "Electricidad",
+    "Seguridad",
+    "Control de clima",
+    "Centros de datos",
+    "Fibra óptica"
+  ],
+  "cifras": [
+    {
+      "numero": 5200,
+      "prefijo": "+",
+      "sufijo": "",
+      "texto": "Tomas de datos Cat 6A en un solo despliegue, para Huawei en Las Tablas"
+    },
+    {
+      "numero": 1820,
+      "prefijo": "",
+      "sufijo": "",
+      "texto": "Fibras ópticas OM3 tendidas y conexionadas entre CPDs"
+    },
+    {
+      "numero": 120,
+      "prefijo": "",
+      "sufijo": "",
+      "texto": "Armarios rack montados en un mismo centro de datos"
+    },
+    {
+      "numero": 100,
+      "prefijo": "",
+      "sufijo": "%",
+      "texto": "De las redes que instalamos se entregan certificadas"
+    }
+  ],
+  "servicios": {
+    "intro": "Voz-datos, electricidad, seguridad y control de clima con equipo propio. Proyecto, obra, medición y documentación salen de la misma casa, sin coordinar gremios distintos.",
+    "lista": [
+      {
+        "icono": "i-net",
+        "titulo": "Cableado estructurado",
+        "texto": "Redes de área local de voz y datos con cable de cuatro pares, paneles de parcheo, montaje de racks y electrónica de comunicaciones.",
+        "etiquetas": [
+          "Cat 6",
+          "Cat 6A",
+          "Cat 7",
+          "Cat 8"
+        ]
+      },
+      {
+        "icono": "i-fiber",
+        "titulo": "Fibra óptica",
+        "texto": "Enlaces verticales, troncales entre racks y centros de datos, y fibra hasta el puesto de trabajo. Conexión por fusión y medición de cada enlace.",
+        "etiquetas": [
+          "OM3 · OM4 · OM5",
+          "OS1 · OS2",
+          "Fusión"
+        ]
+      },
+      {
+        "icono": "i-bolt",
+        "titulo": "Electricidad",
+        "texto": "Cuadros generales y secundarios, acometidas, SAI, grupos electrógenos, iluminación LED y electricidad de puesto de trabajo.",
+        "etiquetas": [
+          "CGBT",
+          "SAI",
+          "REBT"
+        ]
+      },
+      {
+        "icono": "i-shield",
+        "titulo": "Seguridad",
+        "texto": "Cableado y montaje de control de accesos, cámaras IP, tornos, barreras, detectores volumétricos, ventosas magnéticas y videoporteros.",
+        "etiquetas": [
+          "CCTV IP",
+          "Accesos",
+          "Intrusión"
+        ]
+      },
+      {
+        "icono": "i-server",
+        "titulo": "Centros de datos",
+        "texto": "Montaje y conexionado de CPD completos: armarios rack, troncales entre salas, organización y etiquetado de todo el cableado.",
+        "etiquetas": [
+          "Racks",
+          "Troncales",
+          "Etiquetado"
+        ]
+      },
+      {
+        "icono": "i-climate",
+        "titulo": "Control de clima (BMS)",
+        "texto": "Cableado de control para la gestión centralizada de climatización: fancoils, sondas y cuadros de control, con Johnson Controls.",
+        "etiquetas": [
+          "Fancoils",
+          "Sondas",
+          "Johnson Controls"
+        ]
+      }
+    ],
+    "certificacion": "Medimos cada enlace con Fluke DSX-5000, en canal o en enlace permanente y bajo norma ISO o TIA, con los equipos calibrados al día. Entregamos los informes en LinkWare o en PDF, y nos encargamos del mantenimiento posterior si hace falta."
+  },
+  "acreditaciones": [
+    {
+      "icono": "i-gov",
+      "titulo": "Registro de Empresas Instaladoras de Telecomunicación",
+      "texto": "Inscritos en la Secretaría de Estado de Telecomunicaciones e Infraestructuras Digitales, habilitados para prestar servicio en todo el territorio español y con duración indefinida.",
+      "ref": "Nº 16317 · Tipo B"
+    },
+    {
+      "icono": "i-award",
+      "titulo": "Leviton Authorized Network Integrator",
+      "texto": "Programa de certificación de empresas asociadas de Leviton, con toda la formación y cualificación completadas.",
+      "ref": "Registro GA018088 · Válido hasta 31/12/2027"
+    },
+    {
+      "icono": "i-warranty",
+      "titulo": "barpa Certified Installer",
+      "texto": "Instalador certificado por barpa, autorizado para ofrecer una garantía de aplicación de 25 años sobre el sistema instalado.",
+      "ref": "Certificado nº b8119"
+    },
+    {
+      "icono": "i-wave",
+      "titulo": "Certificación propia de cableado y fibra",
+      "texto": "Equipo Fluke DSX-5000 con calibración anual en vigor para cobre FTP y UTP en categorías 5e, 6 y 6A, y para fibra multimodo y monomodo.",
+      "ref": "Informes en LinkWare o PDF"
+    }
+  ],
+  "obras": {
+    "titulo": "Trabajos terminados en 2025 y 2026",
+    "intro": "Una selección de despliegues entregados en los últimos dos años, para cliente final y como subcontrata de grandes integradoras y constructoras.",
+    "lista": [
+      {
+        "icono": "i-server",
+        "titulo": "Banco Sabadell · CPD MAD3",
+        "etiqueta": "Centro de datos · Interxion, Madrid",
+        "texto": "Voz-datos y fibra óptica en los 80 racks del nuevo centro de datos de la calle Alfonso Gómez."
+      },
+      {
+        "icono": "i-fiber",
+        "titulo": "Estación de Atocha · RENFE",
+        "etiqueta": "Fibra óptica · KONE",
+        "texto": "Más de 50 enlaces de fibra para la gestión de escaleras mecánicas y ascensores, con puesta en marcha sin ningún error."
+      },
+      {
+        "icono": "i-net",
+        "titulo": "Inditex · Centro logístico de Malpica",
+        "etiqueta": "Cat 6A · Zaragoza",
+        "texto": "Cableado de 1.500 puntos de datos categoría 6A en el nuevo centro logístico."
+      },
+      {
+        "icono": "i-server",
+        "titulo": "Microsoft · Nuevo CPD de Algete",
+        "etiqueta": "Telecomunicaciones · Madrid",
+        "texto": "Instalación de telecomunicaciones del nuevo centro de proceso de datos."
+      },
+      {
+        "icono": "i-net",
+        "titulo": "Carrefour · Centro logístico de Azuqueca",
+        "etiqueta": "Telecomunicaciones · Guadalajara",
+        "texto": "Cableado de telecomunicaciones de una plataforma de más de 90.000 m²."
+      },
+      {
+        "icono": "i-building",
+        "titulo": "Formación CEAC · Plaza de Cronos",
+        "etiqueta": "Instalación integral · Madrid",
+        "texto": "Edificio de cinco plantas: electricidad completa, seguridad y telecomunicaciones, con más de 700 puntos de datos, enlaces de fibra y red wifi."
+      },
+      {
+        "icono": "i-shield",
+        "titulo": "Johnson & Johnson · Torre Colón",
+        "etiqueta": "Seguridad · Madrid",
+        "texto": "Suministro e instalación de cableado de seguridad: control de accesos, cámaras, tornos, barreras, volumétricos y videoporteros."
+      },
+      {
+        "icono": "i-server",
+        "titulo": "El Corte Inglés · Goya, Bronce y Titania",
+        "etiqueta": "BMS · Johnson Controls",
+        "texto": "Cableado BMS para la gestión de clima en el centro de Goya y en los edificios Bronce y Titania de Castellana."
+      },
+      {
+        "icono": "i-net",
+        "titulo": "Residencia universitaria UNEXUM",
+        "etiqueta": "Cat 6A · Universidad Politécnica",
+        "texto": "Instalación de 1.000 puntos de datos en la residencia."
+      },
+      {
+        "icono": "i-camera",
+        "titulo": "Universidad Camilo José Cela",
+        "etiqueta": "Seguridad · Madrid",
+        "texto": "Cableado de telecomunicaciones para el sistema de cámaras IP del campus."
+      },
+      {
+        "icono": "i-bolt",
+        "titulo": "Sending Logística · San Fernando de Henares",
+        "etiqueta": "Eléctrico y datos · 3 naves",
+        "texto": "Acometidas, cuadros eléctricos, red de puesto de trabajo y 54 puntos wifi con suministro y configuración de la electrónica de red."
+      },
+      {
+        "icono": "i-net",
+        "titulo": "Hoteles Eurostars",
+        "etiqueta": "Wifi · España y Europa",
+        "texto": "Cableado de wifi en los hoteles Palermo, Bruselas, Viena, Roma, Venecia, Nápoles, Madrid Pinto, Puerta de Madrid, Roma Aeterna, Indautxu de Bilbao y Buenavista de Toledo."
+      },
+      {
+        "icono": "i-net",
+        "titulo": "Aulas Conectadas · Orange",
+        "etiqueta": "Wifi · Comunidad de Madrid",
+        "texto": "Instalación de puntos wifi en colegios de la Comunidad de Madrid."
+      },
+      {
+        "icono": "i-star",
+        "titulo": "Palacio de El Quexigal · Cebreros",
+        "etiqueta": "BMS · Ávila",
+        "texto": "Cableado de BMS en la reforma integral de este palacio medieval."
+      },
+      {
+        "icono": "i-server",
+        "titulo": "Complejo de La Moncloa",
+        "etiqueta": "Saneado de racks · Madrid",
+        "texto": "Reorganización y saneado de racks, con felicitación expresa del cliente por los trabajos terminados."
+      },
+      {
+        "icono": "i-shield",
+        "titulo": "Edificio Magnum · Méndez Álvaro",
+        "etiqueta": "Seguridad · Madrid",
+        "texto": "Cableado de seguridad y controles de acceso del nuevo edificio."
+      }
+    ],
+    "referencias": [
+      {
+        "cliente": "Huawei, Las Tablas.",
+        "texto": "5.200 tomas Cat 6A y enlaces de fibra óptica del nuevo edificio."
+      },
+      {
+        "cliente": "El Corte Inglés, CPD de La Garena.",
+        "texto": "120 armarios rack con enlaces en fibra OM5."
+      },
+      {
+        "cliente": "Ministerio de Asuntos Exteriores.",
+        "texto": "4.500 puntos de datos categoría 6A."
+      },
+      {
+        "cliente": "Bankia, Ciudad Financiera de Las Rozas.",
+        "texto": "1.820 fibras ópticas OM3 entre CPDs."
+      },
+      {
+        "cliente": "Publicis, avenida del Partenón.",
+        "texto": "Electricidad de 9.000 m², 2.500 puntos de datos, CPD, grupo electrógeno y SAIs."
+      },
+      {
+        "cliente": "Policía Nacional, Federico Rubio y Galí.",
+        "texto": "1.200 tomas de datos para la Jefatura."
+      },
+      {
+        "cliente": "Universidad Europea de Madrid.",
+        "texto": "1.500 puntos Cat 6A en el módulo de ampliación."
+      },
+      {
+        "cliente": "Presidencia del Gobierno.",
+        "texto": "Un SAI de 20 kVA y dos de 60 kVA en paralelo redundante."
+      },
+      {
+        "cliente": "Cuartel de La Marañosa.",
+        "texto": "Más de 1.500 puntos de datos, electricidad y SAI en cinco edificios."
+      },
+      {
+        "cliente": "Agencia EFE, avenida de Burgos.",
+        "texto": "Red IPTV con más de 700 puntos Cat 6A en 15 plantas."
+      }
+    ]
+  },
+  "galeria": [
+    {
+      "archivo": "img/galeria/foto-10.jpg",
+      "pie": "Fibra óptica etiquetada en armario de CPD",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-01.jpg",
+      "pie": "Rack de voz y datos con siete paneles de parcheo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-23.jpg",
+      "pie": "Cuadro eléctrico cableado con regletas de bornas",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-12.jpg",
+      "pie": "Paneles de parcheo con mazos de cable peinados",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-02.jpg",
+      "pie": "Cabina de almacenamiento con alimentación redundante",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-22.jpg",
+      "pie": "Cuadro eléctrico con analizadores de red y tomas industriales",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-13.jpg",
+      "pie": "Armario rack con acometida de cable por la base",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-04.jpg",
+      "pie": "Bandejas y latiguillos de fibra etiquetados",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-26.jpg",
+      "pie": "Cuadros eléctricos en fase de montaje",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-15.jpg",
+      "pie": "Mazos de cable peinados hacia los paneles de parcheo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-05.jpg",
+      "pie": "Chasis de fibra con troncales conexionadas",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-24.jpg",
+      "pie": "Cuadro eléctrico de distribución",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-03.jpg",
+      "pie": "Sala técnica con rack de comunicaciones completo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-06.jpg",
+      "pie": "Bajantes de fibra óptica peinadas y sujetas",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-25.jpg",
+      "pie": "Montaje y cableado de cuadro eléctrico",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-14.jpg",
+      "pie": "Bajante vertical de cable peinado en rack",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-09.jpg",
+      "pie": "Rack de CPD con switches y enlaces de fibra",
+      "categoria": "fibra"
+    },
+    {
+      "archivo": "img/galeria/foto-21.jpg",
+      "pie": "Sala técnica con cuadro eléctrico y armarios de comunicaciones",
+      "categoria": "electricidad"
+    },
+    {
+      "archivo": "img/galeria/foto-16.jpg",
+      "pie": "Cableado lateral peinado hacia paneles de parcheo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-18.jpg",
+      "pie": "Mazo de cable en bandeja de rejilla bajo suelo técnico",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-08.jpg",
+      "pie": "Paneles de parcheo y electrónica de red",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-17.jpg",
+      "pie": "Rack con mazos peinados por ambos laterales",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-11.jpg",
+      "pie": "Rack con guiado horizontal de latiguillos",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-19.jpg",
+      "pie": "Canalización y tomas de puesto de trabajo",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-20.jpg",
+      "pie": "Rack de planta con cableado peinado",
+      "categoria": "cableado"
+    }
+  ],
+  "empresa": {
+    "titulo": "Nuestros profesionales",
+    "parrafos": [
+      "Detrás de cada instalación hay un equipo propio de instaladores de telecomunicaciones y electricistas, con años de oficio y formación continua en los sistemas que montamos. No subcontratamos la mano de obra: la ejecución corre siempre a cargo de personal propio, que responde de su trabajo.",
+      "Cada equipo va acompañado de un responsable de obra que coordina con la constructora, la dirección facultativa y el resto de gremios, y que se encarga de que lo ejecutado coincida con lo proyectado. Al terminar, son ellos mismos quienes miden cada enlace y firman la documentación que se entrega.",
+      "Trabajamos con la prevención al día y en entornos donde eso no es negociable: centros de datos en producción, hospitales, edificios públicos y estaciones."
+    ],
+    "puntos": [
+      {
+        "titulo": "Equipo propio",
+        "texto": "Instaladores de telecomunicaciones y electricistas en plantilla."
+      },
+      {
+        "titulo": "Responsables de obra",
+        "texto": "Coordinación con constructora, dirección facultativa y gremios."
+      },
+      {
+        "titulo": "Medición",
+        "texto": "Cada enlace se mide y se documenta al terminar."
+      },
+      {
+        "titulo": "Prevención",
+        "texto": "Formación en riesgos laborales al día para el acceso a obra."
+      }
+    ],
+    "foto": "img/empresa.jpg"
+  },
+  "clientes": {
+    "titulo": "Han confiado en nosotros",
+    "intro": "Clientes para los que hemos ejecutado instalaciones, de forma directa o como subcontrata de integradoras y constructoras.",
+    "lista": [
+      "Huawei",
+      "El Corte Inglés",
+      "Inditex",
+      "Repsol",
+      "Mapfre",
+      "Microsoft",
+      "Carrefour",
+      "Renfe",
+      "Banco Sabadell",
+      "Amazon",
+      "Publicis",
+      "Johnson & Johnson",
+      "Agencia EFE",
+      "Orange",
+      "Eurostars Hotels",
+      "Universidad Europea"
+    ]
+  },
+  "contacto": {
+    "telefono": "607 23 09 57",
+    "email": "a.arribas@vaypatel.com",
+    "web": "www.vaypatel.com",
+    "direccion": "c/ Fundición 4 BIS, nave 54 · 28522 Madrid",
+    "whatsapp": "34607230957",
+    "whatsapp_mensaje": "Hola, escribo desde la web de Vaypatel y quería consultar sobre una instalación."
+  }
+}

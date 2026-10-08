@@ -1,0 +1,6 @@
+# Datos privados del panel: no se suben al repositorio (es público).
+# La contraseña provisional se entrega aparte; ver INSTRUCCIONES-INFORMATICO.txt
+admin/datos/clave.php
+admin/datos/intentos.php
+admin/datos/copias/*.json
+*.tmp-*
