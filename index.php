@@ -104,6 +104,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     'telephone' => $telLink,
     'email' => $email,
     'taxID' => 'B88306642',
+    'foundingDate' => '2019-01-31',
     'address' => ['@type' => 'PostalAddress', 'streetAddress' => 'Calle Fundición 4 BIS, nave 54', 'postalCode' => '28522', 'addressLocality' => 'Rivas-Vaciamadrid', 'addressRegion' => 'Madrid', 'addressCountry' => 'ES'],
     'areaServed' => [['@type' => 'AdministrativeArea', 'name' => 'Comunidad de Madrid'], ['@type' => 'Country', 'name' => 'España']],
     'knowsAbout' => array_values(array_filter(array_map(fn($s) => $s['titulo'] ?? '', $servicios))),
@@ -374,10 +375,20 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     <h2 id="h-flota"><?= e(v($d, 'flota.titulo', 'Medios propios')) ?></h2>
     <p class="sub"><?= e(v($d, 'flota.intro')) ?></p>
     <div class="fleet">
-      <div class="fl-visual<?= v($d, 'flota.foto') ? ' has-photo' : '' ?>">
-        <?php if (v($d, 'flota.foto')): ?>
-        <?= foto(v($d, 'flota.foto'), 'Vehículos de Vaypatel Proyectos') ?>
-        <?php else: ?>
+      <?php
+        /* Fotos de la flota (se suben desde el panel). Sin fotos, se muestra la ilustración. */
+        $flFotos = array_values(array_filter(lista($d, 'flota.fotos'), fn($f) => !empty($f['archivo'])));
+        if (!$flFotos && v($d, 'flota.foto')) $flFotos = [['archivo' => v($d, 'flota.foto'), 'pie' => 'Vehículos de Vaypatel Proyectos']];
+      ?>
+      <?php if ($flFotos): ?>
+      <div class="fl-photos">
+        <?php foreach ($flFotos as $f): ?>
+        <figure><?= foto($f['archivo'], $f['pie'] ?? '', ['sizes' => '(min-width: 980px) 560px, 100vw']) ?><figcaption><?= e($f['pie'] ?? '') ?></figcaption></figure>
+        <?php endforeach; ?>
+        <p class="fl-tags mono"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Base en Rivas-Vaciamadrid</span><span><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Toda España</span></p>
+      </div>
+      <?php else: ?>
+      <div class="fl-visual">
         <svg class="van" viewBox="0 0 640 340" aria-hidden="true" focusable="false">
           <g class="dim"><path d="M70 46v18M580 46v18M70 55h510"/><path d="m78 51-8 4 8 4M572 51l8 4-8 4"/></g>
           <path class="ground" d="M20 283h600"/>
@@ -389,9 +400,9 @@ $heroMovil = v($d, 'portada.foto_movil', '');
           <g class="wheel"><circle cx="184" cy="252" r="30"/><circle cx="184" cy="252" r="11"/></g>
           <g class="wheel"><circle cx="482" cy="252" r="30"/><circle cx="482" cy="252" r="11"/></g>
         </svg>
-        <?php endif; ?>
         <p class="fl-tags mono"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Base en Rivas-Vaciamadrid</span><span><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Toda España</span></p>
       </div>
+      <?php endif; ?>
       <ul class="fl-points">
         <?php foreach (lista($d, 'flota.puntos') as $k => $f): ?>
         <li class="reveal" style="--d:<?= $k ?>"><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($f['icono'] ?? '') ?>"/></svg><div>

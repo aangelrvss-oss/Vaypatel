@@ -165,7 +165,7 @@ function filas(string $campo, array $esquema, int $max = 80): array {
 /* Solo se aceptan rutas a imágenes dentro de img/ que existan de verdad */
 function ruta_foto_valida($v): ?string {
     $v = is_string($v) ? $v : '';
-    if (!preg_match('#^img/(galeria/)?[A-Za-z0-9._-]+\.(jpe?g|png|webp)$#', $v)) return null;
+    if (!preg_match('#^img/((galeria|flota)/)?[A-Za-z0-9._-]+\.(jpe?g|png|webp)$#', $v)) return null;
     return is_file(RAIZ . '/' . $v) ? $v : null;
 }
 

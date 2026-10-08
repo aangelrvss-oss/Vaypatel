@@ -74,7 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $d['flota']['titulo']      = txt($_POST['f_titulo'] ?? '', 120);
         $d['flota']['intro']       = txt($_POST['f_intro'] ?? '', 600);
         $d['flota']['puntos']      = filas('flota', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt'], 8);
-        if (!empty($_POST['f_quitar_foto'])) $d['flota']['foto'] = '';
+        $d['flota']['fotos']       = array_values(array_filter(filas('flota_fotos', ['archivo' => 'foto', 'pie' => 'txt'], 4), fn($f) => $f['archivo'] !== ''));
+        unset($d['flota']['foto']);
         foreach (['telefono' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'horario' => 120, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
             $d['contacto'][$k] = txt($_POST['k_' . $k] ?? '', $max);
         }
@@ -97,9 +98,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($n && !guardar_contenido($d)) $error = 'Las fotos se han subido pero no se ha podido guardar la lista.';
         elseif ($n) $aviso = $n === 1 ? 'Foto añadida al principio de la galería. Revisa su pie de foto.' : "$n fotos añadidas al principio de la galería. Revisa sus pies de foto.";
         if ($fallos) $error = trim($error . ' ' . implode(' · ', $fallos));
-    } elseif (in_array($accion, ['subir_portada', 'subir_empresa', 'subir_flota'], true)) {
+    } elseif ($accion === 'subir_flota') {
         $d = cargar_contenido();
-        $destino = ['subir_portada' => 'portada', 'subir_empresa' => 'empresa', 'subir_flota' => 'flota'][$accion];
+        [$nombre, $err] = procesar_foto(archivos('foto')[0] ?? [], RAIZ . '/img/flota', 'flota', 1600);
+        if (!$nombre) $error = $err;
+        else {
+            $fotos = lista($d, 'flota.fotos');
+            if (!$fotos && !empty($d['flota']['foto'])) $fotos[] = ['archivo' => $d['flota']['foto'], 'pie' => 'Vehículos de Vaypatel Proyectos'];
+            $fotos[] = ['archivo' => 'img/flota/' . $nombre, 'pie' => txt($_POST['pie'] ?? '', 160) ?: 'Vehículo de Vaypatel Proyectos'];
+            $d['flota']['fotos'] = array_slice($fotos, -4);
+            unset($d['flota']['foto']);
+            $aviso = guardar_contenido($d) ? 'Foto añadida a la flota. Revisa su pie de foto.' : '';
+            if (!$aviso) $error = 'No se ha podido guardar el cambio.';
+        }
+    } elseif (in_array($accion, ['subir_portada', 'subir_empresa'], true)) {
+        $d = cargar_contenido();
+        $destino = ['subir_portada' => 'portada', 'subir_empresa' => 'empresa'][$accion];
         [$nombre, $err] = procesar_foto(archivos('foto')[0] ?? [], DIR_FOTOS, $destino, 2000);
         if (!$nombre) $error = $err;
         else {
@@ -310,8 +324,9 @@ $d = cargar_contenido();
       <?= campo('Introducción', 'f_intro', v($d, 'flota.intro'), 'area') ?>
       <h3>Puntos</h3>
       <?= editor('flota', ['icono' => ['Icono', 'icono'], 'titulo' => ['Título', 'txt'], 'texto' => ['Descripción', 'area']], lista($d, 'flota.puntos'), 'Punto', 'Añadir punto') ?>
-      <?php if (v($d, 'flota.foto')): ?><label class="fld"><span><input type="checkbox" name="f_quitar_foto" value="1"> Quitar la foto de la flota y volver a mostrar la ilustración</span></label><?php endif; ?>
-      <p class="hint">La foto de la flota se cambia en "Fotos principales", más abajo.</p>
+      <h3>Fotos de la flota</h3>
+      <p class="hint">Hasta 4 fotos. Quítalas todas para volver a mostrar la ilustración. Para añadir una, usa "Fotos principales", más abajo.</p>
+      <?= editor('flota_fotos', ['archivo' => ['Foto', 'foto'], 'pie' => ['Pie de foto', 'txt']], lista($d, 'flota.fotos'), 'Foto') ?>
     </section>
 
     <section id="contacto" class="card">
@@ -357,9 +372,9 @@ $d = cargar_contenido();
       </form>
       <form method="post" enctype="multipart/form-data" data-upload>
         <?= csrf_campo() ?><input type="hidden" name="accion" value="subir_flota">
-        <?php if (v($d, 'flota.foto')): ?><img class="big" src="../<?= e(v($d, 'flota.foto')) ?>" alt="Foto de la flota actual"><?php else: ?><p class="hint">Ahora se muestra una ilustración de una furgoneta.</p><?php endif; ?>
-        <label class="fld"><span>Foto de la flota de vehículos</span><input type="file" name="foto" accept="image/jpeg,image/png,image/webp" required><small>Mejor horizontal: las furgonetas en la nave o en obra.</small></label>
-        <button class="btn sec">Poner foto de la flota</button>
+        <label class="fld"><span>Añadir foto de la flota</span><input type="file" name="foto" accept="image/jpeg,image/png,image/webp" required><small>Horizontal, con el vehículo de lado. Se añade al final de las fotos de la flota.</small></label>
+        <label class="fld"><span>Pie de foto</span><input name="pie" placeholder="Por ejemplo: Furgoneta rotulada junto a la nave"></label>
+        <button class="btn sec">Añadir foto de la flota</button>
       </form>
     </div>
   </section>

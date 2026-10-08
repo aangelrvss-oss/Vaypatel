@@ -93,7 +93,6 @@ IMÁGENES
   existe y la JPG si no. El panel ya genera la .webp al subir fotos.
 
 PENDIENTE DE DATOS
-  - aviso-legal.html: [TOMO], [FOLIO] y [HOJA] del Registro Mercantil.
   - privacidad.html: [PROVEEDOR DE ALOJAMIENTO].
   Sustituir los corchetes y borrar los recuadros "Pendiente de completar"
   (<div class="pend">…</div>).

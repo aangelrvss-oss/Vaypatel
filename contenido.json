@@ -493,7 +493,16 @@
         "texto": "Certificador Fluke DSX-5000 con calibración anual en vigor, para cobre y fibra."
       }
     ],
-    "foto": ""
+    "fotos": [
+      {
+        "archivo": "img/flota/furgoneta-1.jpg",
+        "pie": "Furgoneta rotulada de Vaypatel junto a la nave 54"
+      },
+      {
+        "archivo": "img/flota/furgoneta-2.jpg",
+        "pie": "Vehículo de Vaypatel frente a la nave de Rivas-Vaciamadrid"
+      }
+    ]
   },
   "contacto": {
     "telefono": "607 23 09 57",
