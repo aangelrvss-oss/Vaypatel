@@ -47,13 +47,27 @@ FORMULARIO (enviar.php) Y ENVÍO DE CORREO
     Sin JavaScript redirige a /?envio=ok|datos|error#contacto. Los errores de envío
     quedan en el log de errores de PHP con el motivo.
   - Cómo se envía: incluir/correo.php, según admin/datos/correo.php (no está en el
-    repositorio). Sin ese archivo usa mail() de PHP.
+    repositorio). Este servidor (Apache en AWS) no tiene mail(), así que hay que
+    configurar una de las dos opciones siguientes. Las dos salen por Microsoft 365
+    (donde está el correo de vaypatel.com), así que pasan SPF, DKIM y DMARC sin
+    tocar los DNS. Otro proveedor SMTP (SES, Brevo…) exigiría registros DNS nuevos.
 
-  RECOMENDADO con Microsoft 365 (no hay que tocar los DNS):
-  el formulario envía a través de Microsoft 365 con la API Microsoft Graph (OAuth).
-  El correo sale de Microsoft 365, así que pasa SPF, DKIM y DMARC del dominio.
-  (La autenticación SMTP básica con usuario y contraseña la desactiva Microsoft por
-  defecto a finales de 2026, por eso no se usa.)
+  OPCIÓN A · SMTP de Microsoft 365 (la más rápida de montar)
+    1. Un buzón con licencia para enviar, p. ej. web@vaypatel.com.
+    2. Activar "SMTP autenticado" en ese buzón (Centro de administración >
+       Usuarios > el usuario > Correo > Administrar aplicaciones de correo) y
+       que el inquilino no lo tenga bloqueado (Set-TransportConfig
+       -SmtpClientAuthenticationDisabled o la excepción por buzón). No funciona
+       si la cuenta tiene MFA obligatoria o "valores predeterminados de seguridad".
+    3. admin/datos/correo.php (dos líneas):
+         <?php exit; ?>
+         {"modo":"smtp","host":"smtp.office365.com","puerto":587,"cifrado":"starttls","usuario":"web@vaypatel.com","clave":"CONTRASEÑA","remitente":"web@vaypatel.com"}
+    Ojo: Microsoft desactiva por defecto esta autenticación (usuario y
+    contraseña por SMTP) a finales de diciembre de 2026; un administrador puede
+    volver a activarla, pero la retirará del todo más adelante. Para no depender
+    de eso, mejor la opción B.
+
+  OPCIÓN B · Microsoft Graph (recomendada a largo plazo; va por HTTPS)
     1. Microsoft 365: crear un buzón compartido web@vaypatel.com (no necesita
        licencia) o elegir el buzón desde el que se enviará.
     2. Entra ID > Registros de aplicaciones > Nuevo registro ("Web Vaypatel").
@@ -64,19 +78,18 @@ FORMULARIO (enviar.php) Y ENVÍO DE CORREO
     3. Recomendado: limitar la aplicación a ese único buzón (Exchange Online:
        RBAC for Applications, o New-ApplicationAccessPolicy -AccessRight
        RestrictAccess -PolicyScopeGroupId web@vaypatel.com).
-    4. Crear admin/datos/correo.php en el servidor con este contenido (dos líneas):
+    4. admin/datos/correo.php (dos líneas):
          <?php exit; ?>
          {"modo":"graph","tenant":"ID_DEL_INQUILINO","cliente":"ID_DE_LA_APLICACION","secreto":"SECRETO","buzon":"web@vaypatel.com"}
-       admin/datos/ no es accesible desde la web (.htaccess) y el archivo empieza
-       cortando PHP, así que no muestra nada aunque se abra.
-    5. Probar: php incluir/probar-correo.php a.arribas@vaypatel.com (desde SSH),
-       o enviar una consulta real desde el formulario de la web.
 
-  ALTERNATIVA sin Microsoft Graph: mail() del servidor con remitente
-  web@vaypatel.com. Requiere añadir la IP del servidor al registro SPF de
-  vaypatel.com (es un registro TXT; no cambia quién gestiona los DNS) y que el
-  servidor pueda enviar por el puerto 25 (en AWS suele estar bloqueado). Sin eso,
-  Microsoft 365 marcará los avisos como suplantación o spam.
+  En las dos opciones:
+    - admin/datos/ no es accesible desde la web (.htaccess) y el archivo empieza
+      cortando PHP, así que no muestra nada aunque se abra.
+    - Probar: php incluir/probar-correo.php a.arribas@vaypatel.com (desde SSH),
+      o enviar una consulta desde el formulario. Si falla, el motivo exacto queda
+      en el log de errores de PHP (y lo muestra el script de prueba).
+    - Salida a internet necesaria desde el servidor: puerto 587 (opción A) o 443
+      (opción B). El puerto 25, que AWS limita, no se usa.
 
   - PROBAR tras publicar: enviar una consulta y comprobar que llega.
 
@@ -98,8 +111,8 @@ DOMINIO, SUBDOMINIOS Y CORREO
   La dirección oficial es https://www.vaypatel.com (es la que indica la etiqueta
   canonical a Google). Opcional pero recomendado: activar en .htaccess el bloque
   "Dirección única" para que las otras tres redirijan a esa.
-  Formulario: con Microsoft Graph (ver FORMULARIO) no hace falta ningún cambio
-  de DNS. Solo si se usara mail() habría que añadir la IP del servidor al SPF.
+  Formulario: con las opciones A o B (ver FORMULARIO) no hace falta ningún
+  cambio de DNS.
   Página 404: 404.html (diseño de la web). En Apache ya está en .htaccess;
   en Nginx: error_page 404 /404.html;
 
@@ -134,9 +147,8 @@ HOSTING (el actual de vaypatel.com, gestionado por el informático)
     www.vaypatel.es. El certificado SSL debe cubrir los cuatro. Después,
     el bloque "Dirección única" del .htaccess redirige todos a
     https://www.vaypatel.com (una sola dirección: mejor para Google).
-  - Privacidad: privacidad.html (apartado 5) nombra al "proveedor de
-    alojamiento web" de forma genérica. Si se quiere, poner su nombre y, si
-    los servidores están fuera de la UE, añadir la transferencia internacional.
+  - Privacidad: privacidad.html (apartado 5) indica Amazon Web Services (servidor
+    en Irlanda) y Microsoft 365 (correo). Si cambia el alojamiento, actualizarlo.
   - Al terminar la subida, cerrar el FTP (o limitarlo por IP) y cambiar su
     contraseña: se ha compartido por correo.
 

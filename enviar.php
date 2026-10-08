@@ -5,9 +5,9 @@
  *
  * CONFIGURACIÓN
  *  - DESTINO:   lo toma del email de contacto del panel (con este valor por defecto).
- *  - Cómo se envía: incluir/correo.php. Con Microsoft 365 (vaypatel.com) se usa la API
- *    Microsoft Graph configurada en admin/datos/correo.php; sin esa configuración, mail().
- *  - REMITENTE: solo para mail(); con Graph el remitente es el buzón configurado.
+ *  - Cómo se envía: incluir/correo.php, según admin/datos/correo.php: Microsoft 365 por
+ *    SMTP o por la API Microsoft Graph; sin esa configuración, mail().
+ *  - REMITENTE: solo para mail(); con SMTP o Graph el remitente es el buzón configurado.
  */
 require __DIR__ . '/incluir/correo.php';
 
