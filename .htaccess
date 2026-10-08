@@ -2,10 +2,12 @@
 # Si el servidor es Nginx, este archivo se ignora: ver INSTRUCCIONES-INFORMATICO.txt
 
 # --- Dirección única: https://www.vaypatel.com ---
-# Lleva http://, vaypatel.com (sin www) y cualquier otro nombre que apunte aquí a
+# Lleva http://, vaypatel.com (sin www), vaypatel.es, www.vaypatel.es y cualquier otro
+# nombre que apunte aquí a
 # https://www.vaypatel.com con una redirección permanente (buena para Google).
 # Activar (quitar las # de las 6 líneas siguientes) SOLO cuando el certificado SSL
-# cubra vaypatel.com y www.vaypatel.com; si no, el navegador mostrará un aviso.
+# cubra vaypatel.com, www.vaypatel.com, vaypatel.es y www.vaypatel.es; si no,
+# el navegador mostrará un aviso.
 # RewriteEngine On
 # RewriteCond %{HTTP_HOST} !^www\.vaypatel\.com$ [NC]
 # RewriteRule ^ https://www.vaypatel.com%{REQUEST_URI} [L,R=301]

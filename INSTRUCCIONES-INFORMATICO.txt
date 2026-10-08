@@ -109,14 +109,19 @@ IMÁGENES
   de 480 px, nombre-480.webp, para las fotos grandes). La web usa la WebP si
   existe y la JPG si no. El panel ya genera la .webp al subir fotos.
 
-HOSTING ELEGIDO: Raiola Networks · Hosting SSD Base (cPanel, LiteSpeed, Madrid)
-  - LiteSpeed lee el .htaccess de Apache: no hay que adaptar nada.
-  - cPanel > "Select PHP Version": PHP 8.3 o superior con gd, mbstring,
-    fileinfo y exif (exif es opcional: endereza fotos subidas desde el móvil).
-  - SSL gratuito automático: comprobar que cubre vaypatel.com y www.
-  - SPF y DKIM: cPanel > "Email Deliverability" indica los registros exactos.
-  - La política de privacidad ya nombra a Raiola Networks como proveedor. Si se
-    contrata otro hosting, cambiar el nombre en privacidad.html (apartado 5).
+HOSTING (el actual de vaypatel.com, gestionado por el informático)
+  - Necesita PHP 8.0 o superior (mejor 8.3) con gd (con soporte WebP),
+    mbstring, fileinfo y session; exif es opcional. Y mail() activo o SMTP.
+  - Apache o LiteSpeed leen el .htaccess tal cual. Si es Nginx, ver abajo.
+  - Dominios que sirve: vaypatel.com, www.vaypatel.com, vaypatel.es y
+    www.vaypatel.es. El certificado SSL debe cubrir los cuatro. Después,
+    el bloque "Dirección única" del .htaccess redirige todos a
+    https://www.vaypatel.com (una sola dirección: mejor para Google).
+  - Privacidad: privacidad.html (apartado 5) nombra al "proveedor de
+    alojamiento web" de forma genérica. Si se quiere, poner su nombre y, si
+    los servidores están fuera de la UE, añadir la transferencia internacional.
+  - Al terminar la subida, cerrar el FTP (o limitarlo por IP) y cambiar su
+    contraseña: se ha compartido por correo.
 
 ARCHIVOS
   index.php               Página principal (plantilla)
