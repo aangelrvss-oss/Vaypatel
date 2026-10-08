@@ -9,20 +9,26 @@ CAMBIAR CONTENIDOS (desde el móvil o el ordenador)
   3. Los cambios se ven en la web al momento.
 
 QUÉ SE PUEDE CAMBIAR
-  Portada (titular, texto, sellos, palabras de la banda), cifras, servicios,
-  acreditaciones, obras y referencias, fotos de la galería (pie, categoría,
-  orden, añadir o quitar), foto de portada, foto de empresa, textos de empresa,
-  lista de clientes y datos de contacto, incluido WhatsApp.
-  También el bloque destacado de Instalaciones (dos fotos grandes y su texto)
-  y la sección Flota de vehículos (textos, puntos y foto; mientras no haya foto
-  se muestra una ilustración de una furgoneta).
+  Portada (titular, texto, sellos, franja de disciplinas), cifras, empresas,
+  servicios (qué hacemos, habitual en, capacidades), acreditaciones (con su
+  tipo: registro oficial, certificación de fabricante, equipo de medida…),
+  proyectos (cliente, proyecto, tipo, ubicación, cifra y alcance) y obras de
+  referencia, fotos, empresa, medios propios y contacto (incluido WhatsApp y
+  horario).
+
+REGLAS DE CONTENIDO
+  - Solo datos reales y comprobables: cifras, clientes, certificaciones…
+  - Los proyectos no llevan fotos. Pon una cifra solo si es real.
+  - Las fotos de la galería son técnicas y genéricas: no pongas en el pie un
+    cliente u obra salvo que sea seguro que corresponde.
 
 FOTOS
   - Para añadir: recuadro "Añadir fotos a la galería". Guarda antes los cambios.
   - Las nuevas aparecen las primeras; ordénalas con las flechas y guarda.
+  - Mejor pocas y buenas: 2 en el bloque destacado y unas 8 en la cuadrícula.
   - Quitar una foto de la galería no borra el archivo del servidor.
-  - Recomendado: fotos nítidas, bien iluminadas, sin personas reconocibles
-    salvo que hayan dado permiso.
+  - Fotos nítidas, bien iluminadas y sin personas reconocibles salvo que
+    hayan dado permiso.
 
 SI ALGO SALE MAL
   Panel > "Copias de seguridad" > Recuperar. Se guarda una copia cada vez

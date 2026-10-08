@@ -204,6 +204,8 @@ function procesar_foto(array $f, string $dir, string $prefijo, int $ancho = 1600
     if (!is_dir($dir)) @mkdir($dir, 0755, true);
     $nombre = $prefijo . '-' . date('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.jpg';
     $ok = imagejpeg($img, $dir . '/' . $nombre, 82);
+    /* copia en WebP junto a la JPG: la web la sirve a los navegadores que la admiten (más ligera) */
+    if ($ok && function_exists('imagewebp')) @imagewebp($img, $dir . '/' . substr($nombre, 0, -4) . '.webp', 78);
     imagedestroy($img);
     return $ok ? [$nombre, null] : [null, 'No se ha podido guardar la foto en el servidor.'];
 }

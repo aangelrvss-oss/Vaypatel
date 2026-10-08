@@ -24,6 +24,8 @@ const ICONOS = [
     'i-box'      => 'Material',
     'i-route'    => 'Ruta / cobertura',
     'i-tools'    => 'Herramienta',
+    'i-team'     => 'Equipo',
+    'i-clock'    => 'Horario',
 ];
 
 /* Categorías de la galería: id => texto del filtro */
@@ -67,4 +69,40 @@ function numero_es(int $n): string {
 
 function solo_digitos(string $s): string {
     return preg_replace('/\D+/', '', $s);
+}
+
+/* ---------- imágenes ---------- */
+
+/* Versión WebP junto a la foto (misma ruta, extensión .webp), si existe */
+function webp_de(string $ruta): ?string {
+    $w = preg_replace('/\.(jpe?g|png)$/i', '.webp', $ruta);
+    return ($w !== $ruta && is_file(RAIZ . '/' . $w)) ? $w : null;
+}
+
+/* Tamaño real de una imagen del sitio, para width/height (evita saltos de maquetación) */
+function medidas(string $ruta): array {
+    static $cache = [];
+    if (!isset($cache[$ruta])) {
+        $i = is_file(RAIZ . '/' . $ruta) ? @getimagesize(RAIZ . '/' . $ruta) : false;
+        $cache[$ruta] = $i ? [$i[0], $i[1]] : [0, 0];
+    }
+    return $cache[$ruta];
+}
+
+/* <picture> con WebP (y variante de 480 px si existe) y la foto original como respaldo.
+   $o: class, sizes, lazy (true por defecto), prioridad (fetchpriority=high) */
+function foto(string $src, string $alt, array $o = []): string {
+    [$w, $h] = medidas($src);
+    $img = '<img src="' . e($src) . '" alt="' . e($alt) . '"'
+         . ($w ? ' width="' . $w . '" height="' . $h . '"' : '')
+         . (!empty($o['class']) ? ' class="' . e($o['class']) . '"' : '')
+         . (($o['lazy'] ?? true) ? ' loading="lazy"' : '')
+         . (!empty($o['prioridad']) ? ' fetchpriority="high"' : '')
+         . ' decoding="async">';
+    $webp = webp_de($src);
+    if (!$webp) return $img;
+    $peq = preg_replace('/\.webp$/', '-480.webp', $webp);
+    $srcset = is_file(RAIZ . '/' . $peq) && $w > 480 ? e($peq) . ' 480w, ' . e($webp) . ' ' . $w . 'w' : e($webp);
+    $sizes = strpos($srcset, ' 480w') !== false ? ' sizes="' . e($o['sizes'] ?? '100vw') . '"' : '';
+    return '<picture><source type="image/webp" srcset="' . $srcset . '"' . $sizes . '>' . $img . '</picture>';
 }

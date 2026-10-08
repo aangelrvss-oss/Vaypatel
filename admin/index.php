@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $d['disciplinas']          = lineas($_POST['disciplinas'] ?? '', 10);
         $d['cifras']               = filas('cifras', ['numero' => 'int', 'prefijo' => 'corto', 'sufijo' => 'corto', 'texto' => 'txt'], 4);
         $d['servicios']['intro']   = txt($_POST['s_intro'] ?? '', 500);
-        $d['servicios']['lista']   = filas('servicios', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt', 'etiquetas' => 'tags'], 12);
+        $d['servicios']['lista']   = filas('servicios', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt', 'entornos' => 'txt', 'etiquetas' => 'tags'], 12);
         $d['servicios']['certificacion'] = txt($_POST['s_cert'] ?? '', 600);
-        $d['acreditaciones']       = filas('acreditaciones', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt', 'ref' => 'txt'], 10);
+        $d['acreditaciones']       = filas('acreditaciones', ['icono' => 'icono', 'tipo' => 'txt', 'titulo' => 'txt', 'texto' => 'txt', 'ref' => 'txt'], 10);
         $d['obras']['titulo']      = txt($_POST['o_titulo'] ?? '', 120);
         $d['obras']['intro']       = txt($_POST['o_intro'] ?? '', 500);
-        $d['obras']['lista']       = filas('obras', ['icono' => 'icono', 'titulo' => 'txt', 'etiqueta' => 'txt', 'texto' => 'txt'], 60);
+        $d['obras']['lista']       = filas('obras', ['icono' => 'icono', 'cliente' => 'txt', 'proyecto' => 'txt', 'tipo' => 'txt', 'lugar' => 'txt', 'cifra' => 'corto', 'cifra_txt' => 'txt', 'texto' => 'txt'], 60);
         $d['obras']['referencias'] = filas('referencias', ['cliente' => 'txt', 'texto' => 'txt'], 40);
         $d['empresa']['titulo']    = txt($_POST['e_titulo'] ?? '', 120);
         $d['empresa']['parrafos']  = array_values(array_filter(array_map(fn($p) => txt($p, 1200), preg_split('/\n\s*\n/', txt($_POST['e_parrafos'] ?? '', 6000))), 'strlen'));
@@ -220,7 +220,7 @@ $d = cargar_contenido();
 </header>
 <nav class="tabs" aria-label="Secciones">
   <a href="#portada">Portada</a><a href="#cifras">Cifras</a><a href="#servicios">Servicios</a><a href="#acreditaciones">Acreditaciones</a>
-  <a href="#obras">Obras</a><a href="#galeria">Fotos</a><a href="#destacada">Destacado</a><a href="#empresa">Empresa</a><a href="#clientes">Clientes</a><a href="#flota">Flota</a><a href="#contacto">Contacto</a><a href="#copias">Copias</a>
+  <a href="#obras">Proyectos</a><a href="#galeria">Fotos</a><a href="#destacada">Destacado</a><a href="#empresa">Empresa</a><a href="#clientes">Clientes</a><a href="#flota">Flota</a><a href="#contacto">Contacto</a><a href="#copias">Copias</a>
 </nav>
 <main class="wrap">
   <?php if ($aviso): ?><p class="msg ok" role="status"><?= e($aviso) ?></p><?php endif; ?>
@@ -248,29 +248,33 @@ $d = cargar_contenido();
     <section id="servicios" class="card">
       <h2>Servicios</h2>
       <?= campo('Texto de introducción', 's_intro', v($d, 'servicios.intro'), 'area') ?>
-      <?= editor('servicios', ['icono' => ['Icono', 'icono'], 'titulo' => ['Título', 'txt'], 'texto' => ['Descripción', 'area'], 'etiquetas' => ['Etiquetas', 'tags']], lista($d, 'servicios.lista'), 'Servicio', 'Añadir servicio') ?>
-      <?= campo('Texto de "Y todo se entrega certificado"', 's_cert', v($d, 'servicios.certificacion'), 'area') ?>
+      <?= editor('servicios', ['icono' => ['Icono', 'icono'], 'titulo' => ['Título', 'txt'], 'texto' => ['Qué hacemos', 'area'], 'entornos' => ['Habitual en', 'txt'], 'etiquetas' => ['Capacidades', 'tags']], lista($d, 'servicios.lista'), 'Servicio', 'Añadir servicio') ?>
+      <?= campo('Texto de "Todo se entrega medido y documentado"', 's_cert', v($d, 'servicios.certificacion'), 'area') ?>
     </section>
 
     <section id="acreditaciones" class="card">
       <h2>Acreditaciones</h2>
-      <?= editor('acreditaciones', ['icono' => ['Icono', 'icono'], 'titulo' => ['Título', 'txt'], 'texto' => ['Descripción', 'area'], 'ref' => ['Referencia', 'txt']], lista($d, 'acreditaciones'), 'Acreditación', 'Añadir acreditación') ?>
+      <p class="hint">En "Tipo" indica qué es exactamente: Registro oficial, Certificación de fabricante, Equipo y método de medida…</p>
+      <?= editor('acreditaciones', ['icono' => ['Icono', 'icono'], 'tipo' => ['Tipo', 'txt'], 'titulo' => ['Título', 'txt'], 'texto' => ['Descripción', 'area'], 'ref' => ['Referencia', 'txt']], lista($d, 'acreditaciones'), 'Acreditación', 'Añadir acreditación') ?>
     </section>
 
     <section id="obras" class="card">
       <h2>Obras</h2>
       <?= campo('Título de la sección', 'o_titulo', v($d, 'obras.titulo')) ?>
       <?= campo('Introducción', 'o_intro', v($d, 'obras.intro'), 'area') ?>
-      <h3>Obras recientes</h3>
-      <p class="hint">Se muestran en este orden. Usa las flechas para ordenarlas.</p>
-      <?= editor('obras', ['icono' => ['Icono', 'icono'], 'titulo' => ['Cliente · obra', 'txt'], 'etiqueta' => ['Tipo · lugar', 'txt'], 'texto' => ['Descripción', 'area']], lista($d, 'obras.lista'), 'Obra', 'Añadir obra') ?>
+      <h3>Proyectos recientes</h3>
+      <p class="hint">Se muestran en este orden: los 6 primeros como ficha destacada y el resto en lista. Pon una cifra solo si es un dato real del proyecto (por ejemplo "1.500" y "puntos de datos"). No se muestran fotos en los proyectos.</p>
+      <?= editor('obras', ['icono' => ['Icono', 'icono'], 'cliente' => ['Cliente', 'txt'], 'proyecto' => ['Proyecto / edificio', 'txt'], 'tipo' => ['Tipo de trabajo', 'txt'], 'lugar' => ['Ubicación', 'txt'], 'cifra' => ['Cifra', 'corto'], 'cifra_txt' => ['Unidad de la cifra', 'txt'], 'texto' => ['Alcance', 'area']], array_map(function ($o) {
+          if (empty($o['cliente']) && !empty($o['titulo'])) { $p = array_map('trim', explode('·', $o['titulo'], 2)); $o['cliente'] = $p[0]; $o['proyecto'] = $p[1] ?? ''; $o['tipo'] = $o['etiqueta'] ?? ''; }
+          return $o;
+      }, lista($d, 'obras.lista')), 'Proyecto', 'Añadir proyecto') ?>
       <h3>Obras de referencia anteriores</h3>
       <?= editor('referencias', ['cliente' => ['Cliente', 'txt'], 'texto' => ['Descripción', 'txt']], lista($d, 'obras.referencias'), 'Referencia', 'Añadir referencia') ?>
     </section>
 
     <section id="galeria" class="card">
       <h2>Fotos de la galería</h2>
-      <p class="hint">Las 12 primeras se ven al entrar; el resto, al pulsar "Ver todas". Para añadir fotos usa el recuadro de abajo.</p>
+      <p class="hint">Fotos técnicas genéricas: no indiques cliente ni obra en el pie salvo que sea seguro. Las dos fotos elegidas en "Destacado" se muestran en grande; el resto, en la cuadrícula (mejor 8). Para añadir fotos usa el recuadro de abajo.</p>
       <?= editor('galeria', ['archivo' => ['Foto', 'foto'], 'pie' => ['Pie de foto', 'txt'], 'categoria' => ['Categoría', 'cat']], lista($d, 'galeria'), 'Foto') ?>
     </section>
 
@@ -316,7 +320,7 @@ $d = cargar_contenido();
       <?= campo('Email', 'k_email', v($d, 'contacto.email'), 'email', 'Se muestra en la web y es el buzón donde llegan las consultas del formulario.') ?>
       <?= campo('Web', 'k_web', v($d, 'contacto.web')) ?>
       <?= campo('Dirección', 'k_direccion', v($d, 'contacto.direccion')) ?>
-      <?= campo('Horario de atención', 'k_horario', v($d, 'contacto.horario'), 'text', 'Se muestra en Contacto y en el pie. Si cambian los días u horas, avisa al informático para actualizar también el dato que lee Google (index.php).') ?>
+      <?= campo('Horario de atención', 'k_horario', v($d, 'contacto.horario'), 'text', 'Se muestra en Contacto y en el pie.') ?>
       <?= campo('WhatsApp (con prefijo, sin espacios)', 'k_whatsapp', v($d, 'contacto.whatsapp'), 'text', 'Ejemplo: 34607230957') ?>
       <?= campo('Mensaje predefinido de WhatsApp', 'k_whatsapp_mensaje', v($d, 'contacto.whatsapp_mensaje'), 'area') ?>
     </section>

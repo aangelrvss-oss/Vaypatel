@@ -70,21 +70,27 @@ DOMINIO Y CORREO
   Si vaypatel.com ya tiene correo, al cambiar DNS mantener intactos los MX.
 
 HORARIO
-  El texto del horario se edita en el panel (Contacto). El horario que lee
-  Google está en index.php (openingHoursSpecification: lunes a viernes,
-  08:00-20:00); si cambian días u horas, actualizarlo también ahí.
+  El texto del horario se edita en el panel (Contacto). No se publica en los
+  datos estructurados hasta confirmar los días de atención; cuando se
+  confirmen, puede añadirse openingHoursSpecification en index.php.
 
 SEO YA INCLUIDO
-  title y description, canonical, Open Graph (img/compartir.jpg), datos
-  estructurados LocalBusiness, robots.txt (excluye /admin/), sitemap.xml, 404.
+  title y description, canonical, Open Graph y Twitter (img/compartir.jpg), datos
+  estructurados LocalBusiness (dirección, zona de servicio y servicios), robots.txt (excluye /admin/), sitemap.xml, 404.
   Tras publicar: alta en Google Search Console, enviar /sitemap.xml, y crear o
   vincular la ficha de Google Business Profile.
 
 TIPOGRAFÍAS
-  Se cargan de Google Fonts (Chakra Petch, Barlow, IBM Plex Mono) y así consta
-  en la privacidad. Para alojarlas en el servidor: descargar los .woff2, subirlos
-  a /assets/fuentes, cambiar los <link> por @font-face en assets/estilos.css y
-  quitar la mención a Google en privacidad.html (apartado 5).
+  Alojadas en el propio servidor (assets/fuentes/, woff2, subconjunto latino;
+  licencia SIL OFL 1.1, ver LICENCIA.txt). No se hacen peticiones a Google.
+  index.php incluye estilos.css y fuentes.css en línea para que la página
+  pinte sin esperar a hojas externas: tras editar estilos.css no hay que
+  hacer nada más.
+
+IMÁGENES
+  Cada foto puede tener al lado una versión .webp con el mismo nombre (y una
+  de 480 px, nombre-480.webp, para las fotos grandes). La web usa la WebP si
+  existe y la JPG si no. El panel ya genera la .webp al subir fotos.
 
 PENDIENTE DE DATOS
   - aviso-legal.html: [TOMO], [FOLIO] y [HOJA] del Registro Mercantil.

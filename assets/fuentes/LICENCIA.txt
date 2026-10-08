@@ -1,0 +1,4 @@
+Tipografías alojadas en el propio servidor (subconjunto latino, formato woff2):
+  Chakra Petch (600, 700) · Barlow (300, 400, 500) · IBM Plex Mono (400)
+Las tres se distribuyen bajo la licencia SIL Open Font License 1.1
+(https://openfontlicense.org), que permite su uso y alojamiento en webs.
