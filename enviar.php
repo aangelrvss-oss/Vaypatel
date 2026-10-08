@@ -16,11 +16,22 @@ if (is_array($contenido) && filter_var($contenido['contacto']['email'] ?? '', FI
 }
 const REMITENTE = 'web@vaypatel.com';
 
-header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
+header('Cache-Control: no-store');
+
+/* La web envía el formulario con JavaScript y espera JSON. Si el navegador lo envía
+   de forma clásica (sin JavaScript), se vuelve a la página con el resultado. */
+$AJAX = ($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'fetch';
 
 function responder(int $codigo, string $mensaje): void {
+    global $AJAX;
+    if (!$AJAX) {
+        $estado = $codigo === 200 ? 'ok' : ($codigo === 400 ? 'datos' : 'error');
+        header('Location: ./?envio=' . $estado . '#contacto', true, 303);
+        exit;
+    }
     http_response_code($codigo);
+    header('Content-Type: application/json; charset=utf-8');
     echo json_encode(['ok' => $codigo === 200, 'mensaje' => $mensaje], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -31,6 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Trampa antispam: campo oculto que una persona nunca rellena.
 if (!empty($_POST['web_url'])) {
+    responder(200, 'Recibido.');
+}
+
+// Trampa de tiempo: una persona tarda más de 3 segundos en rellenar el formulario.
+$t = (int)($_POST['t'] ?? 0);
+if ($t > 0 && time() - $t < 3) {
     responder(200, 'Recibido.');
 }
 
@@ -68,7 +85,7 @@ foreach ([$nombre, $tel, $email, $tipo] as $v) {
     if (strpos($v, "\n") !== false) responder(400, 'Datos no válidos.');
 }
 
-$asunto = 'Consulta web: ' . ($tipo !== '' ? $tipo : 'sin especificar');
+$asunto = 'Consulta web: ' . ($tipo !== '' ? $tipo : 'sin especificar') . ' · ' . mb_substr($nombre, 0, 60);
 $cuerpo = "Nueva consulta desde www.vaypatel.com\n"
         . "--------------------------------------\n\n"
         . "Nombre y empresa: $nombre\n"
@@ -85,11 +102,13 @@ $cabeceras = implode("\r\n", [
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
+    'X-Mailer: Web Vaypatel',
 ]);
 
 $ok = mail($DESTINO, '=?UTF-8?B?' . base64_encode($asunto) . '?=', $cuerpo, $cabeceras, '-f' . REMITENTE);
 
 if (!$ok) {
+    error_log('enviar.php: mail() ha fallado al enviar a ' . $DESTINO);
     responder(500, 'No se ha podido enviar. Escríbenos a ' . $DESTINO . ' o llámanos al 607 23 09 57.');
 }
 

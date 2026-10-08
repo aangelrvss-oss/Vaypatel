@@ -36,7 +36,7 @@
         navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['servicios', 'certificaciones', 'obras', 'instalaciones', 'empresa', 'contacto'].forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+    ['servicios', 'certificaciones', 'obras', 'instalaciones', 'empresa', 'flota', 'contacto'].forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
   /* ---------- contadores ---------- */
@@ -108,11 +108,17 @@
   /* ---------- manejador único de scroll ---------- */
   var nav = $('#nav'), bar = $('#progress'), railDot = $('#railDot'), mesh = $('#bgfx .mesh'), bglow = $('#bgfx .glow');
   var foto = $('#empresaFoto img'), fotoBox = $('#empresaFoto'), ticking = false;
+  var wa = $('#wa'), contacto = $('#contacto');
 
   function paint() {
     ticking = false;
     var y = scrollY, vh = innerHeight, max = doc.scrollHeight - vh, p = max > 0 ? y / max : 0;
     nav.classList.toggle('stuck', y > 40);
+    /* WhatsApp: aparece al dejar atrás la portada y se retira en contacto, donde ya está a mano */
+    if (wa) {
+      var enContacto = contacto && contacto.getBoundingClientRect().top < vh * 0.75;
+      wa.classList.toggle('show', y > vh * 0.6 && !enContacto);
+    }
     if (bar) bar.style.transform = 'scaleX(' + p + ')';
     if (railDot) railDot.style.transform = 'translateY(' + (p * (vh - 4)) + 'px)';
     if (reduce) return;
@@ -177,9 +183,13 @@
     lb.classList.remove('open'); document.body.style.overflow = '';
     setTimeout(function () { lb.hidden = true; }, 300); if (lastFocus) lastFocus.focus();
   }
-  function mover(dir) { var v = visibles(), i = v.indexOf(lbK); if (i < 0) i = 0; mostrar(v[(i + dir + v.length) % v.length]); }
+  function mover(dir) {
+    var v = visibles(), i = v.indexOf(lbK);
+    if (i < 0) { v = fotos.map(function (_, k) { return k; }); i = lbK; }  /* foto abierta desde el bloque destacado */
+    mostrar(v[(i + dir + v.length) % v.length]);
+  }
   if (gal && lb) {
-    gal.addEventListener('click', function (e) { var b = e.target.closest('.ph'); if (b) abrir(+b.getAttribute('data-k')); });
+    document.addEventListener('click', function (e) { var b = e.target.closest('.ph[data-k]'); if (b) abrir(+b.getAttribute('data-k')); });
     $('#lbClose').addEventListener('click', cerrar);
     $('#lbPrev').addEventListener('click', function () { mover(-1); });
     $('#lbNext').addEventListener('click', function () { mover(1); });
@@ -195,20 +205,33 @@
   if (form) form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     var note = $('#note'), n = form.nombre.value.trim(), em = form.email.value.trim(), m = form.msg.value.trim();
-    function aviso(t, on) { note.textContent = t; note.classList.toggle('on', !!on); }
-    if (!n || !em || !m) return aviso('Faltan el nombre, el email o la descripción de la obra.', true);
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return aviso('Revisa el email: no parece válido.', true);
-    if (!form.consentimiento.checked) return aviso('Es necesario aceptar la política de privacidad.', true);
-    if (window.VP && VP.vistaPrevia) return aviso('Vista previa: el envío funcionará cuando la web esté publicada en el servidor.', true);
-    var btn = form.querySelector('button[type=submit]'); btn.disabled = true; aviso('Enviando…');
-    fetch(form.getAttribute('action'), { method: 'POST', body: new FormData(form) })
+    function aviso(t, tipo) { note.textContent = t; note.className = 'formnote' + (tipo ? ' on ' + tipo : ''); }
+    function marca(campo, mal) { campo.setAttribute('aria-invalid', mal ? 'true' : 'false'); campo.classList.toggle('bad', mal); }
+    var malos = [];
+    [[form.nombre, !n], [form.email, !em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)], [form.msg, !m], [form.consentimiento, !form.consentimiento.checked]]
+      .forEach(function (c) { marca(c[0], c[1]); if (c[1]) malos.push(c[0]); });
+    if (malos.length) {
+      malos[0].focus();
+      if (!n || !em || !m) return aviso('Faltan el nombre, el email o la descripción de la obra.', 'err');
+      if (malos[0] === form.email) return aviso('Revisa el email: no parece válido.', 'err');
+      return aviso('Es necesario aceptar la política de privacidad.', 'err');
+    }
+    if (window.VP && VP.vistaPrevia) return aviso('Vista previa: el envío funcionará cuando la web esté publicada en el servidor.', 'err');
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true; form.classList.add('sending'); aviso('Enviando…');
+    var asunto = 'Consulta web: ' + form.tipo.value;
+    var cuerpo = 'Nombre y empresa: ' + n + '\nTeléfono: ' + form.tel.value + '\nEmail: ' + em + '\nTipo de trabajo: ' + form.tipo.value + '\n\n' + m;
+    fetch(form.getAttribute('action'), { method: 'POST', body: new FormData(form), headers: { 'X-Requested-With': 'fetch', 'Accept': 'application/json' } })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (res) { aviso((res.j && res.j.mensaje) || 'Recibido.', true); if (res.ok) form.reset(); })
-      .catch(function () {
-        var body = 'Nombre y empresa: ' + n + '\nTeléfono: ' + form.tel.value + '\nEmail: ' + em + '\nTipo de trabajo: ' + form.tipo.value + '\n\n' + m;
-        location.href = 'mailto:' + ((window.VP && VP.email) || '') + '?subject=' + encodeURIComponent('Consulta web: ' + form.tipo.value) + '&body=' + encodeURIComponent(body);
-        aviso('No se ha podido enviar desde la web; abrimos tu programa de correo.', true);
+      .then(function (res) {
+        aviso((res.j && res.j.mensaje) || 'Recibido.', res.ok ? 'ok' : 'err');
+        if (res.ok) form.reset();
       })
-      .then(function () { btn.disabled = false; });
+      .catch(function () {
+        /* sin respuesta válida del servidor: se ofrece el correo con la consulta ya escrita */
+        location.href = 'mailto:' + ((window.VP && VP.email) || '') + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
+        aviso('No se ha podido enviar desde la web; abrimos tu programa de correo con la consulta ya escrita.', 'err');
+      })
+      .then(function () { btn.disabled = false; form.classList.remove('sending'); });
   });
+  if (form) form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid') === 'true') { e.target.setAttribute('aria-invalid', 'false'); e.target.classList.remove('bad'); } });
 })();

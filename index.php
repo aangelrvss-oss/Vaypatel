@@ -16,6 +16,12 @@ $dir      = v($d, 'contacto.direccion', '');
 $waNum    = solo_digitos(v($d, 'contacto.whatsapp', '34607230957'));
 $waMsg    = v($d, 'contacto.whatsapp_mensaje', '');
 $waLink   = 'https://wa.me/' . $waNum . ($waMsg !== '' ? '?text=' . rawurlencode($waMsg) : '');
+$mailLink = 'mailto:' . $email . '?subject=' . rawurlencode('Consulta desde la web');
+$flota    = v($d, 'flota', []);
+$dest     = v($d, 'destacada', []);
+/* Resultado del formulario cuando se envía sin JavaScript (enviar.php redirige aquí) */
+$envio    = $_GET['envio'] ?? '';
+$envioMsg = ['ok' => 'Recibido. Te respondemos en menos de 24 horas laborables.', 'error' => 'No se ha podido enviar. Llámanos o escríbenos por email o WhatsApp.', 'datos' => 'Faltan datos o el email no es válido. Revisa el formulario y vuelve a enviarlo.'][$envio] ?? '';
 $galeria  = lista($d, 'galeria');
 $VISIBLES = 12; // fotos que se ven antes de pulsar "Ver todas"
 $vista    = defined('VISTA_PREVIA');
@@ -88,6 +94,11 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
 <symbol id="i-plan" viewBox="0 0 24 24"><path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21V5.5Z"/><path d="M9 3v15.5M15 5.5V21"/></symbol>
 <symbol id="i-cert" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="12" rx="1.5"/><path d="M7.5 8h9M7.5 11.5h5M9 20l3-2 3 2v-4H9v4Z"/></symbol>
 <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5.5L13 3v18M13 9h7v12M4 21h17M7.5 8h2M7.5 12h2M7.5 16h2M16 13h1.5M16 17h1.5"/></symbol>
+<symbol id="i-van" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11zM13.5 9.5h4.2l3.8 3.8v3.2h-8"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="17" cy="17.5" r="1.9"/><path d="M16 9.5v3.8h5.5"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.2v9.6L12 21l-8-4.2V7.2L12 3Z"/><path d="m4 7.2 8 4.2 8-4.2M12 11.4V21M8 5.1l8 4.2"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.3"/><path d="M18 10.5s4-3.4 4-6.1a4 4 0 0 0-8 0c0 2.7 4 6.1 4 6.1Z"/><circle cx="18" cy="4.6" r=".9"/><path d="M8.3 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h2.5"/></symbol>
+<symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3Z"/><path d="m3 21 6.5-6.5M5 3l4 4-2 2-4-4 2-2Z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path stroke="none" fill="currentColor" d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.36-1.4a9.8 9.8 0 0 0 4.68 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.92h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.13 8.13 0 0 1-1.25-4.34c0-4.51 3.68-8.18 8.2-8.18a8.15 8.15 0 0 1 8.18 8.19c0 4.51-3.67 8.17-8.19 8.17Zm4.5-6.12c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.18 1.13.16 1.55.1.47-.07 1.46-.6 1.66-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></symbol>
 <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m3 12 4-4 4 2 3-3 7 6-3 3"/><path d="m7 12 3 3a1.5 1.5 0 0 0 2-2M10 15l2 2a1.5 1.5 0 0 0 2-2l-1-1M14 16l1 1a1.5 1.5 0 0 0 2-2"/></symbol>
 </defs></svg>
 
@@ -96,13 +107,14 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
 
 <nav id="nav" aria-label="Principal">
   <div class="wrap navbar">
-    <a class="brand" href="#top" aria-label="Vaypatel Proyectos, inicio"><img src="img/logo.svg" alt="Vaypatel · Telecomunicaciones y electricidad" width="178" height="80"></a>
+    <a class="brand" href="#top" aria-label="Vaypatel Proyectos, inicio"><img src="img/logo.svg" alt="Vaypatel · Telecomunicaciones y electricidad" width="224" height="100"></a>
     <div class="navlinks">
       <a href="#servicios">Servicios</a>
       <a href="#certificaciones">Acreditaciones</a>
       <a href="#obras">Obras</a>
       <a href="#instalaciones">Instalaciones</a>
       <a href="#empresa">Empresa</a>
+      <a href="#flota">Flota</a>
       <a href="#contacto">Contacto</a>
     </div>
     <div class="navend">
@@ -119,8 +131,13 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
   <a href="#obras"><b>03</b> Obras</a>
   <a href="#instalaciones"><b>04</b> Instalaciones</a>
   <a href="#empresa"><b>05</b> Empresa</a>
-  <a href="#contacto"><b>06</b> Contacto</a>
-  <a class="mcall" href="tel:<?= e($telLink) ?>"><?= e($tel) ?> · <?= e($email) ?></a>
+  <a href="#flota"><b>06</b> Flota</a>
+  <a href="#contacto"><b>07</b> Contacto</a>
+  <div class="mfoot">
+    <a class="mcall" href="tel:<?= e($telLink) ?>"><svg class="i"><use href="#i-phone"/></svg><?= e($tel) ?></a>
+    <a class="mcall" href="<?= e($mailLink) ?>"><svg class="i"><use href="#i-mail"/></svg><?= e($email) ?></a>
+    <a class="mcall mwa" href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>WhatsApp</a>
+  </div>
 </div>
 
 <div id="bgfx" aria-hidden="true"><div class="mesh"></div><div class="glow"></div></div>
@@ -251,6 +268,30 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
     <div class="sechead mono reveal"><svg class="i"><use href="#i-camera"/></svg><span class="idx">04</span><span>Galería de obra</span></div>
     <h2 class="reveal">Instalaciones</h2>
     <?php
+      /* Bloque destacado: dos fotos grandes de la galería con un texto. Se abren en el mismo visor. */
+      $destFotos = [];
+      foreach (array_slice((array)($dest['fotos'] ?? []), 0, 2) as $archivo) {
+        foreach ($galeria as $k => $g) if (($g['archivo'] ?? '') === $archivo) { $destFotos[] = ['k' => $k] + $g; break; }
+      }
+      if ($destFotos):
+    ?>
+    <div class="showcase">
+      <div class="sc-tx reveal">
+        <span class="sc-k mono">Obra terminada</span>
+        <h3><?= e($dest['titulo'] ?? '') ?></h3>
+        <p><?= e($dest['texto'] ?? '') ?></p>
+        <?php $dp = array_filter((array)($dest['puntos'] ?? []), 'is_string'); if ($dp): ?><ul class="sc-list"><?php foreach ($dp as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul><?php endif; ?>
+        <a class="btn btn-ghost" href="#contacto"><svg class="i"><use href="#i-plan"/></svg> Quiero algo así</a>
+      </div>
+      <?php foreach ($destFotos as $i => $f): ?>
+      <figure class="sc-ph">
+        <button type="button" class="ph clip" style="--d:<?= $i + 1 ?>" data-k="<?= (int)$f['k'] ?>" aria-label="Ampliar: <?= e($f['pie'] ?? '') ?>"><img src="<?= e($f['archivo']) ?>" alt="<?= e($f['pie'] ?? '') ?>" loading="lazy" decoding="async"></button>
+        <figcaption class="mono"><?= e($f['pie'] ?? '') ?></figcaption>
+      </figure>
+      <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+    <?php
       $cuenta = array_count_values(array_map(fn($g) => $g['categoria'] ?? '', $galeria));
     ?>
     <div class="galbar reveal">
@@ -314,16 +355,57 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
 <?php endif; ?>
 </div>
 
+<?php $flPuntos = lista($d, 'flota.puntos'); if ($flota): ?>
+<section id="flota">
+  <div class="wrap">
+    <div class="sechead mono reveal"><svg class="i"><use href="#i-van"/></svg><span class="idx">06</span><span>Medios propios</span></div>
+    <h2 class="reveal"><?= e(v($d, 'flota.titulo', 'Flota de vehículos propia')) ?></h2>
+    <p class="sub reveal"><?= e(v($d, 'flota.intro')) ?></p>
+    <div class="fleet">
+      <div class="fl-visual clip<?= v($d, 'flota.foto') ? ' has-photo' : '' ?>">
+        <?php if (v($d, 'flota.foto')): ?>
+        <img src="<?= e(v($d, 'flota.foto')) ?>" alt="Vehículos de la flota de Vaypatel Proyectos" loading="lazy" decoding="async">
+        <?php else: ?>
+        <svg class="van" viewBox="0 0 640 340" role="img" aria-label="Ilustración de una furgoneta de la flota">
+          <g class="dim" aria-hidden="true">
+            <path d="M70 46v18M580 46v18M70 55h510"/><path d="m78 51-8 4 8 4M572 51l8 4-8 4"/>
+            <text x="325" y="40" text-anchor="middle">Flota propia · Base en Madrid</text>
+          </g>
+          <path class="ground" d="M20 283h600"/>
+          <path class="body" d="M70 250V104q0-14 14-14h386q14 0 22 12l48 66 28 8q12 4 12 16v46q0 12-12 12h-48a38 38 0 0 0-76 0H222a38 38 0 0 0-76 0Z"/>
+          <path class="cab" d="M434 104h44l42 58h-86Z"/>
+          <path class="seam" d="M428 92v156M330 96v150M70 214h510"/>
+          <path class="seam" d="M444 182h22M314 176h-22"/>
+          <rect class="lamp" x="566" y="188" width="10" height="9" rx="2"/>
+          <path class="orbit-l" d="M108 176c58-60 190-86 262-62"/>
+          <circle class="orbit-d" cx="368" cy="113" r="7"/>
+          <g class="wheel"><circle cx="184" cy="252" r="30"/><circle cx="184" cy="252" r="11"/></g>
+          <g class="wheel"><circle cx="482" cy="252" r="30"/><circle cx="482" cy="252" r="11"/></g>
+        </svg>
+        <?php endif; ?>
+        <div class="fl-tags mono"><span><svg class="i"><use href="#i-pin"/></svg> Nave propia en Madrid</span><span><svg class="i"><use href="#i-route"/></svg> Toda España</span></div>
+      </div>
+      <ul class="fl-points">
+        <?php foreach ($flPuntos as $k => $f): ?>
+        <li class="reveal" style="--d:<?= $k ?>"><svg class="i"><use href="#<?= icono_valido($f['icono'] ?? '') ?>"/></svg><div>
+          <h4><?= e($f['titulo'] ?? '') ?></h4><p><?= e($f['texto'] ?? '') ?></p></div></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
 <section id="contacto">
   <div class="wrap">
-    <div class="sechead mono reveal"><svg class="i"><use href="#i-mail"/></svg><span class="idx">06</span><span>Contacto</span></div>
+    <div class="sechead mono reveal"><svg class="i"><use href="#i-mail"/></svg><span class="idx">07</span><span>Contacto</span></div>
     <h2 class="reveal">Pide presupuesto</h2>
     <p class="sub reveal">Escríbenos con los datos de la instalación y te enviamos una propuesta y un plazo, sin compromiso.</p>
     <div class="contact">
       <div class="cinfo reveal">
         <a href="tel:<?= e($telLink) ?>"><svg class="i"><use href="#i-phone"/></svg><span><small>Teléfono</small><?= e($tel) ?></span></a>
-        <a href="mailto:<?= e($email) ?>"><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small><?= e($email) ?></span></a>
-        <a href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-send"/></svg><span><small>WhatsApp</small>Escríbenos por WhatsApp</span></a>
+        <a href="<?= e($mailLink) ?>"><svg class="i"><use href="#i-mail"/></svg><span><small>Email</small><?= e($email) ?></span></a>
+        <a class="ci-wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg><span><small>WhatsApp · respuesta rápida</small>Escríbenos por WhatsApp</span><b class="go" aria-hidden="true">→</b></a>
         <a href="https://maps.google.com/?q=<?= rawurlencode('Calle Fundición 4 BIS nave 54 28522 Madrid') ?>" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span><small>Nave</small><?= e($dir) ?></span></a>
       </div>
       <form class="quote reveal" id="form" action="enviar.php" method="POST" novalidate>
@@ -340,9 +422,10 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
             <option>Certificación o mantenimiento</option><option>Instalación integral</option>
           </select></div></div>
         <div class="frow"><div><label class="fl" for="msg">La obra</label><textarea id="msg" name="msg" placeholder="Ubicación, número de puntos, plazos, si hay proyecto redactado…" required></textarea></div></div>
+        <input type="hidden" name="t" value="<?= time() ?>">
         <label class="consent" for="consentimiento"><input type="checkbox" id="consentimiento" name="consentimiento" required><span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta.</span></label>
         <button class="btn btn-main" type="submit"><svg class="i"><use href="#i-send"/></svg> Enviar consulta</button>
-        <p class="formnote" id="note" role="status" aria-live="polite">Respondemos en menos de 24 horas laborables.</p>
+        <p class="formnote<?= $envioMsg ? ' on ' . ($envio === 'ok' ? 'ok' : 'err') : '' ?>" id="note" role="status" aria-live="polite"><?= e($envioMsg ?: 'Respondemos en menos de 24 horas laborables.') ?></p>
       </form>
     </div>
   </div>
@@ -352,14 +435,14 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img class="flogo" src="img/logo.svg" alt="Vaypatel · Telecomunicaciones y electricidad" width="139" height="62">
+        <img class="flogo" src="img/logo.svg" alt="Vaypatel · Telecomunicaciones y electricidad" width="247" height="110">
         <p>Instalaciones de voz-datos, electricidad<br>y seguridad. Madrid y toda España.</p>
       </div>
       <div class="flinks">
         <a href="#servicios">Servicios</a><a href="#certificaciones">Acreditaciones</a><a href="#obras">Obras</a>
-        <a href="#instalaciones">Instalaciones</a><a href="#empresa">Empresa</a><a href="#contacto">Contacto</a>
+        <a href="#instalaciones">Instalaciones</a><a href="#empresa">Empresa</a><a href="#flota">Flota</a><a href="#contacto">Contacto</a>
       </div>
-      <div><p><a href="tel:<?= e($telLink) ?>"><?= e($tel) ?></a><br><a href="mailto:<?= e($email) ?>"><?= e($email) ?></a><br><?= e($dir) ?></p></div>
+      <div><p><a href="tel:<?= e($telLink) ?>"><?= e($tel) ?></a><br><a href="<?= e($mailLink) ?>"><?= e($email) ?></a><br><a href="<?= e($waLink) ?>" target="_blank" rel="noopener">WhatsApp</a><br><?= e($dir) ?></p></div>
     </div>
     <div class="legal">
       <span>© <?= date('Y') ?> Vaypatel Proyectos S.L. · CIF B88306642</span>
@@ -368,8 +451,9 @@ $descripcion = 'Cableado estructurado, fibra óptica, electricidad, centros de d
   </div>
 </footer>
 
-<a class="wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.36-1.4a9.8 9.8 0 0 0 4.68 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.92h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.13 8.13 0 0 1-1.25-4.34c0-4.51 3.68-8.18 8.2-8.18a8.15 8.15 0 0 1 8.18 8.19c0 4.51-3.67 8.17-8.19 8.17Zm4.5-6.12c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.18 1.13.16 1.55.1.47-.07 1.46-.6 1.66-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></svg>
+<a class="wa" id="wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <span class="wa-ic"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg></span>
+  <span class="wa-tx"><small>¿Hablamos?</small>WhatsApp</span>
 </a>
 
 <script>window.VP = { galeria: <?= json_encode(array_map(fn($g) => ['src' => $g['archivo'] ?? '', 'pie' => $g['pie'] ?? ''], $galeria), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?>, email: <?= json_encode($email, JSON_HEX_TAG) ?>, vistaPrevia: <?= $vista ? 'true' : 'false' ?> };</script>

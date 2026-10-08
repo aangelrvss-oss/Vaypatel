@@ -20,6 +20,10 @@ const ICONOS = [
     'i-gov'      => 'Registro oficial',
     'i-warranty' => 'Garantía',
     'i-wave'     => 'Medición',
+    'i-van'      => 'Vehículo',
+    'i-box'      => 'Material',
+    'i-route'    => 'Ruta / cobertura',
+    'i-tools'    => 'Herramienta',
 ];
 
 /* Categorías de la galería: id => texto del filtro */

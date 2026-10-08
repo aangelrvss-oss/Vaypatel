@@ -285,6 +285,16 @@
   },
   "galeria": [
     {
+      "archivo": "img/galeria/foto-27.jpg",
+      "pie": "Rack de CPD con latiguillos de cobre y fibra peinados por colores",
+      "categoria": "cableado"
+    },
+    {
+      "archivo": "img/galeria/foto-28.jpg",
+      "pie": "Armario de comunicaciones con guías de cable y PDU ordenadas",
+      "categoria": "cableado"
+    },
+    {
       "archivo": "img/galeria/foto-10.jpg",
       "pie": "Fibra óptica etiquetada en armario de CPD",
       "categoria": "fibra"
@@ -459,6 +469,33 @@
       "Universidad Europea"
     ]
   },
+  "flota": {
+    "titulo": "Flota de vehículos propia",
+    "intro": "Nos movemos con medios propios. Nuestros vehículos salen de la nave cargados con el material, la herramienta y los equipos de medida de cada obra, sin depender de agencias ni de alquileres.",
+    "puntos": [
+      {
+        "icono": "i-van",
+        "titulo": "Furgonetas taller",
+        "texto": "Vehículos de empresa equipados con estanterías, herramienta y el material de uso diario para empezar a trabajar en cuanto llegamos."
+      },
+      {
+        "icono": "i-box",
+        "titulo": "Material a pie de obra",
+        "texto": "Bobinas, racks, bandejas y cuadros viajan con nuestro equipo, en los plazos que marca la obra y no los de un transportista."
+      },
+      {
+        "icono": "i-wave",
+        "titulo": "Medición a bordo",
+        "texto": "Los certificadores Fluke y la herramienta de fibra van con los técnicos, para medir y documentar cada enlace en el momento."
+      },
+      {
+        "icono": "i-route",
+        "titulo": "Madrid y toda España",
+        "texto": "Respuesta rápida en la Comunidad de Madrid y desplazamiento de equipos completos a cualquier punto del país."
+      }
+    ],
+    "foto": ""
+  },
   "contacto": {
     "telefono": "607 23 09 57",
     "email": "a.arribas@vaypatel.com",
@@ -466,5 +503,19 @@
     "direccion": "c/ Fundición 4 BIS, nave 54 · 28522 Madrid",
     "whatsapp": "34607230957",
     "whatsapp_mensaje": "Hola, escribo desde la web de Vaypatel y quería consultar sobre una instalación."
+  },
+  "destacada": {
+    "titulo": "Cada latiguillo, en su sitio",
+    "texto": "El orden no es estética: es lo que permite localizar un puerto en segundos, ampliar sin desmontar y mantener la instalación durante años. Así entregamos los racks, con cada cable medido, etiquetado y peinado.",
+    "fotos": [
+      "img/galeria/foto-27.jpg",
+      "img/galeria/foto-28.jpg"
+    ],
+    "puntos": [
+      "Cada enlace medido y certificado",
+      "Etiquetado de puertos y latiguillos",
+      "Peinado con velcro, por colores",
+      "Documentación de entrega"
+    ]
   }
 }

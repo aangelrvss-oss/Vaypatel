@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Servidor local (PHP)",
+      "type": "shell",
+      "command": "php -S localhost:8080",
+      "isBackground": true,
+      "problemMatcher": [],
+      "detail": "Abre http://localhost:8080 para ver la web. El formulario necesita mail() configurado para enviar."
+    }
+  ]
+}

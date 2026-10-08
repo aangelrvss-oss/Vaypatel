@@ -21,6 +21,10 @@ PUBLICAR
      (se entrega aparte, no está en ningún archivo). El primer acceso obliga a
      cambiarla.
 
+REPOSITORIO GITHUB
+  admin/datos/clave.php NO está en el repositorio (es público): al publicar
+  desde GitHub hay que subir ese archivo aparte o crear uno nuevo (ver abajo).
+
 PANEL /admin/
   - Edita portada, cifras, servicios, acreditaciones, obras, referencias, fotos de
     la galería (pie, categoría, orden), empresa, clientes y contacto.
@@ -46,6 +50,10 @@ FORMULARIO (enviar.php)
     validación del archivo sirve igual.
   - Validación, aceptación de privacidad obligatoria, campo trampa antispam y
     límite de un envío cada 30 s por sesión.
+  - Sin JavaScript el formulario también funciona: enviar.php redirige a
+    /?envio=ok|datos|error#contacto y la página muestra el resultado.
+  - Trampa de tiempo antispam: los envíos en menos de 3 s se descartan en silencio.
+  - Si mail() falla, se anota en el log de errores de PHP.
   - PROBAR tras publicar: enviar una consulta y comprobar que llega.
 
 SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
@@ -88,5 +96,5 @@ ARCHIVOS
   admin/                  Panel; admin/datos/ guarda contraseña, intentos y copias
   aviso-legal.html, privacidad.html, 404.html, legal.css
   .htaccess, robots.txt, sitemap.xml
-  img/                    Logo (SVG vectorial), favicon, foto de portada, empresa
+  img/                    Logo (SVG vectorial y PNG 2400 px), favicon, foto de portada, empresa
   img/galeria/            Fotos de la galería

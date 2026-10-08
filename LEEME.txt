@@ -13,6 +13,9 @@ QUÉ SE PUEDE CAMBIAR
   acreditaciones, obras y referencias, fotos de la galería (pie, categoría,
   orden, añadir o quitar), foto de portada, foto de empresa, textos de empresa,
   lista de clientes y datos de contacto, incluido WhatsApp.
+  También el bloque destacado de Instalaciones (dos fotos grandes y su texto)
+  y la sección Flota de vehículos (textos, puntos y foto; mientras no haya foto
+  se muestra una ilustración de una furgoneta).
 
 FOTOS
   - Para añadir: recuadro "Añadir fotos a la galería". Guarda antes los cambios.

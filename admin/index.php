@@ -66,6 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $d['clientes']['intro']    = txt($_POST['c_intro'] ?? '', 500);
         $d['clientes']['lista']    = lineas($_POST['c_lista'] ?? '', 40);
         $d['galeria']              = array_values(array_filter(filas('galeria', ['archivo' => 'foto', 'pie' => 'txt', 'categoria' => 'cat'], 200), fn($g) => $g['archivo'] !== ''));
+        $enGaleria = array_column($d['galeria'], 'archivo');
+        $d['destacada']['titulo']  = txt($_POST['d_titulo'] ?? '', 120);
+        $d['destacada']['texto']   = txt($_POST['d_texto'] ?? '', 600);
+        $d['destacada']['puntos']  = lineas($_POST['d_puntos'] ?? '', 6);
+        $d['destacada']['fotos']   = array_values(array_unique(array_filter([(string)($_POST['d_foto1'] ?? ''), (string)($_POST['d_foto2'] ?? '')], fn($f) => in_array($f, $enGaleria, true))));
+        $d['flota']['titulo']      = txt($_POST['f_titulo'] ?? '', 120);
+        $d['flota']['intro']       = txt($_POST['f_intro'] ?? '', 600);
+        $d['flota']['puntos']      = filas('flota', ['icono' => 'icono', 'titulo' => 'txt', 'texto' => 'txt'], 8);
+        if (!empty($_POST['f_quitar_foto'])) $d['flota']['foto'] = '';
         foreach (['telefono' => 30, 'email' => 120, 'web' => 120, 'direccion' => 200, 'whatsapp' => 20, 'whatsapp_mensaje' => 300] as $k => $max) {
             $d['contacto'][$k] = txt($_POST['k_' . $k] ?? '', $max);
         }
@@ -88,12 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($n && !guardar_contenido($d)) $error = 'Las fotos se han subido pero no se ha podido guardar la lista.';
         elseif ($n) $aviso = $n === 1 ? 'Foto añadida al principio de la galería. Revisa su pie de foto.' : "$n fotos añadidas al principio de la galería. Revisa sus pies de foto.";
         if ($fallos) $error = trim($error . ' ' . implode(' · ', $fallos));
-    } elseif ($accion === 'subir_portada' || $accion === 'subir_empresa') {
+    } elseif (in_array($accion, ['subir_portada', 'subir_empresa', 'subir_flota'], true)) {
         $d = cargar_contenido();
-        [$nombre, $err] = procesar_foto(archivos('foto')[0] ?? [], DIR_FOTOS, $accion === 'subir_portada' ? 'portada' : 'empresa', 2000);
+        $destino = ['subir_portada' => 'portada', 'subir_empresa' => 'empresa', 'subir_flota' => 'flota'][$accion];
+        [$nombre, $err] = procesar_foto(archivos('foto')[0] ?? [], DIR_FOTOS, $destino, 2000);
         if (!$nombre) $error = $err;
         else {
-            if ($accion === 'subir_portada') $d['portada']['foto'] = 'img/' . $nombre; else $d['empresa']['foto'] = 'img/' . $nombre;
+            $d[$destino]['foto'] = 'img/' . $nombre;
             $aviso = guardar_contenido($d) ? 'Foto cambiada.' : '';
             if (!$aviso) $error = 'No se ha podido guardar el cambio.';
         }
@@ -210,7 +220,7 @@ $d = cargar_contenido();
 </header>
 <nav class="tabs" aria-label="Secciones">
   <a href="#portada">Portada</a><a href="#cifras">Cifras</a><a href="#servicios">Servicios</a><a href="#acreditaciones">Acreditaciones</a>
-  <a href="#obras">Obras</a><a href="#galeria">Fotos</a><a href="#empresa">Empresa</a><a href="#clientes">Clientes</a><a href="#contacto">Contacto</a><a href="#copias">Copias</a>
+  <a href="#obras">Obras</a><a href="#galeria">Fotos</a><a href="#destacada">Destacado</a><a href="#empresa">Empresa</a><a href="#clientes">Clientes</a><a href="#flota">Flota</a><a href="#contacto">Contacto</a><a href="#copias">Copias</a>
 </nav>
 <main class="wrap">
   <?php if ($aviso): ?><p class="msg ok" role="status"><?= e($aviso) ?></p><?php endif; ?>
@@ -264,6 +274,17 @@ $d = cargar_contenido();
       <?= editor('galeria', ['archivo' => ['Foto', 'foto'], 'pie' => ['Pie de foto', 'txt'], 'categoria' => ['Categoría', 'cat']], lista($d, 'galeria'), 'Foto') ?>
     </section>
 
+    <section id="destacada" class="card">
+      <h2>Bloque destacado de Instalaciones</h2>
+      <p class="hint">Dos fotos grandes de la galería con un texto, encima de los filtros. Elige "Ninguna" en las dos para ocultar el bloque.</p>
+      <?= campo('Título', 'd_titulo', v($d, 'destacada.titulo')) ?>
+      <?= campo('Texto', 'd_texto', v($d, 'destacada.texto'), 'area') ?>
+      <?= campo('Puntos', 'd_puntos', lista($d, 'destacada.puntos'), 'lineas', 'Uno por línea, máximo 6.') ?>
+      <?php $opsFotos = ['' => 'Ninguna']; foreach (lista($d, 'galeria') as $g) $opsFotos[$g['archivo']] = ($g['pie'] ?? '') . ' · ' . basename($g['archivo']); $df = lista($d, 'destacada.fotos'); ?>
+      <label class="fld"><span>Foto 1</span><select name="d_foto1"><?= select_opciones($opsFotos, $df[0] ?? '') ?></select></label>
+      <label class="fld"><span>Foto 2</span><select name="d_foto2"><?= select_opciones($opsFotos, $df[1] ?? '') ?></select></label>
+    </section>
+
     <section id="empresa" class="card">
       <h2>Empresa</h2>
       <?= campo('Título', 'e_titulo', v($d, 'empresa.titulo')) ?>
@@ -277,6 +298,16 @@ $d = cargar_contenido();
       <?= campo('Título', 'c_titulo', v($d, 'clientes.titulo')) ?>
       <?= campo('Introducción', 'c_intro', v($d, 'clientes.intro'), 'area') ?>
       <?= campo('Clientes', 'c_lista', lista($d, 'clientes.lista'), 'lineas', 'Uno por línea. Queda mejor un número múltiplo de 4.') ?>
+    </section>
+
+    <section id="flota" class="card">
+      <h2>Flota de vehículos</h2>
+      <?= campo('Título', 'f_titulo', v($d, 'flota.titulo')) ?>
+      <?= campo('Introducción', 'f_intro', v($d, 'flota.intro'), 'area') ?>
+      <h3>Puntos</h3>
+      <?= editor('flota', ['icono' => ['Icono', 'icono'], 'titulo' => ['Título', 'txt'], 'texto' => ['Descripción', 'area']], lista($d, 'flota.puntos'), 'Punto', 'Añadir punto') ?>
+      <?php if (v($d, 'flota.foto')): ?><label class="fld"><span><input type="checkbox" name="f_quitar_foto" value="1"> Quitar la foto de la flota y volver a mostrar la ilustración</span></label><?php endif; ?>
+      <p class="hint">La foto de la flota se cambia en "Fotos principales", más abajo.</p>
     </section>
 
     <section id="contacto" class="card">
@@ -318,6 +349,12 @@ $d = cargar_contenido();
         <img class="big" src="../<?= e(v($d, 'empresa.foto', 'img/empresa.jpg')) ?>" alt="Foto de empresa actual">
         <label class="fld"><span>Cambiar foto de "Nuestros profesionales"</span><input type="file" name="foto" accept="image/jpeg,image/png,image/webp" required><small>Mejor vertical. Ideal: el equipo trabajando.</small></label>
         <button class="btn sec">Cambiar foto</button>
+      </form>
+      <form method="post" enctype="multipart/form-data" data-upload>
+        <?= csrf_campo() ?><input type="hidden" name="accion" value="subir_flota">
+        <?php if (v($d, 'flota.foto')): ?><img class="big" src="../<?= e(v($d, 'flota.foto')) ?>" alt="Foto de la flota actual"><?php else: ?><p class="hint">Ahora se muestra una ilustración de una furgoneta.</p><?php endif; ?>
+        <label class="fld"><span>Foto de la flota de vehículos</span><input type="file" name="foto" accept="image/jpeg,image/png,image/webp" required><small>Mejor horizontal: las furgonetas en la nave o en obra.</small></label>
+        <button class="btn sec">Poner foto de la flota</button>
       </form>
     </div>
   </section>
