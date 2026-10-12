@@ -1,0 +1,1322 @@
+{
+  "doc": {
+    "height": 21506,
+    "vh": 640,
+    "acts": [
+      "flow",
+      "flow",
+      "flow",
+      "pin",
+      "flow",
+      "pan",
+      "flow"
+    ],
+    "world": null
+  },
+  "report": [
+    {
+      "i": 0,
+      "y": 0,
+      "pct": 0,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        0,
+        6323,
+        9937
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 1,
+      "y": 32,
+      "pct": 0,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -32,
+        6291,
+        9905
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 2,
+      "y": 352,
+      "pct": 2,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -352,
+        5971,
+        9585
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 3,
+      "y": 671,
+      "pct": 3,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -671,
+        5652,
+        9266
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 4,
+      "y": 991,
+      "pct": 5,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 100% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -991,
+        5332,
+        8946
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 5,
+      "y": 1029,
+      "pct": 5,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 100% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1029,
+        5294,
+        8908
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 6,
+      "y": 1230,
+      "pct": 6,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 92.09% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1230,
+        5093,
+        8707
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 7,
+      "y": 1431,
+      "pct": 7,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 9.14% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -1431,
+        4892,
+        8506
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 8,
+      "y": 1631,
+      "pct": 8,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -1631,
+        4692,
+        8306
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 9,
+      "y": 1832,
+      "pct": 9,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1832,
+        4491,
+        8105
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 10,
+      "y": 2033,
+      "pct": 10,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -2033,
+        4290,
+        7904
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 11,
+      "y": 5232,
+      "pct": 25,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -5232,
+        1091,
+        4705
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 12,
+      "y": 5446,
+      "pct": 26,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -5446,
+        877,
+        4491
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 13,
+      "y": 5660,
+      "pct": 27,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5660,
+        663,
+        4277
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 14,
+      "y": 5874,
+      "pct": 28,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 7.74,
+          "mean": 14.66
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5874,
+        449,
+        4063
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 15,
+      "y": 6087,
+      "pct": 29,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.73
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -6087,
+        236,
+        3850
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 16,
+      "y": 6301,
+      "pct": 30,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -6301,
+        22,
+        3636
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 17,
+      "y": 6346,
+      "pct": 30,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -6346,
+        0,
+        3591
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 18,
+      "y": 6567,
+      "pct": 31,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -6567,
+        0,
+        3370
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 19,
+      "y": 6789,
+      "pct": 33,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 0.92
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -6789,
+        0,
+        3148
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 20,
+      "y": 7010,
+      "pct": 34,
+      "settled": true,
+      "contrast": [],
+      "cues": [
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 0.68
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -7010,
+        0,
+        2927
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 21,
+      "y": 7231,
+      "pct": 35,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -7231,
+        0,
+        2706
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 22,
+      "y": 7452,
+      "pct": 36,
+      "settled": true,
+      "contrast": [],
+      "cues": [
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 0.08
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 100% 0px 0px)"
+      ],
+      "act": "pin",
+      "stages": [
+        -7452,
+        0,
+        2485
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 23,
+      "y": 7524,
+      "pct": 36,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 97.24% 0px 0px)"
+      ],
+      "act": "pin",
+      "stages": [
+        -7524,
+        -49,
+        2413
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 24,
+      "y": 7997,
+      "pct": 38,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -7997,
+        -522,
+        1940
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 25,
+      "y": 8470,
+      "pct": 41,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -8470,
+        -995,
+        1467
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 26,
+      "y": 8943,
+      "pct": 43,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -8943,
+        -1468,
+        994
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 27,
+      "y": 9415,
+      "pct": 45,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -9415,
+        -1940,
+        522
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 28,
+      "y": 9888,
+      "pct": 47,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -9888,
+        -2413,
+        49
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 29,
+      "y": 9955,
+      "pct": 48,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -42
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -9955,
+        -2480,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 30,
+      "y": 10127,
+      "pct": 49,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -435
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -10127,
+        -2652,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 31,
+      "y": 10299,
+      "pct": 49,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -829
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -10299,
+        -2824,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 32,
+      "y": 10471,
+      "pct": 50,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1222
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -10471,
+        -2996,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 33,
+      "y": 10643,
+      "pct": 51,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1615
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -10643,
+        -3168,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 34,
+      "y": 10815,
+      "pct": 52,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2009
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -10815,
+        -3340,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 35,
+      "y": 15725,
+      "pct": 75,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -15725,
+        -8250,
+        -4892
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 36,
+      "y": 16131,
+      "pct": 77,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -16131,
+        -8656,
+        -5298
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 37,
+      "y": 16538,
+      "pct": 79,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -16538,
+        -9063,
+        -5705
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 38,
+      "y": 16945,
+      "pct": 81,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -16945,
+        -9470,
+        -6112
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 39,
+      "y": 17352,
+      "pct": 83,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -17352,
+        -9877,
+        -6519
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 40,
+      "y": 17759,
+      "pct": 85,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -17759,
+        -10284,
+        -6926
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 41,
+      "y": 20866,
+      "pct": 100,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -2049
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -20866,
+        -13391,
+        -10033
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    }
+  ],
+  "consoleErrors": [],
+  "failed": []
+}

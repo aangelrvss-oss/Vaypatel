@@ -249,13 +249,13 @@ $d = cargar_contenido();
       <?= campo('Titular (en blanco)', 'p_titular', v($d, 'portada.titular')) ?>
       <?= campo('Titular (en azul)', 'p_destacado', v($d, 'portada.destacado')) ?>
       <?= campo('Texto bajo el titular', 'p_subtitulo', v($d, 'portada.subtitulo'), 'area') ?>
-      <?= campo('Sellos bajo los botones', 'p_sellos', lista($d, 'portada.sellos'), 'lineas', 'Uno por línea, máximo 3.') ?>
-      <?= campo('Banda de disciplinas', 'disciplinas', lista($d, 'disciplinas'), 'lineas', 'Las palabras de la tira que se desliza bajo la portada. Una por línea.') ?>
+      <?= campo('Sellos (certificaciones)', 'p_sellos', lista($d, 'portada.sellos'), 'lineas', 'Uno por línea, máximo 3. Se ven justo debajo de la portada, encima de las cifras.') ?>
+      <?= campo('Banda de disciplinas', 'disciplinas', lista($d, 'disciplinas'), 'lineas', 'Las palabras de la franja bajo las empresas, al final del bloque de cifras. Una por línea.') ?>
     </section>
 
     <section id="cifras" class="card">
       <h2>Cifras</h2>
-      <p class="hint">Los cuatro números bajo la portada. En "Antes" o "Después" puedes poner un símbolo, como + o %.</p>
+      <p class="hint">Los cuatro números bajo la portada (con una cota de plano encima). Solo datos reales. En "Antes" o "Después" puedes poner un símbolo, como + o %.</p>
       <?= editor('cifras', ['numero' => ['Número', 'int'], 'prefijo' => ['Antes', 'corto'], 'sufijo' => ['Después', 'corto'], 'texto' => ['Texto', 'txt']], lista($d, 'cifras'), 'Cifra') ?>
     </section>
 

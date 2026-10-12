@@ -4,11 +4,17 @@
  * Todo el texto sale de contenido.json, que se edita desde /admin/.
  * No hace falta tocar este archivo para cambiar contenidos.
  *
- * Orden de la página (pensado para un cliente de empresa):
- * portada → cifras y empresas → servicios → acreditaciones → proyectos → instalaciones
- * → empresa y medios → contacto.
+ * Rediseño "Expediente técnico" (ver scrollcraft/builds/vaypatel/BRIEF.md). Recorrido:
+ * firma del logo → portada por planos → credenciales → servicios → pausa → el peinado (momento
+ * central) → medición y acreditaciones → proyectos → trabajo terminado → empresa y medios → contacto.
+ *
+ * El movimiento lo hace el motor Scroll-craft (assets/scrollcraft.js, sin modificar) leyendo los
+ * atributos data-sc-*; lo propio de esta web (firma, peinado, órbita) está en assets/web.js.
+ * Sin JavaScript todo el contenido se ve y el formulario funciona.
  */
 require __DIR__ . '/incluir/comun.php';
+require __DIR__ . '/incluir/esquemas.php';
+require __DIR__ . '/incluir/peine.php';
 $d = cargar_contenido();
 
 $tel      = v($d, 'contacto.telefono', '607 23 09 57');
@@ -55,12 +61,18 @@ $tituloPagina = 'Vaypatel | Instalación de telecomunicaciones y electricidad en
 $descripcion  = 'Empresa instaladora de telecomunicación nº 16317: cableado estructurado, fibra óptica, electricidad, seguridad y centros de datos. Madrid y toda España.';
 $url          = 'https://www.vaypatel.com/';
 
-/* CSS en línea: es una sola página, así el primer pintado no espera a ninguna hoja externa */
+/* CSS en línea: es una sola página, así el primer pintado no espera a ninguna hoja externa.
+   Orden: tipografías · base del motor Scroll-craft (sin modificar) · estilos de la web. */
 $css = str_replace('url(', 'url(assets/fuentes/', (string)@file_get_contents(__DIR__ . '/assets/fuentes/fuentes.css'))
+     . (string)@file_get_contents(__DIR__ . '/assets/scrollcraft.css')
      . (string)@file_get_contents(__DIR__ . '/assets/estilos.css');
 
 $heroFoto  = v($d, 'portada.foto', 'img/hero.jpg');
 $heroMovil = v($d, 'portada.foto_movil', '');
+/* Las llamadas de la lámina describen lo que se ve en la foto de portada original.
+   Si se cambia la foto desde el panel, las llamadas no se muestran (dejarían de ser ciertas). */
+$llamadas  = $heroFoto === 'img/hero.jpg' && in_array($heroMovil, ['', 'img/hero-movil.jpg'], true);
+$ver = fn($f) => @filemtime(__DIR__ . '/' . $f);
 ?><!DOCTYPE html>
 <html lang="es">
 <head>
@@ -93,7 +105,22 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 <?php if ($w = webp_de($heroFoto)): ?><link rel="preload" as="image" href="<?= e($w) ?>" type="image/webp"<?= $heroMovil ? ' media="(min-width: 761px)"' : '' ?> fetchpriority="high">
 <?php endif; ?>
 <style><?= $css ?></style>
-<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Antes del primer pintado: decide si se reproduce la firma del logo y prepara los actos.
+   - firma: primera visita en 7 días, arriba del todo y sin ancla en la dirección.
+   - firma-corta: visitas siguientes; solo la órbita del logo se traza en la cabecera.
+   - rm: movimiento reducido; sin firma y sin tramos fijados.
+   Si el motor no llega a cargar en 4 s, "sin-motor" muestra todo el contenido tal cual. */
+(function (h) {
+  h.classList.add('js');
+  var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, visto = 0;
+  try { visto = +localStorage.getItem('vp-firma') || 0; } catch (e) {}
+  if (rm) h.classList.add('rm');
+  else if (Date.now() - visto > 6048e5 && !location.hash && !location.search) h.classList.add('firma');
+  else h.classList.add('firma-corta');
+  setTimeout(function () { if (!h.classList.contains('sc-ready')) h.classList.add('sin-motor'); }, 4000);
+})(document.documentElement);
+</script>
 <script type="application/ld+json"><?= json_encode(array_filter([
     '@context' => 'https://schema.org',
     '@type' => 'LocalBusiness',
@@ -118,10 +145,12 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <?php include __DIR__ . '/incluir/iconos.php'; ?>
+<div class="sc-grain" aria-hidden="true"></div>
+<div class="firma-velo" aria-hidden="true"></div>
 
-<header id="nav" class="nav">
-  <div class="wrap navbar">
-    <a class="brand" href="#top" aria-label="Vaypatel Proyectos, inicio"><img src="img/logo.svg" alt="Vaypatel · Telecomunicaciones y electricidad" width="224" height="100"></a>
+<header id="nav" class="nav" data-sc-shot-fixed>
+  <div class="navbar">
+    <a class="brand" href="#top" aria-label="Vaypatel Proyectos, inicio"><?php include __DIR__ . '/incluir/logo.php'; ?></a>
     <nav class="navlinks" aria-label="Principal">
       <a href="#servicios">Servicios</a>
       <a href="#proyectos">Proyectos</a>
@@ -135,12 +164,37 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     </div>
   </div>
 </header>
+<script>
+/* Firma del logo: el logo de la cabecera empieza en el centro de la pantalla y aterriza en su sitio.
+   Aquí solo se mide dónde está su sitio; la animación es CSS (estilos.css, "firma"). Cualquier tecla,
+   rueda o toque la termina al instante. */
+(function (h) {
+  if (!h.classList.contains('firma')) return;
+  var lg = document.querySelector('.brand .lg'), r = lg && lg.getBoundingClientRect();
+  var base = lg && parseFloat(getComputedStyle(lg).width);
+  if (!r || !r.width || !base) { h.classList.remove('firma'); return; }
+  /* la cabecera escala el logo desde su contenedor: el desplazamiento se expresa en su escala */
+  var sp = r.width / base, w = Math.min(innerWidth * (innerWidth < 700 ? 0.84 : 0.56), 680);
+  h.style.setProperty('--fsl', (w / r.width).toFixed(3));
+  h.style.setProperty('--fxl', ((innerWidth / 2 - (r.left + r.width / 2)) / sp).toFixed(1) + 'px');
+  h.style.setProperty('--fyl', ((innerHeight * 0.46 - (r.top + r.height / 2)) / sp).toFixed(1) + 'px');
+  function fin() {
+    if (h.classList.contains('firma-fin')) return;
+    h.classList.add('firma-fin');
+    ['keydown', 'wheel', 'touchstart', 'pointerdown'].forEach(function (t) { removeEventListener(t, fin, true); });
+  }
+  ['keydown', 'wheel', 'touchstart', 'pointerdown'].forEach(function (t) { addEventListener(t, fin, { capture: true, passive: true }); });
+  setTimeout(fin, 2700); // después de la última animación de la portada (2,54 s)
+  try { localStorage.setItem('vp-firma', String(Date.now())); } catch (e) {}
+})(document.documentElement);
+</script>
 
 <div id="menu" class="menu" role="dialog" aria-modal="true" aria-label="Menú" hidden>
   <nav aria-label="Secciones">
     <a href="#servicios">Servicios</a>
     <a href="#acreditaciones">Acreditaciones</a>
     <a href="#proyectos">Proyectos</a>
+    <a href="#instalaciones">Trabajo terminado</a>
     <a href="#empresa">Empresa y medios</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -155,140 +209,212 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 
 <main id="contenido">
 
-<section id="top" class="hero" aria-labelledby="h1">
-  <div class="hero-media" aria-hidden="true"><picture>
-    <?php if ($heroMovil): ?>
-    <?php if ($w = webp_de($heroMovil)): ?><source media="(max-width: 760px)" type="image/webp" srcset="<?= e($w) ?>"><?php endif; ?>
-    <source media="(max-width: 760px)" srcset="<?= e($heroMovil) ?>">
-    <?php endif; ?>
-    <?php if ($w = webp_de($heroFoto)): ?><source type="image/webp" srcset="<?= e($w) ?>"><?php endif; ?>
-    <img class="hero-img" src="<?= e($heroFoto) ?>" alt="" fetchpriority="high" decoding="async">
-  </picture></div>
-  <div class="heroveil" aria-hidden="true"></div>
-  <svg class="orbit" viewBox="0 0 1000 600" aria-hidden="true" focusable="false">
-    <g transform="rotate(-12 520 300)">
-      <path class="o-thick" pathLength="100" d="M 50 300 A 470 175 0 1 1 990 300"/>
-      <path class="o-thin" pathLength="100" d="M 28 296 A 494 196 0 0 1 760 120"/>
-      <circle class="o-dot" r="11" cx="742" cy="138"/>
-    </g>
-  </svg>
-
-  <div class="wrap hero-inner">
-    <p class="eyebrow mono"><svg class="i" aria-hidden="true"><use href="#i-gov"/></svg> <?= e(v($d, 'portada.aviso')) ?></p>
-    <h1 id="h1"><?= e(v($d, 'portada.titular')) ?> <em><?= e(v($d, 'portada.destacado')) ?></em></h1>
-    <p class="lede"><?= e(v($d, 'portada.subtitulo')) ?></p>
-    <div class="actions">
-      <a class="btn btn-main" href="#contacto">Pedir presupuesto <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+<!-- 1 · PORTADA. Alzado por planos: retícula de fondo, lámina con la foto real, órbita del logo
+     que la rodea por detrás y por delante, y bandeja de cable en primer plano. -->
+<section id="top" class="hero" data-sc-act="pin" data-sc-span="1.5" data-movil="flow" data-movil-hasta="1023" aria-labelledby="h1">
+  <div class="hero-stage" data-sc-stage>
+    <div class="pl pl-far" data-sc-parallax="-0.4" aria-hidden="true">
+      <svg class="riser" viewBox="0 0 600 800" focusable="false">
+        <path d="M60 760V80h480v680M60 620h480M60 480h480M60 340h480M60 200h480"/>
+        <path class="rz" d="M292 760V60M308 760V60"/>
+        <path d="M292 690H120M308 690h300M292 550H140M308 550h260M292 410H110M308 410h300M292 270H150M308 270h250"/>
+        <path d="M120 684v12M140 544v12M110 404v12M150 264v12M560 404v12M568 544v12"/>
+        <rect x="250" y="700" width="100" height="56"/><path d="M250 714h100M250 728h100M250 742h100"/>
+        <path class="dim" d="M572 80v680M566 80h12M566 760h12"/>
+      </svg>
     </div>
-    <ul class="badges">
+    <div class="pl pl-glow" aria-hidden="true"></div>
+
+    <div class="pl pl-obj" data-sc-parallax="-0.6" aria-hidden="true">
+      <div class="obj">
+        <svg class="orb orb-back" viewBox="0 0 1000 600" focusable="false"><g transform="rotate(-12 500 300)">
+          <path class="orb-hair" d="M30 300A470 250 0 0 1 970 300"/>
+        </g></svg>
+        <div class="plate">
+          <picture>
+            <?php if ($heroMovil): ?>
+            <?php if ($w = webp_de($heroMovil)): ?><source media="(max-width: 760px)" type="image/webp" srcset="<?= e($w) ?>"><?php endif; ?>
+            <source media="(max-width: 760px)" srcset="<?= e($heroMovil) ?>">
+            <?php endif; ?>
+            <?php if ($w = webp_de($heroFoto)): ?><source type="image/webp" srcset="<?= e($w) ?>"><?php endif; ?>
+            <img class="plate-img" src="<?= e($heroFoto) ?>" alt="" fetchpriority="high" decoding="async">
+          </picture>
+          <span class="reg reg-tl"></span><span class="reg reg-tr"></span><span class="reg reg-bl"></span><span class="reg reg-br"></span>
+          <?php if ($llamadas): ?>
+          <span class="co co-t co-1"><i></i><b>Mazo recogido con velcro</b></span>
+          <span class="co co-t co-2"><i></i><b>Puertos etiquetados</b></span>
+          <?php endif; ?>
+        </div>
+        <svg class="orb orb-front" viewBox="0 0 1000 600" focusable="false"><g transform="rotate(-12 500 300)">
+          <path class="orb-cres" d="M30 300A470 262 0 0 0 970 300A470 240 0 0 1 30 300Z"/>
+          <path class="orb-cian" pathLength="1" d="M52 306A452 232 0 0 0 520 534"/>
+          <path class="orb-track" d="M30 300A470 251 0 0 0 970 300"/>
+          <circle class="orb-dot" cx="224" cy="503" r="13"/>
+        </g></svg>
+      </div>
+    </div>
+
+    <div class="pl pl-near" data-sc-parallax="1.6" aria-hidden="true">
+      <svg class="tray" viewBox="0 0 900 320" focusable="false">
+        <path class="tr-rail" d="M0 250 900 70M0 316 900 136"/>
+        <path class="tr-wire" d="M20 246v66M80 234v66M140 222v66M200 210v66M260 198v66M320 186v66M380 174v66M440 162v66M500 150v66M560 138v66M620 126v66M680 114v66M740 102v66M800 90v66M860 78v66"/>
+        <path class="tr-cable" d="M0 280C220 236 420 196 900 104M0 288C240 244 470 200 900 112M0 296C250 252 500 206 900 120M0 272C230 228 440 190 900 96"/>
+      </svg>
+    </div>
+
+    <div class="hero-copy">
+      <p class="eyebrow mono"><svg class="i" aria-hidden="true"><use href="#i-gov"/></svg><span><?= e(v($d, 'portada.aviso')) ?></span></p>
+      <h1 id="h1"><?= e(v($d, 'portada.titular')) ?> <em><?= e(v($d, 'portada.destacado')) ?></em></h1>
+      <p class="lede"><?= e(v($d, 'portada.subtitulo')) ?></p>
+      <div class="actions">
+        <a class="btn btn-main" href="#contacto">Pedir presupuesto <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · CREDENCIALES. Sellos, cifras reales acotadas como en un plano y empresas. -->
+<section id="cifras" class="cred" aria-label="Experiencia en cifras y empresas">
+  <div class="wrap">
+    <ul class="sellos" data-sc-in data-sc-stagger="50">
       <?php $ics = ['i-award', 'i-warranty', 'i-wave']; foreach (lista($d, 'portada.sellos') as $k => $s): ?>
       <li><svg class="i" aria-hidden="true"><use href="#<?= $ics[$k % 3] ?>"/></svg><?= e($s) ?></li>
       <?php endforeach; ?>
       <li><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Madrid y toda España</li>
     </ul>
-  </div>
-</section>
-
-<?php $dis = lista($d, 'disciplinas'); if ($dis): ?>
-<div class="disc">
-  <ul class="wrap"><?php foreach ($dis as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul>
-</div>
-<?php endif; ?>
-
-<section id="cifras" class="trust" aria-label="Experiencia en cifras y empresas">
-  <div class="wrap">
-    <dl class="stats">
+    <dl class="cifras" data-sc-in data-sc-stagger="80">
       <?php foreach (lista($d, 'cifras') as $k => $f): ?>
-      <div class="stat reveal" style="--d:<?= $k ?>">
+      <div class="cifra">
+        <svg class="cota" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M1 1v10M199 1v10M1 6h198"/></svg>
         <dt><?= e($f['texto'] ?? '') ?></dt>
         <dd><?php if (!empty($f['prefijo'])): ?><i><?= e($f['prefijo']) ?></i><?php endif; ?><?= numero_es((int)($f['numero'] ?? 0)) ?><?php if (!empty($f['sufijo'])): ?><i><?= e($f['sufijo']) ?></i><?php endif; ?></dd>
       </div>
       <?php endforeach; ?>
     </dl>
     <?php $cl = lista($d, 'clientes.lista'); if ($cl): ?>
-    <div class="clients reveal">
-      <div class="clients-h">
+    <div class="clientes" data-sc-act="flow">
+      <div class="clientes-h">
         <h2><?= e(v($d, 'clientes.titulo')) ?></h2>
         <p><?= e(v($d, 'clientes.intro')) ?></p>
       </div>
-      <ul><?php foreach ($cl as $n): ?><li><?= e($n) ?></li><?php endforeach; ?></ul>
+      <ul class="clientes-l" data-sc-reveal="left" data-sc-reveal-at="0.16 0.46"><?php foreach ($cl as $n): ?><li><?= e($n) ?></li><?php endforeach; ?></ul>
     </div>
+    <?php endif; ?>
+    <?php $dis = lista($d, 'disciplinas'); if ($dis): ?>
+    <ul class="disc" aria-label="Disciplinas"><?php foreach ($dis as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul>
     <?php endif; ?>
   </div>
 </section>
 
-<section id="servicios" aria-labelledby="h-servicios">
-  <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Servicios</p>
-    <h2 id="h-servicios">Qué instalamos</h2>
-    <p class="sub"><?= e(v($d, 'servicios.intro')) ?></p>
-    <div class="services">
+<!-- 3 · SERVICIOS. Cada servicio con su esquema de principio, que se traza al entrar. -->
+<section id="servicios" class="svcs" aria-labelledby="h-servicios">
+  <div class="wrap svcs-grid">
+    <header class="svcs-head">
+      <h2 id="h-servicios">Qué instalamos</h2>
+      <p class="sub"><?= e(v($d, 'servicios.intro')) ?></p>
+    </header>
+    <ul class="svcs-list">
       <?php foreach ($servicios as $k => $s): ?>
-      <article class="svc reveal" style="--d:<?= $k % 3 ?>">
-        <div class="svc-h"><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($s['icono'] ?? '') ?>"/></svg><h3><?= e($s['titulo'] ?? '') ?></h3></div>
-        <p><?= e($s['texto'] ?? '') ?></p>
-        <?php if (!empty($s['entornos'])): ?><p class="svc-env"><span class="mono">Habitual en</span><?= e($s['entornos']) ?></p><?php endif; ?>
-        <?php $et = array_filter((array)($s['etiquetas'] ?? [])); if ($et): ?><ul class="chips"><?php foreach ($et as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul><?php endif; ?>
-      </article>
-      <?php endforeach; ?>
-    </div>
-    <div class="method reveal">
-      <figure class="method-ph"><?= foto('img/fluke.jpg', 'Equipo de certificación Fluke Networks DSX-5000 con sus accesorios') ?></figure>
-      <div>
-        <h3>Todo se entrega medido y documentado</h3>
-        <p><?= e(v($d, 'servicios.certificacion')) ?></p>
-      </div>
-      <a class="link-arrow" href="#acreditaciones">Ver acreditaciones <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<section id="acreditaciones" class="band-dark" aria-labelledby="h-acred">
-  <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-cert"/></svg>Acreditaciones</p>
-    <h2 id="h-acred">Acreditaciones y medios</h2>
-    <p class="sub">Registro oficial, certificaciones de fabricante y equipo de medida propio. Cada ficha indica de qué se trata.</p>
-    <div class="certs">
-      <?php foreach (lista($d, 'acreditaciones') as $k => $a): ?>
-      <article class="cert reveal" style="--d:<?= $k % 2 ?>">
-        <?php if (!empty($a['tipo'])): ?><p class="cert-t mono"><?= e($a['tipo']) ?></p><?php endif; ?>
-        <div class="cert-b"><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($a['icono'] ?? '') ?>"/></svg><div>
-          <h3><?= e($a['titulo'] ?? '') ?></h3><p><?= e($a['texto'] ?? '') ?></p>
-          <?php if (!empty($a['ref'])): ?><p class="ref mono"><?= e($a['ref']) ?></p><?php endif; ?>
-        </div></div>
-      </article>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-
-<section id="proyectos" aria-labelledby="h-proyectos">
-  <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-building"/></svg>Proyectos</p>
-    <h2 id="h-proyectos"><?= e(v($d, 'obras.titulo')) ?></h2>
-    <p class="sub"><?= e(v($d, 'obras.intro')) ?></p>
-
-    <div class="cases">
-      <?php foreach (array_slice($obras, 0, $OBRAS_DESTACADAS) as $k => $o): ?>
-      <article class="case reveal" style="--d:<?= $k % 3 ?>">
-        <div class="case-top mono">
-          <span class="case-type"><?= e($o['tipo']) ?></span>
-          <svg class="i" aria-hidden="true"><use href="#<?= icono_valido($o['icono']) ?>"/></svg>
+      <li class="svc" data-sc-in>
+        <div class="svc-esq"><?= esquema((string)($s['icono'] ?? '')) ?></div>
+        <div class="svc-tx">
+          <h3><?= e($s['titulo'] ?? '') ?></h3>
+          <p><?= e($s['texto'] ?? '') ?></p>
+          <?php if (!empty($s['entornos'])): ?><p class="svc-env"><span class="mono">Habitual en</span><?= e($s['entornos']) ?></p><?php endif; ?>
+          <?php $et = array_filter((array)($s['etiquetas'] ?? [])); if ($et): ?><ul class="chips"><?php foreach ($et as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul><?php endif; ?>
         </div>
-        <h3><?= e($o['cliente']) ?><?php if ($o['proyecto'] !== ''): ?><span><?= e($o['proyecto']) ?></span><?php endif; ?></h3>
-        <?php if ($o['cifra'] !== ''): ?><p class="case-fig"><b><?= e($o['cifra']) ?></b> <?= e($o['cifra_txt']) ?></p><?php endif; ?>
-        <p class="case-tx"><?= e($o['texto']) ?></p>
-        <?php if ($o['lugar'] !== ''): ?><p class="case-loc mono"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><?= e($o['lugar']) ?></p><?php endif; ?>
-      </article>
+      </li>
       <?php endforeach; ?>
-    </div>
+    </ul>
+  </div>
+</section>
 
+<!-- 4 · PAUSA. Silencio autorado antes del momento central: una frase y nada más. -->
+<section class="pausa" data-sc-act="flow" aria-label="Del encargo a la entrega">
+  <div class="wrap">
+    <p class="pausa-tx" data-sc-cue="0.22 0.86 0.32 0.24" data-sc-kinetic="lines">Seis sistemas distintos.<br> Un mismo equipo propio, de principio a fin.</p>
+  </div>
+</section>
+
+<!-- 5 · EL PEINADO. Momento central: seis cables enredados se peinan, se embridan y entran cada uno
+     en su equipo, que se enciende. Esquema ilustrativo: no representa una obra concreta. -->
+<section id="orden" class="pico" data-sc-act="pin" data-sc-span="3" data-span-m="2.8" aria-labelledby="h-pico">
+  <div class="pico-stage" data-sc-stage>
+    <div class="pico-copy">
+      <h2 id="h-pico">Del enredo al rack terminado</h2>
+      <div class="pico-ls">
+        <p class="pico-l" data-sc-cue="0 0.36 0">Telecomunicaciones, fibra, electricidad, seguridad, centro de datos y clima: seis sistemas que suelen llegar por separado a la misma sala técnica.</p>
+        <p class="pico-l" data-sc-cue="0.32 0.66">Los ejecuta personal propio, coordinado por un responsable de obra que trata con la constructora y el resto de gremios.</p>
+        <p class="pico-l" data-sc-cue="0.62 1">Y se entregan como un rack terminado: cableado peinado, etiquetado y cada enlace medido.</p>
+      </div>
+    </div>
+    <figure class="pico-fig">
+      <?= peine_svg(false) ?>
+      <?= peine_svg(true) ?>
+      <figcaption class="mono">Esquema ilustrativo · no representa una obra concreta</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 6 · MÉTODO. Corte a hoja clara: la parte "documento". Medición y acreditaciones con sus números. -->
+<section id="metodo" class="metodo" data-sc-act="flow" aria-labelledby="h-metodo">
+  <div class="hoja" data-sc-reveal="left" data-sc-reveal-at="0 0.2">
+    <div class="wrap metodo-grid">
+      <div class="metodo-tx" data-sc-in data-sc-stagger="70">
+        <h2 id="h-metodo">Todo se entrega medido y documentado</h2>
+        <p><?= e(v($d, 'servicios.certificacion')) ?></p>
+        <figure class="fluke"><?= foto('img/fluke.jpg', 'Equipo de certificación Fluke Networks DSX-5000 con sus accesorios') ?><figcaption class="mono">Certificador Fluke DSX-5000 propio</figcaption></figure>
+      </div>
+      <div id="acreditaciones" class="acred">
+        <h3 class="acred-h">Acreditaciones y medios</h3>
+        <p class="acred-sub">Registro oficial, certificaciones de fabricante y equipo de medida propio. Cada ficha indica de qué se trata.</p>
+        <ul class="registro">
+          <?php foreach (lista($d, 'acreditaciones') as $k => $a): ?>
+          <li class="reg-row" data-sc-in>
+            <?php if (!empty($a['tipo'])): ?><p class="reg-t mono"><?= e($a['tipo']) ?></p><?php endif; ?>
+            <div class="reg-b"><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($a['icono'] ?? '') ?>"/></svg><div>
+              <h4><?= e($a['titulo'] ?? '') ?></h4><p><?= e($a['texto'] ?? '') ?></p>
+            </div></div>
+            <?php if (!empty($a['ref'])): ?><p class="reg-ref mono"><?= e($a['ref']) ?></p><?php endif; ?>
+          </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · PROYECTOS. Las obras recientes recorren la pantalla como fichas de catálogo (mismo esquema
+     para todas, sin fotos); después, el listado completo y las obras de referencia. -->
+<section id="proyectos" class="obras" aria-labelledby="h-proyectos">
+  <div class="obras-pan" data-sc-act="pan" data-sc-span="2.4">
+    <div class="obras-stage" data-sc-stage>
+      <div class="rail" data-sc-pan="0.02">
+        <div class="rail-lead">
+          <h2 id="h-proyectos"><?= e(v($d, 'obras.titulo')) ?></h2>
+          <p><?= e(v($d, 'obras.intro')) ?></p>
+        </div>
+        <?php foreach (array_slice($obras, 0, $OBRAS_DESTACADAS) as $k => $o): ?>
+        <article class="ficha" style="--i:<?= $k + 1 ?>">
+          <p class="f-tipo mono"><span><?= e($o['tipo']) ?></span><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($o['icono']) ?>"/></svg></p>
+          <h3><?= e($o['cliente']) ?><?php if ($o['proyecto'] !== ''): ?> <span><?= e($o['proyecto']) ?></span><?php endif; ?></h3>
+          <?php if ($o['cifra'] !== ''): ?><p class="f-cifra"><b><?= e($o['cifra']) ?></b> <?= e($o['cifra_txt']) ?></p><?php endif; ?>
+          <p class="f-tx"><?= e($o['texto']) ?></p>
+          <?php if ($o['lugar'] !== ''): ?><p class="f-lugar mono"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><?= e($o['lugar']) ?></p><?php endif; ?>
+        </article>
+        <?php endforeach; ?>
+        <p class="rail-end mono">Más proyectos y obras de referencia, a continuación</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap obras-mas">
     <?php $resto = array_slice($obras, $OBRAS_DESTACADAS); if ($resto): ?>
     <h3 class="listhead">Más proyectos de 2025 y 2026</h3>
     <ul class="caselist">
       <?php foreach ($resto as $o): ?>
-      <li class="reveal">
+      <li data-sc-in>
         <p class="cl-h"><b><?= e($o['cliente']) ?></b><?php if ($o['proyecto'] !== ''): ?> · <?= e($o['proyecto']) ?><?php endif; ?></p>
         <p class="cl-m mono"><?= e($o['tipo']) ?><?php if ($o['lugar'] !== ''): ?> · <?= e($o['lugar']) ?><?php endif; ?><?php if ($o['cifra'] !== ''): ?> · <?= e($o['cifra'] . ' ' . $o['cifra_txt']) ?><?php endif; ?></p>
         <p class="cl-t"><?= e($o['texto']) ?></p>
@@ -298,14 +424,14 @@ $heroMovil = v($d, 'portada.foto_movil', '');
     <?php endif; ?>
 
     <?php $refs = lista($d, 'obras.referencias'); if ($refs): ?>
-    <div class="refs reveal">
+    <div class="refs" data-sc-in>
       <h3>Obras de referencia anteriores</h3>
       <p>Despliegues de gran volumen ejecutados antes de 2025.</p>
       <ul><?php foreach ($refs as $r): ?><li><b><?= e($r['cliente'] ?? '') ?></b><span><?= e($r['texto'] ?? '') ?></span></li><?php endforeach; ?></ul>
     </div>
     <?php endif; ?>
 
-    <aside class="cta-band reveal" aria-labelledby="h-cta">
+    <div class="cta-band" data-sc-in>
       <div>
         <h2 id="h-cta">¿Tienes un proyecto en marcha? Hablemos.</h2>
         <p>Cuéntanos ubicación, alcance y plazos y te enviamos una propuesta.</p>
@@ -314,24 +440,24 @@ $heroMovil = v($d, 'portada.foto_movil', '');
         <a class="btn btn-main" href="#contacto">Pedir presupuesto <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-ghost" href="tel:<?= e($telLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><?= e($telTxt) ?></a>
       </div>
-    </aside>
+    </div>
   </div>
 </section>
 
 <?php if ($galeria): ?>
-<section id="instalaciones" class="band-dark" aria-labelledby="h-inst">
+<!-- 8 · TRABAJO TERMINADO. Fotos reales, técnicas y genéricas, enmarcadas como documentación. -->
+<section id="instalaciones" class="inst" aria-labelledby="h-inst">
   <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg>Instalaciones</p>
     <h2 id="h-inst">Trabajo terminado</h2>
     <?php if ($destK): ?>
     <div class="showcase">
-      <div class="sc-tx reveal">
+      <div class="sc-tx" data-sc-in data-sc-stagger="60">
         <h3><?= e($dest['titulo'] ?? '') ?></h3>
         <p><?= e($dest['texto'] ?? '') ?></p>
         <?php $dp = array_filter((array)($dest['puntos'] ?? []), 'is_string'); if ($dp): ?><ul class="ticks"><?php foreach ($dp as $t): ?><li><?= e($t) ?></li><?php endforeach; ?></ul><?php endif; ?>
       </div>
-      <?php foreach ($destK as $k): $g = $galeria[$k]; ?>
-      <figure class="sc-ph">
+      <?php foreach ($destK as $n => $k): $g = $galeria[$k]; ?>
+      <figure class="sc-ph sc-ph-<?= $n ?>" data-sc-in>
         <button type="button" class="ph" data-k="<?= (int)$k ?>" aria-label="Ampliar foto: <?= e($g['pie'] ?? '') ?>"><?= foto($g['archivo'], $g['pie'] ?? '', ['sizes' => '(min-width: 900px) 360px, 45vw']) ?></button>
         <figcaption><?= e($g['pie'] ?? '') ?></figcaption>
       </figure>
@@ -368,28 +494,26 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 </section>
 <?php endif; ?>
 
-<div class="sheet">
-<section id="empresa" aria-labelledby="h-empresa">
+<!-- 9 · EMPRESA Y MEDIOS. Segunda hoja clara: quién lo hace y con qué. -->
+<div class="hoja hoja-empresa">
+<section id="empresa" class="empresa" data-sc-act="flow" aria-labelledby="h-empresa">
   <div class="wrap about">
-    <div>
-      <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-team"/></svg>Empresa</p>
+    <div class="about-tx">
       <h2 id="h-empresa"><?= e(v($d, 'empresa.titulo')) ?></h2>
-      <?php foreach (lista($d, 'empresa.parrafos') as $p): ?><p class="reveal"><?= e($p) ?></p><?php endforeach; ?>
-      <dl class="facts">
+      <div data-sc-in data-sc-stagger="70"><?php foreach (lista($d, 'empresa.parrafos') as $p): ?><p><?= e($p) ?></p><?php endforeach; ?></div>
+      <dl class="facts" data-sc-in data-sc-stagger="60">
         <?php foreach (lista($d, 'empresa.puntos') as $k => $p): ?>
-        <div class="reveal" style="--d:<?= $k ?>"><dt><?= e($p['titulo'] ?? '') ?></dt><dd><?= e($p['texto'] ?? '') ?></dd></div>
+        <div><dt><?= e($p['titulo'] ?? '') ?></dt><dd><?= e($p['texto'] ?? '') ?></dd></div>
         <?php endforeach; ?>
       </dl>
     </div>
-    <div class="photo"><?= foto(v($d, 'empresa.foto', 'img/empresa.jpg'), 'Rack de comunicaciones con paneles de parcheo y fibra etiquetada') ?></div>
+    <div class="photo"><div class="photo-in" data-sc-parallax="-0.7"><?= foto(v($d, 'empresa.foto', 'img/empresa.jpg'), 'Rack de comunicaciones con paneles de parcheo y fibra etiquetada') ?></div></div>
   </div>
 </section>
-</div>
 
 <?php $flota = v($d, 'flota', []); if ($flota): ?>
-<section id="flota" class="band-dark" aria-labelledby="h-flota">
+<section id="flota" class="flota" aria-labelledby="h-flota">
   <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-van"/></svg>Medios</p>
     <h2 id="h-flota"><?= e(v($d, 'flota.titulo', 'Medios propios')) ?></h2>
     <p class="sub"><?= e(v($d, 'flota.intro')) ?></p>
     <div class="fleet">
@@ -401,9 +525,8 @@ $heroMovil = v($d, 'portada.foto_movil', '');
       <?php if ($flFotos): ?>
       <div class="fl-photos">
         <?php foreach ($flFotos as $f): ?>
-        <figure><?= foto($f['archivo'], $f['pie'] ?? '', ['sizes' => '(min-width: 980px) 560px, 100vw']) ?><figcaption><?= e($f['pie'] ?? '') ?></figcaption></figure>
+        <figure data-sc-in><?= foto($f['archivo'], $f['pie'] ?? '', ['sizes' => '(min-width: 980px) 560px, 100vw']) ?><figcaption><?= e($f['pie'] ?? '') ?></figcaption></figure>
         <?php endforeach; ?>
-        <p class="fl-tags mono"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Base en Rivas-Vaciamadrid</span><span><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Toda España</span></p>
       </div>
       <?php else: ?>
       <div class="fl-visual">
@@ -418,12 +541,11 @@ $heroMovil = v($d, 'portada.foto_movil', '');
           <g class="wheel"><circle cx="184" cy="252" r="30"/><circle cx="184" cy="252" r="11"/></g>
           <g class="wheel"><circle cx="482" cy="252" r="30"/><circle cx="482" cy="252" r="11"/></g>
         </svg>
-        <p class="fl-tags mono"><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Base en Rivas-Vaciamadrid</span><span><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Toda España</span></p>
       </div>
       <?php endif; ?>
-      <ul class="fl-points">
+      <ul class="fl-points" data-sc-in data-sc-stagger="60">
         <?php foreach (lista($d, 'flota.puntos') as $k => $f): ?>
-        <li class="reveal" style="--d:<?= $k ?>"><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($f['icono'] ?? '') ?>"/></svg><div>
+        <li><svg class="i" aria-hidden="true"><use href="#<?= icono_valido($f['icono'] ?? '') ?>"/></svg><div>
           <h3><?= e($f['titulo'] ?? '') ?></h3><p><?= e($f['texto'] ?? '') ?></p></div></li>
         <?php endforeach; ?>
       </ul>
@@ -431,12 +553,15 @@ $heroMovil = v($d, 'portada.foto_movil', '');
   </div>
 </section>
 <?php endif; ?>
+</div>
 
-<section id="contacto" aria-labelledby="h-contacto">
+<!-- 10 · CONTACTO. El cierre es la hoja de solicitud: un formulario real, con todos los canales. -->
+<section id="contacto" class="contacto" aria-labelledby="h-contacto">
   <div class="wrap">
-    <p class="sechead mono"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Contacto</p>
-    <h2 id="h-contacto">Pide presupuesto</h2>
-    <p class="sub">Escríbenos con los datos de la instalación y te enviamos una propuesta y un plazo, sin compromiso.</p>
+    <div class="ct-head">
+      <h2 id="h-contacto">Pide presupuesto</h2>
+      <p class="sub">Escríbenos con los datos de la instalación y te enviamos una propuesta y un plazo, sin compromiso.</p>
+    </div>
     <div class="contact">
       <ul class="cinfo">
         <li><a href="tel:<?= e($telLink) ?>"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span><small>Móvil</small><?= e($telTxt) ?></span></a></li>
@@ -447,6 +572,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
         <?php if ($horario): ?><li><div><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><span><small>Horario de atención</small><?= e($horario) ?></span></div></li><?php endif; ?>
       </ul>
       <form class="quote" id="form" action="enviar.php" method="POST" novalidate>
+        <div class="q-cajetin mono" aria-hidden="true"><span>Solicitud de presupuesto</span><span>Respuesta en menos de 24 h laborables</span></div>
         <p class="hp" aria-hidden="true"><label>No rellenar <input type="text" name="web_url" tabindex="-1" autocomplete="off"></label></p>
         <input type="hidden" name="t" value="<?= time() ?>">
         <div class="frow two">
@@ -499,7 +625,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
   </div>
 </footer>
 
-<a class="wa" id="wa" href="<?= e($waLink) ?>" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">
+<a class="wa" id="wa" data-sc-shot-fixed href="<?= e($waLink) ?>" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">
   <span class="wa-ic" aria-hidden="true"><svg class="i"><use href="#i-wa"/></svg></span>
   <span class="wa-tx" aria-hidden="true">WhatsApp</span>
 </a>
@@ -514,6 +640,7 @@ $heroMovil = v($d, 'portada.foto_movil', '');
 </div>
 
 <script>window.VP = { galeria: <?= json_encode(array_map(fn($g) => ['src' => webp_de($g['archivo'] ?? '') ?? ($g['archivo'] ?? ''), 'pie' => $g['pie'] ?? ''], $galeria), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?>, email: <?= json_encode($email, JSON_HEX_TAG) ?>, vistaPrevia: <?= $vista ? 'true' : 'false' ?> };</script>
-<script src="assets/web.js?v=<?= @filemtime(__DIR__ . '/assets/web.js') ?>" defer></script>
+<script src="assets/scrollcraft.js?v=<?= $ver('assets/scrollcraft.js') ?>" defer></script>
+<script src="assets/web.js?v=<?= $ver('assets/web.js') ?>" defer></script>
 </body>
 </html>

@@ -101,6 +101,7 @@ SERVIDOR NGINX (los .htaccess no aplican; equivalente mínimo)
   location ~ \.tmp- { deny all; }
   location = /INSTRUCCIONES-INFORMATICO.txt { deny all; }
   location = /LEEME.txt { deny all; }
+  location ^~ /scrollcraft/ { deny all; }
   + redirección 301 a https://www.vaypatel.com
 
 DOMINIO, SUBDOMINIOS Y CORREO
@@ -163,3 +164,20 @@ ARCHIVOS
   .htaccess, robots.txt, sitemap.xml
   img/                    Logo (SVG vectorial y PNG 2400 px), favicon, foto de portada, empresa
   img/galeria/            Fotos de la galería
+  assets/scrollcraft.js   Motor de animación por scroll Scroll-craft (MIT, ver
+  assets/scrollcraft.css  assets/scrollcraft-LICENCIA.txt). No se modifica: lo propio de la
+                          web está en index.php, estilos.css y web.js.
+  incluir/logo.php        Logo en línea para la firma de entrada, generado desde img/logo.svg
+  incluir/esquemas.php    Esquemas técnicos de los servicios (SVG)
+  incluir/peine.php       Esquema del "peinado" (momento central de la portada)
+  scrollcraft/            Documentación del rediseño y herramientas. NO se publica:
+                          tiene .htaccess que lo bloquea (en Nginx, ver la regla de arriba).
+                          Se puede no subir al servidor.
+
+REDISEÑO "EXPEDIENTE TÉCNICO" (octubre 2026)
+  - Mismo PHP, mismo panel y mismo contenido (contenido.json no cambia de formato).
+  - Si se cambia img/logo.svg, hay que regenerar incluir/logo.php:
+      python3 scrollcraft/builds/vaypatel/herramientas/logo_partial.py img/logo.svg incluir/logo.php
+    (si el SVG nuevo tiene otra estructura, el script lo avisa y no escribe nada).
+  - La primera visita muestra la firma del logo (unos 2 s; se corta con cualquier tecla, rueda
+    o toque). Las siguientes, durante 7 días, solo una versión corta en la cabecera.

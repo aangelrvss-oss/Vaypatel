@@ -1,0 +1,1434 @@
+{
+  "doc": {
+    "height": 15518,
+    "vh": 900,
+    "acts": [
+      "flow",
+      "flow",
+      "flow",
+      "flow",
+      "flow",
+      "flow",
+      "flow"
+    ],
+    "world": null
+  },
+  "report": [
+    {
+      "i": 0,
+      "y": 0,
+      "pct": 0,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        0,
+        4193,
+        6055
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 1,
+      "y": 173,
+      "pct": 1,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -173,
+        4020,
+        5882
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 2,
+      "y": 442,
+      "pct": 3,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -442,
+        3751,
+        5613
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 3,
+      "y": 518,
+      "pct": 4,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -518,
+        3675,
+        5537
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 4,
+      "y": 656,
+      "pct": 4,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -656,
+        3537,
+        5399
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 5,
+      "y": 864,
+      "pct": 6,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -864,
+        3329,
+        5191
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 6,
+      "y": 871,
+      "pct": 6,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -871,
+        3322,
+        5184
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 7,
+      "y": 1086,
+      "pct": 7,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -1086,
+        3107,
+        4969
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 8,
+      "y": 1301,
+      "pct": 9,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1301,
+        2892,
+        4754
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 9,
+      "y": 1516,
+      "pct": 10,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1516,
+        2677,
+        4539
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 10,
+      "y": 2658,
+      "pct": 18,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -2658,
+        1535,
+        3397
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 11,
+      "y": 2959,
+      "pct": 20,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -2959,
+        1234,
+        3096
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 12,
+      "y": 3260,
+      "pct": 22,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3260,
+        933,
+        2795
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 13,
+      "y": 3329,
+      "pct": 23,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3329,
+        864,
+        2726
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 14,
+      "y": 3560,
+      "pct": 24,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3560,
+        633,
+        2495
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 15,
+      "y": 3675,
+      "pct": 25,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3675,
+        518,
+        2380
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 16,
+      "y": 3861,
+      "pct": 26,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.23
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.69,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3861,
+        332,
+        2194
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 17,
+      "y": 4020,
+      "pct": 28,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.69,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.44,
+          "mean": 14.7
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.45,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4020,
+        173,
+        2035
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 18,
+      "y": 4162,
+      "pct": 28,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.69,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.45,
+          "mean": 14.7
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.52,
+          "mean": 14.73
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4162,
+        31,
+        1893
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 19,
+      "y": 4230,
+      "pct": 29,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.68,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.44,
+          "mean": 14.71
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4230,
+        -37,
+        1825
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 20,
+      "y": 4366,
+      "pct": 30,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.68,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.44,
+          "mean": 14.71
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4366,
+        -173,
+        1689
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 21,
+      "y": 4588,
+      "pct": 31,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.45,
+          "mean": 14.76
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.44,
+          "mean": 14.7
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.45,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        },
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4588,
+        -395,
+        1467
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 22,
+      "y": 4712,
+      "pct": 32,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.45,
+          "mean": 14.77
+        },
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.44,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 1
+        },
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4712,
+        -519,
+        1343
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 23,
+      "y": 4945,
+      "pct": 34,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -4945,
+        -752,
+        1110
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 24,
+      "y": 5057,
+      "pct": 35,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5057,
+        -864,
+        998
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 25,
+      "y": 5209,
+      "pct": 36,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5209,
+        -1016,
+        846
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 26,
+      "y": 5303,
+      "pct": 36,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5303,
+        -1110,
+        752
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 27,
+      "y": 5660,
+      "pct": 39,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5660,
+        -1467,
+        395
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 28,
+      "y": 5729,
+      "pct": 39,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -5729,
+        -1536,
+        326
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 29,
+      "y": 6018,
+      "pct": 41,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -6018,
+        -1825,
+        37
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 30,
+      "y": 6249,
+      "pct": 43,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -6249,
+        -2056,
+        -194
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 31,
+      "y": 6769,
+      "pct": 46,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -6769,
+        -2576,
+        -714
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 32,
+      "y": 7290,
+      "pct": 50,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -7290,
+        -3097,
+        -1235
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 33,
+      "y": 7810,
+      "pct": 53,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -7810,
+        -3617,
+        -1755
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 34,
+      "y": 11139,
+      "pct": 76,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -11139,
+        -6946,
+        -5084
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 35,
+      "y": 11488,
+      "pct": 79,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -11488,
+        -7295,
+        -5433
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 36,
+      "y": 11837,
+      "pct": 81,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -11837,
+        -7644,
+        -5782
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 37,
+      "y": 12186,
+      "pct": 83,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -12186,
+        -7993,
+        -6131
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 38,
+      "y": 12536,
+      "pct": 86,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -12536,
+        -8343,
+        -6481
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 39,
+      "y": 12885,
+      "pct": 88,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -12885,
+        -8692,
+        -6830
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 40,
+      "y": 14618,
+      "pct": 100,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -14618,
+        -10425,
+        -8563
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    }
+  ],
+  "consoleErrors": [],
+  "failed": []
+}

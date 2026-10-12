@@ -1,0 +1,1340 @@
+{
+  "doc": {
+    "height": 18120,
+    "vh": 900,
+    "acts": [
+      "pin",
+      "flow",
+      "flow",
+      "pin",
+      "flow",
+      "pan",
+      "flow"
+    ],
+    "world": null
+  },
+  "report": [
+    {
+      "i": 0,
+      "y": 9,
+      "pct": 0,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4634,
+        8296
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 1,
+      "y": 95,
+      "pct": 1,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4548,
+        8210
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 2,
+      "y": 182,
+      "pct": 1,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4461,
+        8123
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 3,
+      "y": 268,
+      "pct": 2,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4375,
+        8037
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 4,
+      "y": 355,
+      "pct": 2,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4288,
+        7950
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 5,
+      "y": 441,
+      "pct": 3,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "none",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        0,
+        4202,
+        7864
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 6,
+      "y": 892,
+      "pct": 5,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 100% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -442,
+        3751,
+        7413
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 7,
+      "y": 1106,
+      "pct": 6,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 92.12% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -656,
+        3537,
+        7199
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 8,
+      "y": 1321,
+      "pct": 8,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 9.21% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -871,
+        3322,
+        6984
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 9,
+      "y": 1536,
+      "pct": 9,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -1086,
+        3107,
+        6769
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 10,
+      "y": 1751,
+      "pct": 10,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1301,
+        2892,
+        6554
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 11,
+      "y": 1966,
+      "pct": 11,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -1516,
+        2677,
+        6339
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 12,
+      "y": 3108,
+      "pct": 18,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -2658,
+        1535,
+        5197
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 13,
+      "y": 3409,
+      "pct": 20,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "-",
+      "stages": [
+        -2959,
+        1234,
+        4896
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 14,
+      "y": 3710,
+      "pct": 22,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3260,
+        933,
+        4595
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 15,
+      "y": 4010,
+      "pct": 23,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "flow",
+      "stages": [
+        -3560,
+        633,
+        4295
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 16,
+      "y": 4311,
+      "pct": 25,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo",
+          "dir": "light-on-dark",
+          "worst": 18.19,
+          "mean": 18.19
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.53,
+          "mean": 14.72
+        }
+      ],
+      "cues": [
+        {
+          "t": "Seis sistemas distintos. Un mismo equipo propi",
+          "o": 1
+        },
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -3861,
+        332,
+        3994
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 17,
+      "y": 4612,
+      "pct": 27,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.68,
+          "mean": 14.74
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -4162,
+        31,
+        3693
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 18,
+      "y": 4679,
+      "pct": 27,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.69,
+          "mean": 14.77
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -4229,
+        0,
+        3626
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 19,
+      "y": 5025,
+      "pct": 29,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad,",
+          "dir": "light-on-dark",
+          "worst": 14.69,
+          "mean": 14.77
+        }
+      ],
+      "cues": [
+        {
+          "t": "Telecomunicaciones, fibra, electricidad, segur",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -4575,
+        0,
+        3280
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 20,
+      "y": 5370,
+      "pct": 31,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Los ejecuta personal propio, coordinado ",
+          "dir": "light-on-dark",
+          "worst": 14.42,
+          "mean": 14.71
+        }
+      ],
+      "cues": [
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 0.92
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -4920,
+        0,
+        2935
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 21,
+      "y": 5716,
+      "pct": 33,
+      "settled": true,
+      "contrast": [],
+      "cues": [
+        {
+          "t": "Los ejecuta personal propio, coordinado por un",
+          "o": 0.69
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -5266,
+        0,
+        2589
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 22,
+      "y": 6062,
+      "pct": 35,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Y se entregan como un rack terminado: ca",
+          "dir": "light-on-dark",
+          "worst": 14.52,
+          "mean": 14.73
+        }
+      ],
+      "cues": [
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "none"
+      ],
+      "act": "pin",
+      "stages": [
+        -5612,
+        0,
+        2243
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 23,
+      "y": 6407,
+      "pct": 37,
+      "settled": true,
+      "contrast": [],
+      "cues": [
+        {
+          "t": "Y se entregan como un rack terminado: cableado",
+          "o": 0.08
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 100% 0px 0px)"
+      ],
+      "act": "pin",
+      "stages": [
+        -5957,
+        0,
+        1898
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 24,
+      "y": 6480,
+      "pct": 38,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 97.25% 0px 0px)"
+      ],
+      "act": "pin",
+      "stages": [
+        -6030,
+        -37,
+        1825
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 25,
+      "y": 6838,
+      "pct": 40,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pin",
+      "stages": [
+        -6388,
+        -395,
+        1467
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 26,
+      "y": 7195,
+      "pct": 42,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -6745,
+        -752,
+        1110
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 27,
+      "y": 7553,
+      "pct": 44,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -7103,
+        -1110,
+        752
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 28,
+      "y": 7910,
+      "pct": 46,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -7460,
+        -1467,
+        395
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 29,
+      "y": 8268,
+      "pct": 48,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -7818,
+        -1825,
+        37
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 30,
+      "y": 8330,
+      "pct": 48,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -35
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -7880,
+        -1887,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 31,
+      "y": 8572,
+      "pct": 50,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -373
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -8122,
+        -2129,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 32,
+      "y": 8814,
+      "pct": 51,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -711
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -8364,
+        -2371,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 33,
+      "y": 9056,
+      "pct": 53,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1048
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -8606,
+        -2613,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 34,
+      "y": 9298,
+      "pct": 54,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1386
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -8848,
+        -2855,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 35,
+      "y": 9540,
+      "pct": 55,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1724
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "pan",
+      "stages": [
+        -9090,
+        -3097,
+        0
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 36,
+      "y": 13740,
+      "pct": 80,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -13290,
+        -7297,
+        -4175
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 37,
+      "y": 14089,
+      "pct": 82,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -13639,
+        -7646,
+        -4524
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 38,
+      "y": 14439,
+      "pct": 84,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -13989,
+        -7996,
+        -4874
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 39,
+      "y": 14788,
+      "pct": 86,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "flow",
+      "stages": [
+        -14338,
+        -8345,
+        -5223
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 40,
+      "y": 15137,
+      "pct": 88,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -14687,
+        -8694,
+        -5572
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 41,
+      "y": 15486,
+      "pct": 90,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -15036,
+        -9043,
+        -5921
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    },
+    {
+      "i": 42,
+      "y": 17220,
+      "pct": 100,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1758
+      ],
+      "wipes": [
+        "inset(0px 0% 0px 0px)",
+        "inset(0px 0% 0px 0px)"
+      ],
+      "act": "-",
+      "stages": [
+        -16770,
+        -10777,
+        -7655
+      ],
+      "segs": [],
+      "custom": [],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#04070B"
+    }
+  ],
+  "consoleErrors": [],
+  "failed": []
+}

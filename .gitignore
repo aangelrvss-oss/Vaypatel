@@ -5,3 +5,6 @@ admin/datos/intentos.php
 admin/datos/copias/*.json
 *.tmp-*
 admin/datos/correo.php
+
+# Capturas de las pruebas de Scroll-craft (se regeneran)
+scrollcraft/lab/
