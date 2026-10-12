@@ -25,8 +25,10 @@ navegador (o abrir una ventana privada).
 
 ## Comparar con la versión anterior
 
-La versión anterior está en la etiqueta `pre-rediseno-scrollcraft` (y en la rama
-`claude/wizardly-albattani-1k7wgl`, que es lo publicado hoy):
+La versión anterior es la rama `claude/wizardly-albattani-1k7wgl` (commit `9cfe4ae`), que es lo
+publicado hoy en www.vaypatel.com:
 
-    git worktree add ../vaypatel-antes pre-rediseno-scrollcraft
+    git fetch origin claude/wizardly-albattani-1k7wgl
+    git worktree add ../vaypatel-antes origin/claude/wizardly-albattani-1k7wgl
     php -S 127.0.0.1:4601 -t ../vaypatel-antes
+    # antes: http://127.0.0.1:4601/   ·   ahora: http://127.0.0.1:4600/
