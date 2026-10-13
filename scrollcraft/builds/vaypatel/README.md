@@ -15,6 +15,14 @@ Carpeta de trabajo del rediseño hecho con Scroll-craft. **No se publica** (la b
 
   Si el SVG nuevo no tiene la misma estructura (10 trazados), el script se detiene sin escribir.
 
+## Vista previa en un solo archivo (para el móvil)
+
+Genera un HTML autocontenido (imágenes, fuentes y JS dentro, unos 2,7 MB) en modo vista previa:
+el formulario no envía y la página lleva `noindex`.
+
+    php -r 'define("VISTA_PREVIA", true); include "index.php";' > /tmp/render.html
+    python3 scrollcraft/builds/vaypatel/herramientas/vista_previa.py /tmp/render.html . vaypatel-vista-previa.html
+
 ## Ver la web en local
 
     php -S 127.0.0.1:4600 -t .
